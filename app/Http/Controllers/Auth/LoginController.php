@@ -34,6 +34,7 @@ class LoginController extends Controller
      * Create a new controller instance.
      *
      * @return void
+     * 
      */
     public function __construct()
     {
@@ -45,24 +46,21 @@ class LoginController extends Controller
 
     public function checkUsers(Request $request){
 
-        $results = User::where('email' , $request->email)->get()->first();
+        $results = User::where('email' , $request->email)->get();
 
-        if(!$results){
+        if(count($results) == 0){//change
             session(['msg_error' => "Email ou Password incorrect !!"]);
             return view('auth.login');
         }
-        if ($results->is_admin == 1) {
-            // $arr =  [
-            //             'name' => $results->name ,
-            //             'email' => $results->email ,
-            //             'token' => $results->_token ,
-            // ];
-            // return redirect()->route('storeInSession', $arr );
+          ///Reste Si le mot de pass est Faut !!!
 
-            return view('shards-dashboard.admin_panel');
-        }
+        $results = $results->first();
+        
+        $email_var = $results->email ;           
+        //Stocke this variable in session
+        session(['email_var' => $email_var]);
 
-        return view('shards-dashboard.users_account');
+        return redirect('storeInSession');
     }
 
 

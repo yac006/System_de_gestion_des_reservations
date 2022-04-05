@@ -35,7 +35,10 @@ Route::post('Register' , [ RegisterController::class ,'create']);
 
 /*--------------------------- Sessions Routes ----------------------------*/
 Route::get('getInSession' , [ SessionsController::class  , 'get_session_data']);
-Route::get('storeInSession/{arr?}' , [ SessionsController::class  , 'store_session_data'])->name('storeInSession');
+Route::get('storeInSession' , [ SessionsController::class  , 'store_session_data']);
 Route::delete('deleteInSession' , [ SessionsController::class  , 'delete_session_data']);
+
+
+
 
 
