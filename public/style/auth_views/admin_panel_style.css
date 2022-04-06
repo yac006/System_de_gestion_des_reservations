@@ -1,0 +1,31 @@
+
+.row_cont{
+    border: dotted rgb(237, 237, 237, 1) 0.5px;
+    border-radius: 12px;
+    background: rgb(237, 237, 237, 1);
+    margin-top: 20px;;
+}
+
+.col_style{
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#lgout_link{
+    /* float: right; */
+}
+
+#notif_btn{
+    /* float: left; */
+}
+
+#title{
+    font-size: 24px;
+}
+
+#collapseExample_01{
+    width: 20%;
+    position: absolute;
+    left: 64px;
+}

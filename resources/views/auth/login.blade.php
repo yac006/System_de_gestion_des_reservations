@@ -3,9 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        @if(Session::has('msg_error'))
+        <!-- Message d'erreur d'email' --> 
+        @if(Session::has('msg_error_email'))
             <div class="alert alert-danger col-md-8" style="text-align: center">
-                <span style="padding:50p 20px">{{ Session::pull('msg_error') }}</span>           
+                <span style="padding:50p 20px">{{ Session::pull('msg_error_email') }}</span>           
+            </div>
+        @endif
+        <!-- Message d'erreur de mot de pass -->    
+        @if(Session::has('msg_error_pass'))
+            <div class="alert alert-danger col-md-8" style="text-align: center">
+                <span style="padding:50p 20px">{{ Session::pull('msg_error_pass') }}</span>           
             </div>
         @endif
 

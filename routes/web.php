@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth ;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Sessions\SessionsController;
+use App\Http\Controllers\Notif\NotifController;
+use App\Models\User;
 
 
 /*
@@ -36,7 +39,19 @@ Route::post('Register' , [ RegisterController::class ,'create']);
 /*--------------------------- Sessions Routes ----------------------------*/
 Route::get('getInSession' , [ SessionsController::class  , 'get_session_data']);
 Route::get('storeInSession' , [ SessionsController::class  , 'store_session_data']);
-Route::delete('deleteInSession' , [ SessionsController::class  , 'delete_session_data']);
+Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_data'])->name('deleteInSession');
+
+
+/*--------------------------- Notifications Routes ----------------------------*/
+Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
+Route::get('sendNotif' , [ NotifController::class ,'send_demande']);
+// Route::get('showNotif' , [NotifController::class ,'display_notif']);
+
+
+
+
+
+
 
 
 
