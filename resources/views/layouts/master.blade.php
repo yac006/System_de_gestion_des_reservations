@@ -12,9 +12,11 @@
 </head>
 <body>
 
-        @yield('content')
+    @yield('content')
+    
 
     <script src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('bootstrap_4/bootstrap.min.js')}}"></script>
+    @yield('jqry_ajax_script')
 </body>
 </html>

@@ -12,7 +12,7 @@
                         </button>
                     </div>
                     <div class="col-md-6 col_style">
-                            <span id="title" style="text-align: center">Welcome <span style="color:red">{{ $arr['name'] }}</span> in your Account</span>
+                            <span id="title" style="text-align: center">Welcome <span style="color:red">{{ $arr->name }}</span> in your Account</span>
                     </div>                    
                     <div class="col-md-4 col_style" >
                             <button type="button" class="btn btn-outline-primary" id="notif_btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

@@ -45,7 +45,7 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 /*--------------------------- Notifications Routes ----------------------------*/
 Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
 Route::get('sendNotif' , [ NotifController::class ,'send_demande']);
-// Route::get('showNotif' , [NotifController::class ,'display_notif']);
+Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
 
 
 

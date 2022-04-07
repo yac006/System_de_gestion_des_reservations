@@ -31,10 +31,23 @@
                         </ul>
                 </div>
         </div>
-                
 
+@endsection
 
+        <!-- Jquery and Ajax Script -->
+@section('jqry_ajax_script')   
+        <script>
+                $(document).ready(function(){
 
-                
+                        $('#notif_btn').click(function(){
 
+                                let user_id = {{$arr->id}} ;                               
+                                //alert(user_id);
+
+                                //Ajax func..... suit
+
+                        })
+
+                });
+        </script>
 @endsection
