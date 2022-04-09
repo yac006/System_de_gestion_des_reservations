@@ -36,7 +36,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <form action="{{route('checkNotif')}}" method="post">
+        <form action="{{route('sendNotif')}}" method="post">
             {{ csrf_field() }}
             <div class="modal-body">
 

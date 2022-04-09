@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Sessions\SessionsController;
 use App\Http\Controllers\Notif\NotifController;
-use App\Models\User;
 
 
 /*
@@ -43,9 +41,11 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 
 
 /*--------------------------- Notifications Routes ----------------------------*/
-Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
-Route::get('sendNotif' , [ NotifController::class ,'send_demande']);
+//Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
+Route::post('sendNotif' , [ NotifController::class ,'send_demande'])->middleware('verification_demande_rsv')->name('sendNotif');
 Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
+//Route::get('countNotif' , [NotifController::class ,'count_notif_number']);
+Route::get('retriveNumNotif' , [NotifController::class ,'retrieve_notif_number']);
 
 
 

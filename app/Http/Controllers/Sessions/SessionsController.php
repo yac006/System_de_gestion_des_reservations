@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User ;
 use App\Models\Notification ;
-use Hamcrest\Arrays\IsArray;
+use App\Models\Numbre_notif ;
 
 
 
@@ -26,11 +26,11 @@ class SessionsController extends Controller
                         'name' => $request->session()->get('name') ,
                         'email' => $request->session()->get('email'),
                         'is_admin' => $request->session()->get('is_admin'),
-                        'my_array' => $request->session()->get('all_user_data'),
-                        'numbre_notif' => Notification::where('notifiable_id' , $request->session()->get('id'))->get()
+                        'my_array' => $request->session()->get('all_user_data'),                                                                                                           
                     ];
             //convert array to object array        
             $arr = (object)$arr ;
+
 
             if ($arr->is_admin == 1) {
                 return view('shards-dashboard.admin_panel')->with('arr' , $arr);         

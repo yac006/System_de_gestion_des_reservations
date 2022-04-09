@@ -57,7 +57,8 @@ class RegisterController extends Controller
             'name' => $request->name ,
             'email' => $request->email ,
             'password' => Hash::make($request->password),
-            'remember_token' => $request->_token  
+            'remember_token' => $request->_token ,
+            'is_admin' => 0 ,
         ]);
 
         session(['msg_success' => "Les données a été enregistrer avec succée ....."]);
