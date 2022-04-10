@@ -58,8 +58,9 @@ class NotifController extends Controller
 
         return response()->json($number_notif);
     }
-            
-    
+
+
+
     
 
 }

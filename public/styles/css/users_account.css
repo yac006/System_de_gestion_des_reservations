@@ -1,0 +1,200 @@
+
+body
+{
+	background:#f5f6f8;
+	/* height: 1000px; */
+} 
+
+
+/*-- Navbar  --*/
+.navbar
+{
+	width:100%;
+	height: 149px;
+	display: block !important;
+	position: static;
+}
+
+/*-- Nav Header --*/
+.nav_header
+{
+	width: 100% ;
+	height: 50px;
+	/*border: dotted 2px;*/
+    margin-top: 23px;
+    padding: 1px;
+}
+
+.logo_cont
+{
+	width: 18% ;
+	height: 100%;
+	float:left;
+	/*border: solid 1px orange;*/
+	position:relative;
+	/*left: -172px;*/
+	display: none;
+
+}
+.search_cont
+{
+	width: 45% ;
+	height: 100%;
+	float: left;
+	/*border: solid 1px orange;*/
+	position: relative;
+	top: -70px; 
+	left: 28px;
+	opacity: 0.1;
+}
+.search_cont .has-search span
+{
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	float: right;
+	color:#c3c7cc;
+}
+.search_cont .has-search input
+{
+	height: calc(2.25rem + 7px) !important;
+	border-radius: 20px;
+}
+
+.notif_cont
+{
+	width: 26.5%;
+	height: 100%;
+	float: right;
+	/*border: solid 1px orange;*/
+	border-radius: 5px;
+	background: #f7f7f7;
+	display: none;
+}
+.notif_cont ul
+{
+	width: 100%;
+	height: 100%;
+}
+.notif_cont ul li
+{
+	width: 20%;
+	height: 100%;
+	/*border: dotted 1px;*/
+	float: left;
+	margin-left: 32px ; 
+	list-style-type: none;
+	padding-top: 7px;
+}
+ 
+
+/*-- Featured container  --*/
+
+.Featured_cont
+{
+	width: 70.4%;
+	height: auto;
+	/*border: dotted 2px;*/
+	float: left;
+	margin-top: 120px;
+	position: relative ;
+	/*top: 500px;*/
+	left: 17px;
+	opacity: 0.1;  
+	
+}
+
+
+.Featured_cont .card-body{
+	padding: 4.25rem;
+} 
+
+
+/*-- Profile container  --*/
+
+.cont_profile
+{
+	max-width: 28.333333%;
+	min-width: 28.333333%;
+	/*border: dotted 2px;*/
+    position: absolute;
+    top: 106px;
+    right: -355px;
+    opacity: 0.1; 
+}
+
+
+/*-- Main container  --*/
+.main_cont
+{
+	width: 70.4%;
+	height: 270px;
+    /*border: dotted 2px;*/
+	position: absolute ;
+	top: 108px;
+	left: 17px;
+	display: flex ;
+	flex-direction: row ;
+	justify-content: space-between;
+}
+
+.main_cont .card
+{
+	width: 32%;
+	height: 250px;
+	border: 1px solid rgba(28,28,28,0.23);
+	text-align: center;
+}
+
+#box_one 
+{
+	position: relative ;
+	top: 230px;
+	opacity: 0.1;
+}
+#box_two 
+{
+	position: relative ;
+	top: 170px;
+	opacity: 0.1;
+}
+#box_three 
+{
+	position: relative ;
+	top: 110px;
+	opacity: 0.1;
+}
+
+.cont_icon 
+{
+    width: 68%;
+    max-width: 86%;
+    height: 127px;
+    border: dotted 1px gray;
+    text-align: center;
+    margin: 29px auto;
+    border-radius: 16px;
+    padding-top: 24px;
+}
+
+/************* Hover Effects *************/
+.hvr-grow
+{
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.hvr-radial-out {
+  background: none;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.hvr-radial-out:before {
+  background: #e1e1e138;
+  border-radius: 100%;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+ 
+}

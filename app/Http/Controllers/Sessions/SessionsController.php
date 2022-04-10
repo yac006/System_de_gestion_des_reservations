@@ -33,9 +33,9 @@ class SessionsController extends Controller
 
 
             if ($arr->is_admin == 1) {
-                return view('shards-dashboard.admin_panel')->with('arr' , $arr);         
+                return view('shards-dashboard.panneau_admin')->with('arr' , $arr);         
             }
-            return view('shards-dashboard.users_account')->with('arr' , $arr);
+            return view('shards-dashboard.compte_utilisateurs')->with('arr' , $arr);
         }
     }
 
@@ -73,7 +73,8 @@ class SessionsController extends Controller
                 $request->session()->forget('email');
                 $request->session()->forget('is_admin');
                 //------------//
-                $request->session()->forget('email_var'); 
+                $request->session()->forget('email_var');
+                $request->session()->forget('notif_rows'); 
                 
                 return view('auth.login');
         }

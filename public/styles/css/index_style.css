@@ -1,0 +1,116 @@
+
+/*--------- main-sidebar ---------*/
+
+.cont_user_img
+{
+	/*border: dotted 1px;*/
+	text-align: center ;
+	height: 170px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+.spn_user
+{
+	display: block;
+	padding-top: 3px;
+	
+}
+
+#green_circle
+{
+    font-size: 0.1rem ;	
+}
+
+
+
+/*--------- Main Navbar ---------*/
+.main-navbar .navbar 
+{
+    height: 3.3rem;
+}
+
+.main-navbar .navbar .notifications .badge 
+{
+	top: 42%;
+}
+
+.nav-link-icon__wrapper .material-icons
+{
+	top: -4px;
+}
+
+#img_cont
+{
+	padding-top: 5px;
+}
+
+.search_form
+{
+	width: 100%;
+	height: auto;
+	/*background: orange;*/
+}
+
+.search_form input
+{
+	width: 95%;
+	height: auto;
+	margin: 10px auto;
+	border-radius: 18px; 	
+}
+
+/*----------*/
+.has-search
+{
+	width: 90%;
+	height: auto;
+	margin: 7px auto;	
+} 
+
+.has-search .form-control {
+padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+position: absolute;
+z-index: 2;
+display: block;
+width: 2.375rem;
+height: 2.375rem;
+line-height: 2.375rem;
+text-align: center;
+pointer-events: none;
+color: #aaa;
+
+}
+/*----------*/
+
+
+
+/*--------- Small Stats Blocks ---------*/
+
+.row02
+{
+	margin-top: 20px;
+}
+
+.stats-small
+{
+	min-height: 7.7rem;
+}
+
+.cont_icon
+{
+	width: 79%;
+    max-width: 86%;
+    height: 104px;
+    border: dotted 1px gray;
+    text-align: center;
+    margin: 12px auto;
+    border-radius: 13px;
+    padding-top: 13px;
+}
+
+
+
+

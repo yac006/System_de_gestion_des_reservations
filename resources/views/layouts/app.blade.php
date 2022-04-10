@@ -21,6 +21,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Jquery 3.6.0 -->
+    <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
 </head>
 <body>
     <div id="app">
@@ -83,7 +86,7 @@
         </main>
     </div>
 
-
+    <!-- Bootstrap 4.1.3 js-->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
 </body>
 </html>

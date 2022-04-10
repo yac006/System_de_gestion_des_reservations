@@ -44,9 +44,12 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 //Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
 Route::post('sendNotif' , [ NotifController::class ,'send_demande'])->middleware('verification_demande_rsv')->name('sendNotif');
 Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
-//Route::get('countNotif' , [NotifController::class ,'count_notif_number']);
 Route::get('retriveNumNotif' , [NotifController::class ,'retrieve_notif_number']);
 
+
+//---------- test ----------//
+Route::view('admin_panel' , 'shards-dashboard.???????');
+Route::view('users_account' , 'shards-dashboard.??????');
 
 
 
