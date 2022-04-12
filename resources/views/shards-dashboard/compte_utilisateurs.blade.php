@@ -32,9 +32,43 @@
             <div class="card mb-3 " id="box_one">
               <div class="card-header">Réservation</div>
                   <div class="cont_icon hvr-radial-out">
-                      <i class="zmdi zmdi-calendar-note zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc;"></i>
+                      <i class="zmdi zmdi-calendar-note zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc;" 
+                      data-toggle="modal" data-target="#exampleModal_rsv" data-whatever="@mdo"></i>
                   </div>
             </div>
+            <!------------------- Model Réservation --------------------->
+            <div class="modal fade" id="exampleModal_rsv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nouvelle réservation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="nom_expidéteur" class="col-form-label">Nom & Prénom</label>
+                        <input type="text" class="form-control" id="nom_expidéteur">
+                      </div>
+                      <div class="form-group">
+                        <label for="tp_réservation" class="col-form-label">Type de réservation</label>
+                        <select class="form-control" id="tp_réservation" name="type_rsv">
+                          <option>Salle</option>
+                          <option>Vehicule</option>
+                      </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="btn_envoyer" class="btn btn-primary">Envoyer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!------------------- Model Réservation Ends --------------------->
             <!--*****-->
             <div class="card mb-3" id="box_two">
               <div class="card-header">Contact</div>
@@ -61,8 +95,8 @@
                       <img class="rounded-circle" src="images/avatars/1.jpg" alt="User Avatar" width="110"> </div>
                     <h4 class="mb-0">Sierra Brooks</h4>
                     <span class="text-muted d-block mb-2">Project Manager</span>
-                    <button type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
-                      <i class="material-icons mr-1">person_add</i>Follow</button>
+                    <button id="logout_btn" type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
+                      <i class="material-icons mr-1">person_add</i>Logout</button>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
@@ -108,6 +142,54 @@
 <!-- --------  JQuery and Ajax Script -------- -->
 @section('jquery_ajax_script')
       <script>
+          $(document).ready(function(){
+
+                      $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    }
+                              });
+    
+                      //si le button Envoyer a été cliquer 
+                      $('#btn_envoyer').click(function(){
+                              let nom_expd = $("#nom_expidéteur").val();
+                              let type_rsv = $("#tp_réservation").val();
+                              
+                              $.ajax({
+                                      method: 'POST' ,
+                                      url: 'sendNotif' ,
+                                      data: {
+                                              nom_expd : nom_expd ,
+                                              type_rsv : type_rsv
+                                            } ,
+
+                                      success: function (){                            
+                                              alert("la request ajax reussie ...");//must use sweetAlert 2
+                                      },
+                                      error: function (){
+                                              alert("Error Ajax !!!");
+                                      }
+                              });
+                      });logout_btn
+                      //si le button logout a été cliquer 
+                      $('#btn_envoyer').click(function(){
+                          
+                              $.ajax({
+                                      method: '' ,
+                                      url: '' ,
+                                      data: {} ,                                           
+                                            
+                                      success: function (){                            
+                                              alert("la request ajax reussie ...");//must use sweetAlert 2
+                                      },
+                                      error: function (){
+                                              alert("Error Ajax !!!");
+                                      }
+                              });
+                      });logout_btn
+
+
+                });
 
       </script>
 @endsection

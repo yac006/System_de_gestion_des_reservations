@@ -11,6 +11,13 @@ class first_notif extends Notification
 {
     use Queueable;
 
+    private $nom_exped ;
+
+
+    public function __construct($nom_exped)
+    {
+        $this->nom_exped = $nom_exped ;
+    }
 
 
 
@@ -27,6 +34,7 @@ class first_notif extends Notification
             'id' => '23' ,
             'title' => 'demande_rsv' ,
             'type' => 'salle' ,
+            'nom_expd' => $this->nom_exped
         ];
         
     }

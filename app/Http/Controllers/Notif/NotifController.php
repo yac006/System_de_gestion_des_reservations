@@ -24,11 +24,13 @@ class NotifController extends Controller
     public function send_demande(Request $request){
 
         if ($request->session()->has('admin_user')) {
+            //récuperer les données qui viens dans la requete ajax
+            $nom_exped = $request->nom_expd;
+            //Envoyer la demande et enregistrer les donneés dans la bdd
             $admin_user = $request->session()->get('admin_user');
-            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif());
-
-            echo "Notif send with success and saved in db ....";
+            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped));
         }
+
     }
 
 

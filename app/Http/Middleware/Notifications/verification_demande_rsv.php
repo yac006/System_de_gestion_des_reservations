@@ -18,9 +18,6 @@ class verification_demande_rsv
     public function handle(Request $request, Closure $next)
     {
 
-
-        if (isset($request->submit)) {
-
             if ($request->type_rsv == "Salle") {
                 $admin_user = User::where('name' , "yacine")->get();
                 $request->session()->put('admin_user' , $admin_user);
@@ -30,10 +27,8 @@ class verification_demande_rsv
                 $admin_user = User::where('name' , "ali")->get();
                 $request->session()->put('admin_user' , $admin_user);
             }
+        
 
-            //return redirect('sendNotif');
-        }
-
-        return $next($request);
+        return $next($request); //vers (sendNotif) route
     }
 }

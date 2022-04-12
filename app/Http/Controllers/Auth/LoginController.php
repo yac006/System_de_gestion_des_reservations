@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Sessions\SessionsController;
 
 class LoginController extends Controller
 {
@@ -56,9 +57,13 @@ class LoginController extends Controller
             return view('auth.login');
         }
 
-        $email_var = $results->email ;           
-        //Stocke this variable in session
-        session(['email_var' => $email_var]);
+        $email_var = $results->email ; 
+        //dd($email_var);
+        $request->session()->put('email_var', $email_var);
+
+        //pass l'email d'utilisateur pour le controller (SessionsController) "store_session_data func"
+        // $inst = new SessionsController;
+        // $inst->store_session_data($email_var);
 
         return redirect('storeInSession');
     }

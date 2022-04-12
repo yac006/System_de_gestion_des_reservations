@@ -20,6 +20,8 @@
     <link href="{{asset('styles/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all"> 
     <!-- Hover css -->
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/lib/hover-min.css')}}">
+    <!-- Sweetalert theme bootstrap-4 -->
+    <link rel="stylesheet" href="{{asset('sweetalert2/css-sweetalert-theme-bootstrap-4/bootstrap-4.css')}}">
     <!--- Css file -->
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/index_style.css')}}">
 </head>
@@ -39,15 +41,22 @@
     <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
     <!-- Bootstrap 4.1.3 js -->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
+    <!-- Sweetalert js -->
+    <script src="{{asset('sweetalert2/sweetalert2.js')}}"></script>
+    <!-- js file -->
+    <script src="{{asset('scripts/js/index.js')}}"></script>
+    <!-- Ajax Script -->
+    @yield('jquery_ajax_script')
+
+    <!-- ---------- CDN ----------- -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>     --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <!-- local links -->
     <script src="{{asset('scripts/extras.1.1.0.min.js')}}"></script>
     <script src="{{asset('scripts/shards-dashboards.1.1.0.min.js')}}"></script>
     <script src="{{asset('scripts/app/app-blog-overview.1.1.0.js')}}"></script>
-    
-    @yield('jquery_ajax_script')
 </body>
 </html>

@@ -82,7 +82,7 @@
             <ul class="nav flex-column">
               <div class="cont_user_img">
                 <img src="images/avatars/1.jpg" class="rounded-circle">
-                <span class="spn_user">User</span>
+                <span class="spn_user">{{ $arr->name }}</span>
               </div>
               <li class="nav-item">
                 <a class="nav-link active" href="index.html">
@@ -150,7 +150,7 @@
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
                       <i class="zmdi zmdi-email" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                      <span class="badge badge-pill badge-danger">1</span>
+                      <span hidden class="badge badge-pill badge-danger">1</span>
                     </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
@@ -191,40 +191,33 @@
                       <span id="notif_badge" class="badge badge-pill badge-danger"></span>
                     </div>
                   </a>
-                  <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">
-                      <div class="notification__icon-wrapper">
-                        <div class="notification__icon">
-                          <i class="material-icons">&#xE6E1;</i>
-                        </div>
-                      </div>
-                      <div class="notification__content">
-                        <span class="notification__category">Analytics</span>
-                        <p>Your website’s active users count increased by
-                          <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                      </div>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <div class="notification__icon-wrapper">
-                        <div class="notification__icon">
-                          <i class="material-icons">&#xE8D1;</i>
-                        </div>
-                      </div>
-                      <div class="notification__content">
-                        <span class="notification__category">Sales</span>
-                        <p>Last week your store’s sales count decreased by
-                          <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                      </div>
-                    </a>
-                    <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
+                  <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink">
+                    <!-- first Notif  -->
+                    @foreach($arr->all_fields_user->notifications as $notif)
+                        <a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo">
+                          <div class="notification__icon-wrapper">
+                            <div class="notification__icon">
+                              <i class="material-icons">&#xE6E1;</i>
+                            </div>
+                          </div>
+                          <div class="notification__content">
+                            <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>
+                            <p>Vous avez reçue une demande par
+                              <span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p>
+                          </div>
+                        </a>
+                    @endforeach
+                    <!-- first Notif Ends -->
+                    
+                    <button class="dropdown-item notification__all text-center" href="#"> View all Notifications </button>
                   </div>
                 </li>
                 <!-- end li 02 -->
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle mr-2" src="images/avatars/0.jpg" alt="User Avatar">
-                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                    <img class="user-avatar rounded-circle mr-2" src="images/avatars/1.jpg" alt="User Avatar">
+                    <span class="d-none d-md-inline-block">{{ $arr->name }}</span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="user-profile-lite.html">
@@ -234,7 +227,7 @@
                     <a class="dropdown-item" href="add-new-post.html">
                       <i class="material-icons">note_add</i> Add New Post</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="{{ route('logout')}}">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
                 </li>
@@ -246,14 +239,39 @@
               </nav>
             </nav>
           </div>
-          <!-- / .main-navbar -->
+          <!-- / .main-navbar ends-->
+
           <div class="main-content-container container-fluid px-4">
+            <!-- Model qui affiche les informations de la demande de rsv -->
+            <div class="modal fade" id="Modal_show_rsv_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Model ends -->
+
+                <!-- ////////////////////////////////// -->
+
             <!-- Small Stats Blocks -->
             <div class="row row02">
               <div class="col-lg col-md-6 col-sm-6 mb-4">
                 <div class="stats-small stats-small--1 card card-small">
-                  <div class="cont_icon">
-                      <i class="zmdi zmdi-email zmdi-hc-5x" style="color:#c3c7cc; "></i>
+                  <div class="cont_icon hvr-radial-out">
+                      <i class="zmdi zmdi-email zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
                   </div>
                 </div>
               </div>
@@ -609,7 +627,25 @@
                                               alert("Error Ajax !!!");
                                       }
                               });
-                      })
+                      });
+
+                      //si si la notification (li) a été cliquer
+                      $(".li_cont a").click(function(){
+                            Swal.fire({
+                                  title: 'Do you want to save the changes?',
+                                  showDenyButton: true,
+                                  showCancelButton: true,
+                                  confirmButtonText: 'Voir',
+                                  denyButtonText: `Supprimer`,
+                            }).then((result) => {
+                                  /* Read more about isConfirmed, isDenied below */
+                                  if (result.isConfirmed) {
+                                    Swal.fire('Saved!', '', 'success')
+                                  } else if (result.isDenied) {
+                                    Swal.fire('Changes are not saved', '', 'info')
+                                  }
+                            })
+                      });
 
                 });
       </script>

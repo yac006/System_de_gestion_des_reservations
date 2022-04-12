@@ -101,15 +101,50 @@ color: #aaa;
 
 .cont_icon
 {
-	width: 79%;
+	width: 77%;
     max-width: 86%;
     height: 104px;
     border: dotted 1px gray;
     text-align: center;
-    margin: 12px auto;
+    margin: 17px auto;
     border-radius: 13px;
-    padding-top: 13px;
+    padding-top: 16px;
 }
+.cont_icon i
+{
+	font-size: 4em ;
+	opacity: 0.1 ; 
+}
+
+/************* Hover Effects *************/
+/**grow**/
+.hvr-grow
+{
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+/**radial-out**/
+.hvr-radial-out {
+  background: none;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.hvr-radial-out:before {
+  background: #e1e1e138;
+  border-radius: 100%;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+ 
+}
+/**wobble-horizontal**/
+.hvr-wobble-horizontal:hover, .hvr-wobble-horizontal:focus, .hvr-wobble-horizontal:active {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+ 
+}
+
 
 
 

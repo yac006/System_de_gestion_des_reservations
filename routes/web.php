@@ -37,7 +37,7 @@ Route::post('Register' , [ RegisterController::class ,'create']);
 /*--------------------------- Sessions Routes ----------------------------*/
 Route::get('getInSession' , [ SessionsController::class  , 'get_session_data']);
 Route::get('storeInSession' , [ SessionsController::class  , 'store_session_data']);
-Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_data'])->name('deleteInSession');
+Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_data'])->name('logout');
 
 
 /*--------------------------- Notifications Routes ----------------------------*/

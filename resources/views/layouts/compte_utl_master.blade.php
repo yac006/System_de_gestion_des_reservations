@@ -39,6 +39,8 @@
     <!-- Github Buttons  --> 
     <script async defer src="https://buttons.github.io/buttons.js"></script>  
     <!-- JS File -->
-    <script type="text/javascript" src="{{asset('scripts/js/users_account.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('scripts/js/users_account.js')}}"></script>
+    <!-- AJAX Script -->
+    @yield('jquery_ajax_script')
 </body>
 </html>
