@@ -209,7 +209,7 @@
                     @endforeach
                     <!-- first Notif Ends -->
                     
-                    <button class="dropdown-item notification__all text-center" href="#"> View all Notifications </button>
+                    <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>
                   </div>
                 </li>
                 <!-- end li 02 -->
@@ -242,6 +242,63 @@
           <!-- / .main-navbar ends-->
 
           <div class="main-content-container container-fluid px-4">
+            <!-- Model qui affiche la list de tout les notifications --> 
+            <div class="modal fade" id="all_notif_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document" style="left:124px">
+                <div class="modal-content">
+                  <div class="modal-header" >
+                    <h6 class="modal-title " id="exampleModalLabel">Liste des Notifications</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>                  
+                  <div class="modal-body" style="padding: 0"><!------->
+                        <!-- Discussions Component -->
+                        <div class="col-md-12 col-sm-12" style="padding:0;">
+                          {{-- @foreach ({{}} as $item) --}} 
+                              <div class="card card-small blog-comments">
+                                <div class="card-body p-0">                                                     
+                                    <div class="blog-comments__item d-flex p-3">
+                                      <div class="blog-comments__avatar mr-3">
+                                        <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
+                                      <div class="blog-comments__content">
+                                        <div class="blog-comments__meta text-muted">
+                                          <a class="text-secondary" href="#">James Johnson</a> on
+                                          <a class="text-secondary" href="#">Hello World!</a>
+                                          <span class="text-muted">– 3 days ago</span>
+                                        </div>
+                                        <p class="m-0 my-1 mb-2 text-muted">Well, the way they make shows is, they make one show ...</p>
+                                        <div class="blog-comments__actions">
+                                          <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-white">
+                                              <span class="text-success">
+                                                <i class="material-icons">check</i>
+                                              </span> Approve </button>
+                                            <button type="button" class="btn btn-white">
+                                              <span class="text-danger">
+                                                <i class="material-icons">clear</i>
+                                              </span> Reject </button>
+                                            <button type="button" class="btn btn-white">
+                                              <span class="text-light">
+                                                <i class="material-icons">more_vert</i>
+                                              </span> Edit </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                          {{-- @endforeach   --}}
+                        </div>
+                        <!-- End Discussions Component -->
+                  </div><!------->
+                  <div class="modal-footer" style="padding:10px">
+                  
+                  </div>
+                </div>
+              </div>
+            </div><!-- Model ends --> 
+
             <!-- Model qui affiche les informations de la demande de rsv -->
             <div class="modal fade" id="Modal_show_rsv_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -261,9 +318,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- Model ends -->
-
+            </div><!-- Model ends -->
+            
                 <!-- ////////////////////////////////// -->
 
             <!-- Small Stats Blocks -->
@@ -384,108 +440,7 @@
                 <!-- End Quick Post -->
               </div>
               <!-- End New Draft Component -->
-              <!-- Discussions Component -->
-              <div class="col-lg-5 col-md-12 col-sm-12 mb-4">
-                <div class="card card-small blog-comments">
-                  <div class="card-header border-bottom">
-                    <h6 class="m-0">Discussions</h6>
-                  </div>
-                  <div class="card-body p-0">
-                    <div class="blog-comments__item d-flex p-3">
-                      <div class="blog-comments__avatar mr-3">
-                        <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
-                      <div class="blog-comments__content">
-                        <div class="blog-comments__meta text-muted">
-                          <a class="text-secondary" href="#">James Johnson</a> on
-                          <a class="text-secondary" href="#">Hello World!</a>
-                          <span class="text-muted">– 3 days ago</span>
-                        </div>
-                        <p class="m-0 my-1 mb-2 text-muted">Well, the way they make shows is, they make one show ...</p>
-                        <div class="blog-comments__actions">
-                          <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-white">
-                              <span class="text-success">
-                                <i class="material-icons">check</i>
-                              </span> Approve </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-danger">
-                                <i class="material-icons">clear</i>
-                              </span> Reject </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-light">
-                                <i class="material-icons">more_vert</i>
-                              </span> Edit </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="blog-comments__item d-flex p-3">
-                      <div class="blog-comments__avatar mr-3">
-                        <img src="images/avatars/2.jpg" alt="User avatar" /> </div>
-                      <div class="blog-comments__content">
-                        <div class="blog-comments__meta text-muted">
-                          <a class="text-secondary" href="#">James Johnson</a> on
-                          <a class="text-secondary" href="#">Hello World!</a>
-                          <span class="text-muted">– 4 days ago</span>
-                        </div>
-                        <p class="m-0 my-1 mb-2 text-muted">After the avalanche, it took us a week to climb out. Now...</p>
-                        <div class="blog-comments__actions">
-                          <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-white">
-                              <span class="text-success">
-                                <i class="material-icons">check</i>
-                              </span> Approve </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-danger">
-                                <i class="material-icons">clear</i>
-                              </span> Reject </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-light">
-                                <i class="material-icons">more_vert</i>
-                              </span> Edit </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="blog-comments__item d-flex p-3">
-                      <div class="blog-comments__avatar mr-3">
-                        <img src="images/avatars/3.jpg" alt="User avatar" /> </div>
-                      <div class="blog-comments__content">
-                        <div class="blog-comments__meta text-muted">
-                          <a class="text-secondary" href="#">James Johnson</a> on
-                          <a class="text-secondary" href="#">Hello World!</a>
-                          <span class="text-muted">– 5 days ago</span>
-                        </div>
-                        <p class="m-0 my-1 mb-2 text-muted">My money's in that office, right? If she start giving me...</p>
-                        <div class="blog-comments__actions">
-                          <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-white">
-                              <span class="text-success">
-                                <i class="material-icons">check</i>
-                              </span> Approve </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-danger">
-                                <i class="material-icons">clear</i>
-                              </span> Reject </button>
-                            <button type="button" class="btn btn-white">
-                              <span class="text-light">
-                                <i class="material-icons">more_vert</i>
-                              </span> Edit </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer border-top">
-                    <div class="row">
-                      <div class="col text-center view-report">
-                        <button type="submit" class="btn btn-white">View All Comments</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Discussions Component -->
+
               <!-- Top Referrals Component -->
               <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
                 <div class="card card-small">
@@ -581,7 +536,6 @@
               $(document).ready(function(){
                       //Afficher le nomber de notifications dans le badge de notif
                       let user_id = {{$arr->id}} ;
-
                       $.ajaxSetup({
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -629,23 +583,57 @@
                               });
                       });
 
-                      //si si la notification (li) a été cliquer
-                      $(".li_cont a").click(function(){
-                            Swal.fire({
-                                  title: 'Do you want to save the changes?',
-                                  showDenyButton: true,
-                                  showCancelButton: true,
-                                  confirmButtonText: 'Voir',
-                                  denyButtonText: `Supprimer`,
-                            }).then((result) => {
-                                  /* Read more about isConfirmed, isDenied below */
-                                  if (result.isConfirmed) {
-                                    Swal.fire('Saved!', '', 'success')
-                                  } else if (result.isDenied) {
-                                    Swal.fire('Changes are not saved', '', 'info')
-                                  }
-                            })
+                      //si le button view all notifications a été cliquer 
+                      $('#view_all_ntf_btn').click(function(){
+                        let user_id = {{ $arr->id }} ;
+                        $.ajax({
+                                method: 'GET' ,
+                                url: 'retriveAllNotif' ,
+                                data: {user_id: user_id} ,
+                                success: function (user_data){                            
+                                    alert("la request AAjax reussie ...".' / '.user_data);
+                                    
+                                    console.log(user_data);
+                                },
+                                error: function (){
+                                        alert("Error Ajax !!!");
+                                }
+                              });
                       });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      //si si la notification (li) a été cliquer
+                      // $(".li_cont a").click(function(){
+                      //       Swal.fire({
+                      //             title: 'Do you want to save the changes?',
+                      //             showDenyButton: true,
+                      //             showCancelButton: true,
+                      //             confirmButtonText: 'Voir',
+                      //             denyButtonText: `Supprimer`,
+                      //       }).then((result) => {
+                      //             /* Read more about isConfirmed, isDenied below */
+                      //             if (result.isConfirmed) {
+                      //               Swal.fire('Saved!', '', 'success')
+                      //             } else if (result.isDenied) {
+                      //               Swal.fire('Changes are not saved', '', 'info')
+                      //             }
+                      //       })
+                      // });
 
                 });
       </script>

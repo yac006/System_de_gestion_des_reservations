@@ -8,6 +8,7 @@ use App\Http\Controllers\Sessions\SessionsController;
 use App\Http\Controllers\Notif\NotifController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,6 @@ use App\Http\Controllers\Notif\NotifController;
 
 Route::get('/', function () {
     return view('welcome');
-
 });
 
 
@@ -41,15 +41,35 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 
 
 /*--------------------------- Notifications Routes ----------------------------*/
-//Route::post('checkNotif' , [ NotifController::class ,'check_demande'])->name('checkNotif');
 Route::post('sendNotif' , [ NotifController::class ,'send_demande'])->middleware('verification_demande_rsv')->name('sendNotif');
 Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
 Route::get('retriveNumNotif' , [NotifController::class ,'retrieve_notif_number']);
+Route::get('retriveAllNotif' , [NotifController::class ,'retrieve_all_notif']);
+
+
+
+
+
+
+
+
+
+
+
 
 
 //---------- test ----------//
-Route::view('admin_panel' , 'shards-dashboard.???????');
-Route::view('users_account' , 'shards-dashboard.??????');
+Route::get('test' , function(){
+
+    // $resulte = User::where('is_admin', 1)->get();
+
+    // foreach ($resulte as $row) {
+    //         echo $row->name ;
+    // }
+
+    
+});
+
 
 
 

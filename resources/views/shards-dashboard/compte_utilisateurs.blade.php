@@ -95,8 +95,8 @@
                       <img class="rounded-circle" src="images/avatars/1.jpg" alt="User Avatar" width="110"> </div>
                     <h4 class="mb-0">Sierra Brooks</h4>
                     <span class="text-muted d-block mb-2">Project Manager</span>
-                    <button id="logout_btn" type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
-                      <i class="material-icons mr-1">person_add</i>Logout</button>
+                    <a href="{{ route('logout') }}" type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2"> 
+                      <i class="material-icons mr-1">person_add</i>Logout</a>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
@@ -162,7 +162,6 @@
                                               nom_expd : nom_expd ,
                                               type_rsv : type_rsv
                                             } ,
-
                                       success: function (){                            
                                               alert("la request ajax reussie ...");//must use sweetAlert 2
                                       },
@@ -170,25 +169,8 @@
                                               alert("Error Ajax !!!");
                                       }
                               });
-                      });logout_btn
-                      //si le button logout a été cliquer 
-                      $('#btn_envoyer').click(function(){
-                          
-                              $.ajax({
-                                      method: '' ,
-                                      url: '' ,
-                                      data: {} ,                                           
-                                            
-                                      success: function (){                            
-                                              alert("la request ajax reussie ...");//must use sweetAlert 2
-                                      },
-                                      error: function (){
-                                              alert("Error Ajax !!!");
-                                      }
-                              });
-                      });logout_btn
-
-
+                      });
+                    
                 });
 
       </script>

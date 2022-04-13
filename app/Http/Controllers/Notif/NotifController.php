@@ -9,6 +9,7 @@ use PhpParser\Node\Stmt\Echo_;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -59,6 +60,21 @@ class NotifController extends Controller
         $number_notif = count($notif_row);   
 
         return response()->json($number_notif);
+    }
+
+
+
+    public function retrieve_all_notif(Request $request){
+
+        // $user_data = User::where('id', $request->user_id)->get();
+
+        // $user_data = (object)$user_data ;
+
+        // Session::put('user_data' , $user_data);
+
+        // return response()->json($user_data);
+
+
     }
 
 

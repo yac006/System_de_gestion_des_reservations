@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset("bootstrap_4/bootstrap.min.css") }}">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- Jquery 3.6.0 -->
     <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
