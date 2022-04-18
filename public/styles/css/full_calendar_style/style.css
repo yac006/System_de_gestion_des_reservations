@@ -1,0 +1,55 @@
+
+/*---------------- Model ---------------*/
+.model_inputs{
+    font-size: 12px;
+}
+
+.new_model_lg{
+    max-width: 700px;  
+}
+
+.modal-dialog{
+    margin: 3rem auto;
+}
+
+.container_btn{
+    width: 100%;
+    height: auto;
+    /* border: dotted 0.5px aquamarine; */
+    box-sizing: border-box ;
+}
+
+#btn_save{
+    float: right ;
+    margin:  10px 17px ; 
+    padding: 4px 13px ;
+    font-size: 13px;
+    border-radius: 0.4rem;
+}
+
+
+
+/*---------------- Calendar  ---------------*/
+
+.fc-daygrid-event {
+    font-size: var(--fc-small-font-size, 0.7em); /* LA POLICE DES EVENEMENTS */
+
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.30em;
+}
+
+.fc .fc-button {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.fc .fc-col-header-cell-cushion {
+    padding: 8px 4px;
+}
+
+.fc-scrollgrid-section-header{
+    background-color: rgba(239, 239, 239, 0.726);
+}
+
