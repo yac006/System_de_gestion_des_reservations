@@ -252,46 +252,46 @@
                     </button>
                   </div>                  
                   <div class="modal-body" style="padding: 0"><!------->
-                        <!-- Discussions Component -->
-                        <div class="col-md-12 col-sm-12" style="padding:0;">
-                          {{-- @foreach ({{}} as $item) --}} 
-                              <div class="card card-small blog-comments">
+                      <!-- Discussions Component -->
+                      @foreach ($arr_data['all_fields_user']['notifications'] as $notif) 
+                        <div class="col-md-12 col-sm-12" style="padding:0">
+                              <div class="card card-small blog-comments notif_box">
                                 <div class="card-body p-0">                                                     
                                     <div class="blog-comments__item d-flex p-3">
                                       <div class="blog-comments__avatar mr-3">
                                         <img src="{{ asset('images/avatars/1.jpg') }}" alt="User avatar" /> </div>
                                       <div class="blog-comments__content">
                                         <div class="blog-comments__meta text-muted">
-                                          <a class="text-secondary" href="#">James Johnson</a> on
-                                          <a class="text-secondary" href="#">Hello World!</a>
+                                          <a class="text-secondary" href="#" >{{ $notif->data['nom_expd'] }}</a> a été demander une réservation d'une
+                                          <a class="text-secondary" href="#">{{ $notif->data['type'] }}</a>
                                           <span class="text-muted">– 3 days ago</span>
                                         </div>
-                                        <p class="m-0 my-1 mb-2 text-muted">Well, the way they make shows is, they make one show ...</p>
+                                        <p class="m-0 my-1 mb-2 text-muted"></p>
                                         <div class="blog-comments__actions">
                                           <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-white">
                                               <span class="text-success">
                                                 <i class="material-icons">check</i>
-                                              </span> Approve </button>
+                                              </span> valider </button>
                                             <button type="button" class="btn btn-white">
                                               <span class="text-danger">
                                                 <i class="material-icons">clear</i>
-                                              </span> Reject </button>
+                                              </span> Supprimer </button>
                                             <button type="button" class="btn btn-white">
                                               <span class="text-light">
                                                 <i class="material-icons">more_vert</i>
-                                              </span> Edit </button>
+                                              </span> voir </button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                 </div>
                               </div>
-                          {{-- @endforeach   --}}
                         </div>
+                      @endforeach  
                         <!-- End Discussions Component -->
                   </div><!------->
-                  <div class="modal-footer" style="padding:10px">
+                  <div class="modal-footer" style="padding:5px">
                   
                   </div>
                 </div>
@@ -420,9 +420,7 @@
                       url: 'retriveAllNotif' ,
                       data: {user_id: user_id} ,
                       success: function (user_data){                            
-                          alert("la request AAjax reussie ..."+' / '+user_data);
-                          
-                          console.log(user_data);
+
                       },
                       error: function (){
                               alert("Error Ajax !!!");

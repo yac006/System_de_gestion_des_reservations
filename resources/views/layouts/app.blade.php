@@ -19,8 +19,8 @@
     <!-- Bootstrap 4.1.3 -->
     <link rel="stylesheet" href="{{ asset("bootstrap_4/bootstrap.min.css") }}">
 
-    <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <!-- Styles file -->
+    <link href="{{ asset('styles/css/register_style.css') }}" rel="stylesheet">
 
     <!-- Jquery 3.6.0 -->
     <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
@@ -88,5 +88,7 @@
 
     <!-- Bootstrap 4.1.3 js-->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
+    <!--Js file -->
+    <script src="{{asset('scripts/js/register.js')}}"></script>
 </body>
 </html>
