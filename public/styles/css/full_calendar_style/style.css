@@ -1,4 +1,8 @@
 
+#calendar tbody{
+    background: #fff ;
+}
+
 /*---------------- Model ---------------*/
 .model_inputs{
     font-size: 12px;

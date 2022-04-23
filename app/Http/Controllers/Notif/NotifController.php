@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Session;
+use App\Events\new_demande_rsv ;
 
 
 
@@ -29,7 +30,20 @@ class NotifController extends Controller
             $nom_exped = $request->nom_expd;
             //Envoyer la demande et enregistrer les donneés dans la bdd
             $admin_user = $request->session()->get('admin_user');
+
             \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped));
+        
+           //Récuperer le number de notifications qui concerné l'utilisateur "admin"
+            // $user_data = $request->session()->get('admin_user'); 
+            dd($request->session()->all());
+            $notif_row = Notification::where('notifiable_id' ,1 /*$user_data->id*/ )->where('read_at' , NULL)->get();                                       
+            $number_notif = count($notif_row); //suit
+            
+            //informer le server websokets de cette nouvelle notification 
+            broadcast(new new_demande_rsv($number_notif));
+
+            
+        
         }
 
     }
@@ -53,14 +67,14 @@ class NotifController extends Controller
 
 
 
-    public function retrieve_notif_number(Request $request){
+    // public function retrieve_notif_number(Request $request){
 
-        //Récuperer le number de notifications qui concerné l'utilisateur
-        $notif_row = Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->get();                                       
-        $number_notif = count($notif_row);   
+    //     //Récuperer le number de notifications qui concerné l'utilisateur
+    //     $notif_row = Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->get();                                       
+    //     $number_notif = count($notif_row);   
 
-        return response()->json($number_notif);
-    }
+    //     return response()->json($number_notif);
+    // }
 
 
 

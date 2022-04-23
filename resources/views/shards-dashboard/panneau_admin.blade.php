@@ -148,7 +148,7 @@
                     <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="nav-link-icon__wrapper">
                         <i class="zmdi zmdi-email" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                        <span hidden class="badge badge-pill badge-danger">1</span>
+                        <span hidden class="badge badge-pill badge-danger"></span>
                       </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
@@ -363,33 +363,12 @@
 
 @section('ajax_script')
 <script>
+    
     $(document).ready(function(){
-            //Afficher le nomber de notifications dans le badge de notif
-            let user_id = {{ $arr_data['id'] }} ;
-            $.ajaxSetup({
-                          headers: {
-                              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                          }
-                    });
-            $.ajax({
-                    method: 'GET' ,
-                    url: 'retriveNumNotif' ,
-                    data: {user_id : user_id} ,
 
-                    success: function (number_notif){
-                            //afficher le nombre de notif dans le button notifications
-                            if(number_notif == 0){
-                                $("#notif_badge").hide();
-                            }else{
-                                $("#notif_badge").text(number_notif);
-                            }                                  
-
-                    },
-                    error: function (){
-                            alert("Error Ajax !!!");
-                    }
-            }); 
-            //si le button notification a été cliquer 
+            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+            
+            //si l'icon notification a été cliquer 
             $('.notif_btn').click(function(){
                     let user_id = {{$arr_data['id']}} ;                               
 
@@ -428,8 +407,6 @@
                     });
             });            
         });
-
-
 </script>           
 
     

@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Session;
 class SessionsController extends Controller
 {
 
-
-
+ 
 
 
     public function store_session_data(){

@@ -39,7 +39,7 @@
 
             @yield('content')
             
-            @yield('calendar_content')
+
 
 
 
@@ -52,6 +52,8 @@
     <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
     <!-- Bootstrap 4.1.3 js -->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
+    <!-- app js file -->
+    <script src="{{ asset("js/app.js") }}"></script>
     <!-- Sweetalert js -->
     <script src="{{asset('sweetalert2/sweetalert2.js')}}"></script>
     <!-- js file -->
@@ -63,6 +65,7 @@
     @yield('ajax_script')
     <!-- ---- Full calendar Script ---- -->
     <script src="{{ asset('full_calendar_lib/full_calendar_script.js')}} "></script>
+    @yield('full_calendar_script')
 
 
     <!-- ---------- CDN to Local----------- -->         

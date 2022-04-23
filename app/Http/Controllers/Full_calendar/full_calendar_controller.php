@@ -13,6 +13,7 @@ class full_calendar_controller extends Controller
 
     
         public function retrieve(){
+            
             $arr = [];
             foreach(Planification::all() as $item){
                 $data = [
@@ -28,6 +29,7 @@ class full_calendar_controller extends Controller
 
 
         public function store(Request $request){
+
             $evenment = new Planification ;
             $evenment->title = $request->title ;
             $evenment->start_date = $request->start ;
