@@ -11,9 +11,23 @@ class MultipagesController extends Controller
 
 
     //Verifivation de type de lien cliquer 
-    public function verification()
+    public function verification($param)
     {
-        # code...
+        
+        if ($param == "pln_salles") {
+            $dashboard = false ;
+            $pln_salle = true ;
+            session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
+            //return redirect('getInSession');
+            return redirect('storeInSession'); 
+    
+        }elseif($param == "accueil"){
+            $dashboard = true ;
+            $pln_salle = false ;
+            session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
+            //return redirect('getInSession');
+            return redirect('storeInSession'); 
+        };
     }
 
 

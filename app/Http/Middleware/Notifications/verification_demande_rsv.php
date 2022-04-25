@@ -19,12 +19,12 @@ class verification_demande_rsv
     {
 
             if ($request->type_rsv == "Salle") {
-                $admin_user = User::where('name' , "yacine")->get();
+                $admin_user = User::where('name' , "yacine")->get()->first();
                 $request->session()->put('admin_user' , $admin_user);
             }
 
             if ($request->type_rsv == "Vehicule") {
-                $admin_user = User::where('name' , "ali")->get();
+                $admin_user = User::where('name' , "ali")->get()->first();
                 $request->session()->put('admin_user' , $admin_user);
             }
         

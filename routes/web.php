@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Sessions\SessionsController;
 use App\Http\Controllers\Notif\NotifController;
+use App\Http\Controllers\MultiPages\MultipagesController;
+use App\Http\Controllers\Full_calendar\full_calendar_controller;
 
 
 
@@ -53,45 +55,14 @@ Route::put('updateData' , [  full_calendar_controller::class, 'update']);
 Route::delete('deleteData' , [ full_calendar_controller::class ,'delete']);
 
 
-Route::get('multiPages/{param}' , function($param){
 
-    if ($param == "pln_salles") {
-        $dashboard = false ;
-        $pln_salle = true ;
-        session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-        //return redirect('getInSession');
-        return view('shards-dashboard.panneau_admin'); 
-
-    }elseif($param == "accueil"){
-        $dashboard = true ;
-        $pln_salle = false ;
-        session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-        //return redirect('getInSession');
-        return view('shards-dashboard.panneau_admin'); 
-    };
-
-})->name('multiPages');
+//---------- Multi pages  -------------//
+Route::get('multiPages/{param}' , [MultipagesController::class , 'verification'] )->name('multiPages');
 
 
 
 
 
-// Route::get('multiPages/{param}' , function(\Illuminate\Support\Facades\Request $request , $param ){
-
-//     if ($param == "pln_salles") {
-//         $dashboard = false ;
-//         $pln_salle = true ;
-//         session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-//         return redirect('getInSession');
-
-//     }elseif($param == "accueil"){
-//         $dashboard = true ;
-//         $pln_salle = false ;
-//         session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-//         return redirect('getInSession');
-//     };
-
-// })->name('multiPages');
 
 
 

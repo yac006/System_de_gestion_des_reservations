@@ -7,7 +7,7 @@
 <!-- Stockage des données de la session d'utilisateur dans la variable "arr_data" -->
 <?php  $arr_data = Session::get(Session::get('user_email'))  ?>
 
-    <div class="color-switcher animated">
+    {{-- <div class="color-switcher animated">
         <h5>Accent Color</h5>
         <ul class="accent-colors">
           <li class="accent-primary active" data-color="primary">
@@ -51,10 +51,11 @@
         <div class="close">
           <i class="material-icons">close</i>
         </div>
-      </div>
       <div class="color-switcher-toggle animated pulse infinite">
         <i class="material-icons">settings</i>
       </div>
+    </div> --}}
+
       <div class="container-fluid">
         <div class="row">
           <!-- Main Sidebar -->
@@ -65,7 +66,7 @@
                   <div class="d-table m-auto">
                     <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{asset('images/shards-dashboards-logo.svg')}}" alt="Shards Dashboard">
                     <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
-                  </div>
+                  </div>           
                 </a>
                 <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
                   <i class="material-icons">&#xE5C4;</i>
@@ -182,8 +183,8 @@
                   <!-- end li 01 -->
   
                   <!-- li 02 -->
-                  <li class="nav-item border-right dropdown notifications">
-                    <a class="nav-link nav-link-icon text-center notif_btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <li class="nav-item border-right dropdown notifications principale_div">
+                    <a class="nav-link nav-link-icon text-center notif_btn" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="nav-link-icon__wrapper">
                         <i class="material-icons">&#xE7F4;</i>
                         <span id="notif_badge" class="badge badge-pill badge-danger"></span>
@@ -199,9 +200,8 @@
                               </div>
                             </div>
                             <div class="notification__content">
-                              <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>
-                              <p>Vous avez reçue une demande par
-                                <span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p>
+                              <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>  
+                              <p>Vous avez reçue une demande par<span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p> 
                             </div>
                           </a>
                       @endforeach
@@ -251,7 +251,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>                  
-                  <div class="modal-body" style="padding: 0"><!------->
+                  <div class="modal-body" style="padding: 0"><!-- body -->
                       <!-- Discussions Component -->
                       @foreach ($arr_data['all_fields_user']['notifications'] as $notif) 
                         <div class="col-md-12 col-sm-12" style="padding:0">
@@ -369,27 +369,38 @@
             $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
             
             //si l'icon notification a été cliquer 
-            $('.notif_btn').click(function(){
-                    let user_id = {{$arr_data['id']}} ;                               
+            // $('.notif_btn').click(function(){
+            //         let user_id = {{$arr_data['id']}} ;                               
 
-                    $.ajax({
-                            method: 'GET' ,
-                            url: 'markAsRead' ,
-                            data: { user_id :  user_id} ,
+            //         $.ajax({
+            //                 method: 'GET' ,
+            //                 url: 'markAsRead' ,
+            //                 data: { user_id : user_id } ,
 
-                            success: function (new_number_notif){
-                                    //afficher le nouveau nombre de notif qui egale a zero et cacher le badge                        
-                                    if(new_number_notif == 0){
-                                      $("#notif_badge").text(new_number_notif);
-                                      $("#notif_badge").hide();
-                                    }
-                                            
-                            },
-                            error: function (){
-                                    alert("Error Ajax !!!");
-                            }
-                    });
-            });
+            //                 success: function (data){
+            //                     //Cacher le badge                        
+            //                     $("#notif_badge").hide(); 
+                                
+            //                     console.log(data);
+
+            //                     let result = Array.from(data[1]['data']);
+
+            //                     alert(result);
+
+            //                     $.each(data,function(item){
+
+
+            //                             $(".li_cont").prepend('<a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></di><div class="notification__content"><span class="notification__category">'+item+'</span><p>Vous avez reçue une demande par<span class="text-success text-semibold">'+item+'</span> pour une réservation d une salle</p></div></a>');
+
+                            
+            //                     });
+                                
+            //                 },
+            //                 error: function (){
+            //                     alert("Error Ajax !!!");
+            //                 }
+            //         });
+            // });
 
             //si le button view all notifications a été cliquer 
             $('#view_all_ntf_btn').click(function(){
@@ -399,7 +410,7 @@
                       url: 'retriveAllNotif' ,
                       data: {user_id: user_id} ,
                       success: function (user_data){                            
-
+                            location.reload();
                       },
                       error: function (){
                               alert("Error Ajax !!!");

@@ -34,10 +34,10 @@ class NotifController extends Controller
             \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped));
         
            //Récuperer le number de notifications qui concerné l'utilisateur "admin"
-            // $user_data = $request->session()->get('admin_user'); 
-            dd($request->session()->all());
-            $notif_row = Notification::where('notifiable_id' ,1 /*$user_data->id*/ )->where('read_at' , NULL)->get();                                       
-            $number_notif = count($notif_row); //suit
+            $user_data = $request->session()->get('admin_user'); 
+            //count number notification where read_at field = NULL
+            $notif_row = Notification::where('notifiable_id' , $user_data['id'])->where('read_at' , NULL)->get();                                       
+            $number_notif = count($notif_row); 
             
             //informer le server websokets de cette nouvelle notification 
             broadcast(new new_demande_rsv($number_notif));
@@ -51,17 +51,17 @@ class NotifController extends Controller
 
 
     public function mark_as_read(Request $request){
-
+        
         // récuperer les enregistrements qui concerner "id" d'utilisateur qui vien de "requéte Ajax"
         // et modifier les champs "read at" vide par le temps et la date actual
         Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)
                     ->update(['read_at' => now()]);
 
-        //response with new number notif who updated 
-        $notif_row = Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->get();                                       
-        $new_number_notif = count($notif_row);                              
+        //response with new list of notification updated 
+        $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)->get();                                       
+                                    
 
-        return response()->json($new_number_notif);
+        return response()->json($all_notif_rows);
 
     }
 
