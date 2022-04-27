@@ -67,31 +67,27 @@ class NotifController extends Controller
 
 
 
-    // public function retrieve_notif_number(Request $request){
 
-    //     //Récuperer le number de notifications qui concerné l'utilisateur
-    //     $notif_row = Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->get();                                       
-    //     $number_notif = count($notif_row);   
+    public function number_notif_badge(Request $request){
 
-    //     return response()->json($number_notif);
-    // }
+        //Récuperer le number de notifications qui concerné l'utilisateur "admin"
+        //count number notification where read_at field = NULL
+        $notif_rows = Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->get();                                       
+        $number_notif = count($notif_rows); 
 
-
-
-    public function retrieve_all_notif(Request $request){
-
-        // $user_data = User::where('id', $request->user_id)->get();
-
-        // $user_data = (object)$user_data ;
-
-        // Session::put('user_data' , $user_data);
-
-        // return response()->json($user_data);
-
+        return response()->json($number_notif);
 
     }
 
 
+
+    public function retrieve_all_notif(Request $request)
+    {
+        
+        $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)->get();
+        
+        return response()->json($all_notif_rows);
+    }
 
     
 

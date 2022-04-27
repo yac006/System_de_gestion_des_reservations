@@ -293,7 +293,7 @@
                           
                           });
                           calendar.setOption('locale' , 'fr');
-                          calendar.setOption('height', 500);
+                          calendar.setOption('height', 540);
 
                           calendar.render();
 

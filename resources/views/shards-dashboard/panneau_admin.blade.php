@@ -86,9 +86,9 @@
               <ul class="nav flex-column">
                 <div class="cont_user_img">
                   <img src="{{ asset('images/avatars/1.jpg') }}" class="rounded-circle">
-                  <span class="spn_user">{{ $arr_data['name'] }}</span>
+                  {{-- <span class="spn_user">{{ $arr_data['name'] }}</span> --}}
                 </div>
-                <li class="nav-item accueil_link">
+                <li class="nav-item accueil_link" style="border-top: 1px solid #e1e5eb">
                   <a class="nav-link accueil_a" href="{{ route('multiPages' , $param = "accueil")}}">                    
                     <i class="material-icons">home</i>
                     <span>Accueil</span>
@@ -137,7 +137,7 @@
               <div class="input-group">
                     <div class="form-group has-search">
                         <i class="form-control-feedback material-icons" style="top:6px">search</i>
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" style="border-radius: 15px;">
                     </div>
               </div>  
                 <!-- <form action="" method="" class="search_form">
@@ -183,16 +183,17 @@
                   <!-- end li 01 -->
   
                   <!-- li 02 -->
-                  <li class="nav-item border-right dropdown notifications principale_div">
+                  <li class="nav-item border-right dropdown notifications principale_li">
                     <a class="nav-link nav-link-icon text-center notif_btn" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="nav-link-icon__wrapper">
                         <i class="material-icons">&#xE7F4;</i>
                         <span id="notif_badge" class="badge badge-pill badge-danger"></span>
                       </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink">
+                    
+                    <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink" style="max-height: 567px; overflow:auto;">
                       <!-- first Notif  -->
-                      @foreach( $arr_data['all_fields_user']['notifications']  as $notif)
+                      {{-- @foreach( $arr_data['all_fields_user']['notifications']  as $notif)
                           <a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo">
                             <div class="notification__icon-wrapper">
                               <div class="notification__icon">
@@ -204,10 +205,10 @@
                               <p>Vous avez reçue une demande par<span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p> 
                             </div>
                           </a>
-                      @endforeach
+                      @endforeach --}}
                       <!-- first Notif Ends -->
                       
-                      <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>
+                      {{-- <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button> --}}
                     </div>
                   </li>
                   <!-- end li 02 -->
@@ -251,15 +252,16 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>                  
-                  <div class="modal-body" style="padding: 0"><!-- body -->
+                  <div class="modal-body principle_cont" style="padding: 0"><!-- body -->
                       <!-- Discussions Component -->
-                      @foreach ($arr_data['all_fields_user']['notifications'] as $notif) 
-                        <div class="col-md-12 col-sm-12" style="padding:0">
+                      {{-- @foreach ($arr_data['all_fields_user']['notifications'] as $notif)  --}}
+                        {{-- <div class="col-md-12 col-sm-12" style="padding:0">
                               <div class="card card-small blog-comments notif_box">
                                 <div class="card-body p-0">                                                     
                                     <div class="blog-comments__item d-flex p-3">
                                       <div class="blog-comments__avatar mr-3">
-                                        <img src="{{ asset('images/avatars/1.jpg') }}" alt="User avatar" /> </div>
+                                        <img src="{{ asset('images/avatars/1.jpg') }}" alt="User avatar" /> 
+                                      </div>
                                       <div class="blog-comments__content">
                                         <div class="blog-comments__meta text-muted">
                                           <a class="text-secondary" href="#" >{{ $notif->data['nom_expd'] }}</a> a été demander une réservation d'une
@@ -267,6 +269,7 @@
                                           <span class="text-muted">– 3 days ago</span>
                                         </div>
                                         <p class="m-0 my-1 mb-2 text-muted"></p>
+                                                      <!---->
                                         <div class="blog-comments__actions">
                                           <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-white">
@@ -287,8 +290,8 @@
                                     </div>
                                 </div>
                               </div>
-                        </div>
-                      @endforeach  
+                        </div> --}}
+                      {{-- @endforeach   --}}
                         <!-- End Discussions Component -->
                   </div><!------->
                   <div class="modal-footer" style="padding:5px">
@@ -334,24 +337,7 @@
             </div>
             <!-- ***** content-container ends ***** -->
             
-            <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-              <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-              </ul>
+            <footer class="main-footer d-flex p-2 px-3 bg-white border-top" style="height: 2.50rem; font-size:13px">
               <span class="copyright ml-auto my-auto mr-2">Copyright © 2018
                 <a href="https://designrevision.com" rel="nofollow">DesignRevision</a>
               </span>
@@ -367,40 +353,66 @@
     $(document).ready(function(){
 
             $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+
+            //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+            let user_id = {{ $arr_data['id'] }} ;
+            $.ajax({
+                      method: 'GET' ,
+                      url: 'showNotifBadge' ,
+                      data: {user_id: user_id} ,
+                      success: function (number_notif){                            
+                          if (number_notif > 0) {
+                            $("#notif_badge").show();
+                            $("#notif_badge").text(number_notif);
+                          }  
+                      },
+                      error: function (){
+                              alert("Error Ajax !!!");
+                      }
+                    });
+            
             
             //si l'icon notification a été cliquer 
-            // $('.notif_btn').click(function(){
-            //         let user_id = {{$arr_data['id']}} ;                               
+            $('.notif_btn').click(function(){
+                    
+                    let user_id = {{$arr_data['id']}} ;                               
 
-            //         $.ajax({
-            //                 method: 'GET' ,
-            //                 url: 'markAsRead' ,
-            //                 data: { user_id : user_id } ,
+                    $.ajax({
+                            method: 'GET' ,
+                            url: 'markAsRead' ,
+                            data: { user_id : user_id } ,
 
-            //                 success: function (data){
-            //                     //Cacher le badge                        
-            //                     $("#notif_badge").hide(); 
+                            success: function (data){
+                                //Cacher le badge                        
+                                $("#notif_badge").hide();
+
+                                //console.log(data);  
+                                var new_arr = [];
+
+                                for (let i = 0; i < data.length; i++) {
+                                  
+                                  let objects = JSON.parse(data[i]['data']); 
+
+                                  new_arr.push(objects);
+                                }; 
+                                //console.log(new_arr);
+                                $(".li_cont").empty(); //vider la list 
+
+                                $.each( new_arr ,function(key,value){
+
+                                        $(".li_cont").prepend('<a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></div><div class="notification__content"><span class="notification__category">'+value.nom_expd+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.nom_expd+'</span> pour une réservation d une salle</p></div></a>');
+                                });
+
+                                $(".li_cont").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>');
                                 
-            //                     console.log(data);
+                            },
+                            error: function (){
+                                alert("Error Ajax !!!");
+                            }
+                    });
+            });
 
-            //                     let result = Array.from(data[1]['data']);
-
-            //                     alert(result);
-
-            //                     $.each(data,function(item){
-
-
-            //                             $(".li_cont").prepend('<a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></di><div class="notification__content"><span class="notification__category">'+item+'</span><p>Vous avez reçue une demande par<span class="text-success text-semibold">'+item+'</span> pour une réservation d une salle</p></div></a>');
-
-                            
-            //                     });
-                                
-            //                 },
-            //                 error: function (){
-            //                     alert("Error Ajax !!!");
-            //                 }
-            //         });
-            // });
+            
 
             //si le button view all notifications a été cliquer 
             $('#view_all_ntf_btn').click(function(){
@@ -409,8 +421,23 @@
                       method: 'GET' ,
                       url: 'retriveAllNotif' ,
                       data: {user_id: user_id} ,
-                      success: function (user_data){                            
-                            location.reload();
+                      success: function (data){
+                          alert(data);
+                          var new_arr = [];
+                          for (let i = 0; i < data.length; i++) {
+                            
+                            let objects = JSON.parse(data[i]['data']); 
+                            new_arr.push(objects);
+                          };
+                          
+                          $(".principle_cont").empty(); //vider la list
+
+                          $.each( new_arr ,function(key,value){
+
+                            $(".principle_cont").prepend('<div class="col-md-12 col-sm-12" style="padding:0"><div class="card card-small blog-comments notif_box"><div class="card-body p-0"><div class="blog-comments__item d-flex p-3"><div class="blog-comments__avatar mr-3"><img src="{{ asset('images/avatars/1.jpg') }}" alt="User avatar" /></div><div class="blog-comments__content"><div class="blog-comments__meta text-muted"><a class="text-secondary" href="#" >'+value.nom_expd+'</a> a été demander une réservation d une <a class="text-secondary" href="#">'+value.type+'</a><span class="text-muted">– 3 days ago</span></div><p class="m-0 my-1 mb-2 text-muted"></p><div class="blog-comments__actions"><div class="btn-group btn-group-sm"><button type="button" class="btn btn-white"><span class="text-success"><i class="material-icons">check</i></span>valider</button><button type="button" class="btn btn-white"><span class="text-danger"><i class="material-icons">clear</i></span>supprimer</button><button type="button" class="btn btn-white"><span class="text-light"><i class="material-icons">more_vert</i></span>voir</button></div></div></div></div></div></div></div>');
+                          });
+
+
                       },
                       error: function (){
                               alert("Error Ajax !!!");

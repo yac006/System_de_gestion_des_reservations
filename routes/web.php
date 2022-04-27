@@ -42,8 +42,9 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 /*--------------------------- Notifications Routes ----------------------------*/
 Route::post('sendNotif' , [ NotifController::class ,'send_demande'])->middleware('verification_demande_rsv')->name('sendNotif');
 Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
-//Route::get('retriveNumNotif' , [NotifController::class ,'retrieve_notif_number']);
 Route::get('retriveAllNotif' , [NotifController::class ,'retrieve_all_notif']);
+Route::get('showNotifBadge' , [NotifController::class ,'number_notif_badge']);
+
 
 
 //---------- Full-Calendar -------------//
