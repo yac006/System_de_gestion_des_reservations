@@ -27,11 +27,13 @@ class NotifController extends Controller
 
         if ($request->session()->has('admin_user')) {
             //récuperer les données qui viens dans la requete ajax
+            $id_user = $request->user_id ;
             $nom_exped = $request->nom_expd;
+            $rsv_type = $request->type_rsv ;
             //Envoyer la demande et enregistrer les donneés dans la bdd
             $admin_user = $request->session()->get('admin_user');
 
-            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped));
+            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped , $id_user , $rsv_type));
         
            //Récuperer le number de notifications qui concerné l'utilisateur "admin"
             $user_data = $request->session()->get('admin_user'); 

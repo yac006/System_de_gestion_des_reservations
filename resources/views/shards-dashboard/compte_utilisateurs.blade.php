@@ -3,6 +3,7 @@
 
 
 @section('content')
+        <?php  $arr_data = Session::get(Session::get('user_email'))  ?>
 
         <!-- NavBar -->
         <nav class="navbar navbar-dark bg-primary">
@@ -154,13 +155,15 @@
                       $('#btn_envoyer').click(function(){
                               let nom_expd = $("#nom_expidéteur").val();
                               let type_rsv = $("#tp_réservation").val();
+                              let user_id = {{$arr_data['id']}};
                               
                               $.ajax({
                                       method: 'POST' ,
                                       url: 'sendNotif' ,
                                       data: {
                                               nom_expd : nom_expd ,
-                                              type_rsv : type_rsv
+                                              type_rsv : type_rsv ,
+                                              user_id : user_id 
                                             } ,
                                       success: function (){                            
                                               alert("la request ajax reussie ...");//must use sweetAlert 2

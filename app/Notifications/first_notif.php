@@ -12,11 +12,15 @@ class first_notif extends Notification
     use Queueable;
 
     private $nom_exped ;
+    private $user_id ;
+    private $type_rsv ;
 
 
-    public function __construct($nom_exped)
+    public function __construct($nom_exped , $user_id , $type_rsv)
     {
         $this->nom_exped = $nom_exped ;
+        $this->user_id = $user_id ;
+        $this->type_rsv = $type_rsv ;
     }
 
 
@@ -31,9 +35,9 @@ class first_notif extends Notification
     public function toDatabase(){
 
         return [
-            'id' => '23' ,
+            'id' => $this->user_id ,
             'title' => 'demande_rsv' ,
-            'type' => 'salle' ,
+            'type' => $this->type_rsv ,
             'nom_expd' => $this->nom_exped
         ];
         

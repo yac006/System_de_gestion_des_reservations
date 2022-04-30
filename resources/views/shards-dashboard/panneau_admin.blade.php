@@ -7,54 +7,6 @@
 <!-- Stockage des données de la session d'utilisateur dans la variable "arr_data" -->
 <?php  $arr_data = Session::get(Session::get('user_email'))  ?>
 
-    {{-- <div class="color-switcher animated">
-        <h5>Accent Color</h5>
-        <ul class="accent-colors">
-          <li class="accent-primary active" data-color="primary">
-            <i class="material-icons">check</i>
-          </li>
-          <li class="accent-secondary" data-color="secondary">
-            <i class="material-icons">check</i>
-          </li>
-          <li class="accent-success" data-color="success">
-            <i class="material-icons">check</i>
-          </li>
-          <li class="accent-info" data-color="info">
-            <i class="material-icons">check</i>
-          </li>
-          <li class="accent-warning" data-color="warning">
-            <i class="material-icons">check</i>
-          </li>
-          <li class="accent-danger" data-color="danger">
-            <i class="material-icons">check</i>
-          </li>
-        </ul>
-        <div class="actions mb-4">
-          <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="#">
-            <i class="material-icons">cloud</i> Download</a>
-          <a class="mb-2 btn btn-sm btn-white w-100 d-table mx-auto extra-action" href="#">
-            <i class="material-icons">book</i> Documentation</a>
-        </div>
-        <div class="social-wrapper">
-          <div class="social-actions">
-            <h5 class="my-2">Help us Grow</h5>
-            <div class="inner-wrapper">
-              <a class="github-button" href="#" data-icon="octicon-star" data-show-count="true" aria-label="Star DesignRevision/shards-dashboard on GitHub">Star</a>
-              <!-- <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe> -->
-            </div>
-          </div>
-          <div id="social-share" data-url="#" data-text="🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!" data-title="share"></div>
-          <div class="loading-overlay">
-            <div class="spinner"></div>
-          </div>
-        </div>
-        <div class="close">
-          <i class="material-icons">close</i>
-        </div>
-      <div class="color-switcher-toggle animated pulse infinite">
-        <i class="material-icons">settings</i>
-      </div>
-    </div> --}}
 
       <div class="container-fluid">
         <div class="row">
@@ -252,7 +204,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>                  
-                  <div class="modal-body principle_cont" style="padding: 0"><!-- body -->
+                  <div class="modal-body principle_cont" style="padding: 0; max-height: 567px; overflow: auto;">
                       <!-- Discussions Component -->
                       {{-- @foreach ($arr_data['all_fields_user']['notifications'] as $notif)  --}}
                         {{-- <div class="col-md-12 col-sm-12" style="padding:0">
@@ -303,6 +255,27 @@
   
             <!-- Model qui affiche les informations de la demande de rsv -->
             <div class="modal fade" id="Modal_show_rsv_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Model ends -->
+
+            <!-- Model qui affiche les information de notification --> 
+            <div class="modal fade" id="Modal_show_notif_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -400,7 +373,7 @@
 
                                 $.each( new_arr ,function(key,value){
 
-                                        $(".li_cont").prepend('<a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></div><div class="notification__content"><span class="notification__category">'+value.nom_expd+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.nom_expd+'</span> pour une réservation d une salle</p></div></a>');
+                                        $(".li_cont").prepend('<a class="dropdown-item notif_item" id="'+value.id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></div><div class="notification__content"><span class="notification__category">'+value.nom_expd+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.nom_expd+'</span> pour une réservation d une salle</p></div></a>');
                                 });
 
                                 $(".li_cont").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>');
@@ -415,14 +388,17 @@
             
 
             //si le button view all notifications a été cliquer 
-            $('#view_all_ntf_btn').click(function(){
+            $('.li_cont').on('click' , '#view_all_ntf_btn' , function(){
+
+              //alert('delegation is work ...');
+
               let user_id = {{ $arr_data['id'] }} ;
               $.ajax({
                       method: 'GET' ,
                       url: 'retriveAllNotif' ,
                       data: {user_id: user_id} ,
                       success: function (data){
-                          alert(data);
+                          //alert(data);
                           var new_arr = [];
                           for (let i = 0; i < data.length; i++) {
                             
@@ -443,7 +419,22 @@
                               alert("Error Ajax !!!");
                       }
                     });
-            });            
+            });  
+            
+            
+
+            //si une notification a été cliquer 
+            $('.li_cont').on('click' , '.notif_item' , function(){
+
+                  //$("#Modal_show_notif_data").modal('show');
+
+
+                  alert($(this).attr('id')); 
+                  
+                  
+
+
+            });
         });
 </script>           
 
