@@ -11,9 +11,6 @@
 
     <!-- Bootstrap 4.1.3 -->
     <link rel="stylesheet" href="{{ asset("bootstrap_4/bootstrap.min.css") }}">
-    <!-- Fonts -->
-    {{-- <link href="{{asset('styles\css\lib\font_awesome_v5.0.6/all.css')}}" rel="stylesheet"> --}}
-    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
 
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{{asset('styles/shards-dashboards.1.1.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('styles/extras.1.1.0.min.css')}}">

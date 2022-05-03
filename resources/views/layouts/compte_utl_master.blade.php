@@ -9,14 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title></title>
 
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{{asset('styles/shards-dashboards.1.1.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('styles/extras.1.1.0.min.css')}}">
     
 
     <!-- Bootstrap 4.1.3 -->
     <link rel="stylesheet" href="{{ asset("bootstrap_4/bootstrap.min.css") }}">
+    <!-- Sweetalert theme bootstrap-4 -->
+    <link rel="stylesheet" href="{{asset('sweetalert2/css-sweetalert-theme-bootstrap-4/bootstrap-4.css')}}">
     <!-- Hover css -->
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/lib/hover-min.css')}}">
     <!-- css file -->
@@ -36,6 +36,8 @@
     <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>            
     <!-- Bootstrap 4.1.3 js -->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
+    <!-- Sweetalert js -->
+    <script src="{{asset('sweetalert2/sweetalert2.js')}}"></script>
     <!-- Github Buttons  --> 
     <script async defer src="https://buttons.github.io/buttons.js"></script>  
     <!-- JS File -->

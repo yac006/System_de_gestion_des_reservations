@@ -31,7 +31,7 @@ Route::view('Login' , 'auth.login')->name('Login');
 Route::view('Register' , 'auth.register')->name('Register');
 
 Route::post('Login' , [ LoginController::class ,'checkUsers']);
-Route::post('Register' , [ RegisterController::class ,'create']);
+Route::post('Register' , [ RegisterController::class ,'create'])->middleware('register_validate');
 
 
 /*--------------------------- Sessions Routes ----------------------------*/

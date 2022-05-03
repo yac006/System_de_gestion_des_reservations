@@ -37,7 +37,7 @@
             <div class="nav-wrapper">
               <ul class="nav flex-column">
                 <div class="cont_user_img">
-                  <img src="{{ asset('images/avatars/1.jpg') }}" class="rounded-circle">
+                  <img src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" class="rounded-circle">
                   {{-- <span class="spn_user">{{ $arr_data['name'] }}</span> --}}
                 </div>
                 <li class="nav-item accueil_link" style="border-top: 1px solid #e1e5eb">
@@ -167,7 +167,7 @@
   
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                      <img class="user-avatar rounded-circle mr-2" src="{{ asset('images/avatars/1.jpg') }}" alt="User Avatar">
+                      <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar">
                       <span class="d-none d-md-inline-block">{{ $arr_data['name'] }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
@@ -276,20 +276,20 @@
 
             <!-- Model qui affiche les information de notification --> 
             <div class="modal fade" id="Modal_show_notif_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog" role="document" style="max-width:560px;">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Détails</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                    ...
+                  <div class="modal-body" style="padding: 32px;">
+                          @include('../pages.small_table')
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Refuser</button>
+                    <button type="button" class="btn btn-primary">Valider</button>
                   </div>
                 </div>
               </div>
@@ -373,7 +373,7 @@
 
                                 $.each( new_arr ,function(key,value){
 
-                                        $(".li_cont").prepend('<a class="dropdown-item notif_item" id="'+value.id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><i class="material-icons">&#xE6E1;</i></div></div><div class="notification__content"><span class="notification__category">'+value.nom_expd+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.nom_expd+'</span> pour une réservation d une salle</p></div></a>');
+                                        $(".li_cont").prepend('<a class="dropdown-item notif_item" id="'+value.user_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="width:20px ; height: 20px ; border-radius:30px"  src="'+value.avatar_path+'" /></div></div><div class="notification__content"><span class="notification__category">'+value.user_name+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.user_name+'</span> pour une réservation d une salle</p></div></a>');
                                 });
 
                                 $(".li_cont").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>');
@@ -405,12 +405,12 @@
                             let objects = JSON.parse(data[i]['data']); 
                             new_arr.push(objects);
                           };
-                          
+
                           $(".principle_cont").empty(); //vider la list
 
                           $.each( new_arr ,function(key,value){
-
-                            $(".principle_cont").prepend('<div class="col-md-12 col-sm-12" style="padding:0"><div class="card card-small blog-comments notif_box"><div class="card-body p-0"><div class="blog-comments__item d-flex p-3"><div class="blog-comments__avatar mr-3"><img src="{{ asset('images/avatars/1.jpg') }}" alt="User avatar" /></div><div class="blog-comments__content"><div class="blog-comments__meta text-muted"><a class="text-secondary" href="#" >'+value.nom_expd+'</a> a été demander une réservation d une <a class="text-secondary" href="#">'+value.type+'</a><span class="text-muted">– 3 days ago</span></div><p class="m-0 my-1 mb-2 text-muted"></p><div class="blog-comments__actions"><div class="btn-group btn-group-sm"><button type="button" class="btn btn-white"><span class="text-success"><i class="material-icons">check</i></span>valider</button><button type="button" class="btn btn-white"><span class="text-danger"><i class="material-icons">clear</i></span>supprimer</button><button type="button" class="btn btn-white"><span class="text-light"><i class="material-icons">more_vert</i></span>voir</button></div></div></div></div></div></div></div>');
+                            //console.log(value.avatar_path);
+                            $(".principle_cont").prepend('<div class="col-md-12 col-sm-12" style="padding:0"><div class="card card-small blog-comments notif_box"><div class="card-body p-0"><div class="blog-comments__item d-flex p-3"><div class="blog-comments__avatar mr-3"><img src="'+value.avatar_path+'" alt="User avatar" /></div><div class="blog-comments__content"><div class="blog-comments__meta text-muted"><a class="text-secondary" href="#" >'+value.nom_expd+'</a> a été demander une réservation d une <a class="text-secondary" href="#">'+value.type+'</a><span class="text-muted">– 3 days ago</span></div><p class="m-0 my-1 mb-2 text-muted"></p><div class="blog-comments__actions"><div class="btn-group btn-group-sm"><button type="button" class="btn btn-white"><span class="text-success"><i class="material-icons">check</i></span>valider</button><button type="button" class="btn btn-white"><span class="text-danger"><i class="material-icons">clear</i></span>supprimer</button><button type="button" class="btn btn-white"><span class="text-light"><i class="material-icons">more_vert</i></span>voir</button></div></div></div></div></div></div></div>');
                           });
 
 
@@ -426,10 +426,10 @@
             //si une notification a été cliquer 
             $('.li_cont').on('click' , '.notif_item' , function(){
 
-                  //$("#Modal_show_notif_data").modal('show');
+                  $("#Modal_show_notif_data").modal('show');
 
 
-                  alert($(this).attr('id')); 
+                  //alert($(this).attr('id')); 
                   
                   
 

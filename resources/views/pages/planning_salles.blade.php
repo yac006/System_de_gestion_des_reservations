@@ -9,9 +9,9 @@
             <!---------- Modal Dialog D'insertion --------------> 
             <div class="modal fade bd-example-modal-lg" id="insert_model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog  new_model_lg">
-                    <div class="modal-content" style="font-size: 15px ; height: auto ; background: rgba(247, 247, 247, 1)">
+                    <div class="modal-content" style="font-size: 15px ; height: auto ; background: rgba(247, 247, 247, 1) ;">
                             <div class="card card-small">
-                              <div class="card-header border-bottom">
+                              <div class="card-header border-bottom" style="background-color:#a1b2fb">
                                 <h6 class="m-0">Details</h6>
                               </div>
                               <ul class="list-group list-group-flush">
@@ -59,11 +59,10 @@
                                   </div>
                                 </li>
                               </ul>
+                              <div class="container_btn" style="background: #f1f1f1;"> 
+                                <button type="submit" class="btn btn-outline-danger" id="btn_save">Enregistrer</button>
                             </div>
-                            
-                            <div class="container_btn"> 
-                              <button type="submit" class="btn btn-outline-danger" id="btn_save">Enregistrer</button>
-                          </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -46,19 +46,13 @@ class RegisterController extends Controller
 
     protected function create(Request $request )
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:2', 'confirmed'],
-
-        ]);    
-
         User::create([
             'name' => $request->name ,
             'email' => $request->email ,
             'password' => Hash::make($request->password),
             'remember_token' => $request->_token ,
             'is_admin' => 0 ,
+            'avatar_path' => $request->avatar_path ,
         ]);
 
         session(['msg_success' => "Les données a été enregistrer avec succée ....."]);

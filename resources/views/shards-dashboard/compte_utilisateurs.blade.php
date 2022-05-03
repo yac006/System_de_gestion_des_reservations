@@ -30,14 +30,67 @@
 
         <!-- Main container  -->             
         <div class="main_cont">
-            <div class="card mb-3 " id="box_one">
-              <div class="card-header">Réservation</div>
-                  <div class="cont_icon hvr-radial-out">
-                      <i class="zmdi zmdi-calendar-note zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc;" 
-                      data-toggle="modal" data-target="#exampleModal_rsv" data-whatever="@mdo"></i>
+              <div class="card mb-3 " id="box_one">
+                <div class="card-header">Réservation</div>
+                    <div class="cont_icon hvr-radial-out">
+                        <i class="zmdi zmdi-calendar-note zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc;" 
+                        data-toggle="modal" data-target="#exampleModal_rsv" data-whatever="@mdo"></i>
+                    </div>
+              </div>
+              <!------------------- Model Réservation --------------------->
+              <div class="modal fade" id="exampleModal_rsv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Nouvelle réservation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="titre" class="col-form-label">titre</label>
+                          <input type="text" class="form-control" id="titre">
+                        </div>
+                        <div class="form-group">
+                          <label for="tp_réservation" class="col-form-label">Type de réservation</label>
+                          <select class="form-control" id="tp_réservation" name="type_rsv">
+                            <option>Salle</option>
+                            <option>Vehicule</option>
+                        </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" id="btn_envoyer" class="btn btn-primary">Envoyer</button>
+                    </div>
                   </div>
-            </div>
-            <!------------------- Model Réservation --------------------->
+                </div>
+              </div>
+              <!------------------- Model Réservation Ends --------------------->
+              <!--*****-->
+              <div class="card mb-3" id="box_two">
+                <div class="card-header">Contact</div>
+                    <div class="cont_icon hvr-radial-out">
+                        <i class="zmdi zmdi-email zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+                    </div>
+              </div>
+              <!--*****-->
+              <div class="card mb-3 " id="box_three">
+                <div class="card-header">Historique</div>
+                    <div class="cont_icon hvr-radial-out">
+                        <i class="zmdi zmdi-help-outline zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+                    </div>
+              </div>
+        </div> 
+        <!-- Main container Ends -->
+      
+              
+        
+
+        <!------------------- Model Réservation --------------------->
             <div class="modal fade" id="exampleModal_rsv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -69,35 +122,19 @@
                 </div>
               </div>
             </div>
-            <!------------------- Model Réservation Ends --------------------->
-            <!--*****-->
-            <div class="card mb-3" id="box_two">
-              <div class="card-header">Contact</div>
-                  <div class="cont_icon hvr-radial-out">
-                      <i class="zmdi zmdi-email zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
-                  </div>
-            </div>
-            <!--*****-->
-            <div class="card mb-3 " id="box_three">
-              <div class="card-header">Historique</div>
-                  <div class="cont_icon hvr-radial-out">
-                      <i class="zmdi zmdi-help-outline zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
-                  </div>
-            </div>
-        </div> 
-        <!-- Main container Ends -->
-                
+        <!------------------- Model Réservation Ends --------------------->        
 
-        <!-- Profile container  -->
+        
+          <!-- Profile container  -->
         <div class="col-lg-4 cont_profile">
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
                     <div class="mb-3 mx-auto">
-                      <img class="rounded-circle" src="images/avatars/1.jpg" alt="User Avatar" width="110"> </div>
-                    <h4 class="mb-0">Sierra Brooks</h4>
+                      <img class="rounded-circle" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar" width="110"> </div>
+                    <h4 id="h4_user_name" class="mb-0">{{ $arr_data['name'] }}</h4>
                     <span class="text-muted d-block mb-2">Project Manager</span>
                     <a href="{{ route('logout') }}" type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2"> 
-                      <i class="material-icons mr-1">person_add</i>Logout</a>
+                      <i class="material-icons mr-1">input</i>Logout</a>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
@@ -120,7 +157,7 @@
 
 
         <!-- Featured container -->
-        <div class="Featured_cont">
+        {{-- <div class="Featured_cont">
                 <div class="card text-center">
                     <div class="card-header">
                       Featured
@@ -134,7 +171,7 @@
                       2 days ago
                     </div>
                 </div>
-        </div>     
+        </div>      --}}
         <!-- Featured container ends  -->  
 
 @endsection
@@ -145,34 +182,36 @@
       <script>
           $(document).ready(function(){
 
-                      $.ajaxSetup({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    }
-                              });
-    
-                      //si le button Envoyer a été cliquer 
+                      $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+                                    
+                       //si le button Envoyer a été cliquer 
                       $('#btn_envoyer').click(function(){
-                              let nom_expd = $("#nom_expidéteur").val();
+                              let titre = $("#titre").val();
                               let type_rsv = $("#tp_réservation").val();
-                              let user_id = {{$arr_data['id']}};
+                              let user_name = $("#h4_user_name").text();  
                               
                               $.ajax({
                                       method: 'POST' ,
                                       url: 'sendNotif' ,
                                       data: {
-                                              nom_expd : nom_expd ,
+                                              titre : titre ,
                                               type_rsv : type_rsv ,
-                                              user_id : user_id 
+                                              user_name : user_name 
                                             } ,
-                                      success: function (){                            
-                                              alert("la request ajax reussie ...");//must use sweetAlert 2
+                                      success: function (){ 
+                                            swal.fire({
+                                                        title : "Envoyer" ,
+                                                        text : "La demande a été envoyer avec succée ....",
+                                                        icon : "success",                                       
+                                                      });
+                                            $("#exampleModal_rsv").modal('hide');
                                       },
                                       error: function (){
                                               alert("Error Ajax !!!");
                                       }
                               });
-                      });
+                      });                  
+                                    
                     
                 });
 

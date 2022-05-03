@@ -5,7 +5,8 @@
 
 /*---------------- Model ---------------*/
 .model_inputs{
-    font-size: 12px;
+    font-size: 13px;
+    padding: 0.5375rem 0.75rem;
 }
 
 .new_model_lg{
@@ -21,12 +22,13 @@
     height: auto;
     /* border: dotted 0.5px aquamarine; */
     box-sizing: border-box ;
+    
 }
 
 #btn_save{
     float: right ;
-    margin:  10px 17px ; 
-    padding: 4px 13px ;
+    margin:  8.5px 17px ; 
+    padding: 6.5px 13px ;
     font-size: 13px;
     border-radius: 0.4rem;
 }

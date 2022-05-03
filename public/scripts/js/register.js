@@ -1,32 +1,35 @@
-$('.avtr_cont li').click(function () {
-  $(this).toggleClass('selected');
-  if ($('.avtr_cont li.selected').length == 0)
-    $('.select').removeClass('selected');
-  else
-    $('.select').addClass('selected');
-  counter();
+$(document).ready(function(){
+  
+    //si on click sur un avatar
+    $('.avtr_cont li').click(function () {
+      
+      if ($('.avtr_cont li.selected').length == 0){
+          $(this).toggleClass('selected');
+
+      }else{
+          $('.avtr_cont li.selected').removeClass('selected');
+      };
+
+    });
+
+
+    //si on clique sur le boutton valider
+    $('#save_btn').click(function () {
+
+        //verifier si il ya une image selectionné 
+        if ($('.avtr_cont li.selected').length > 0) {
+
+              var img_src = $(".avtr_cont li.selected img").attr('src');
+              var img_src = img_src.replace( window.location.origin+'/' ,'');
+
+              //alert(img_src);
+
+              $("#avatar_path").val(img_src);
+              $("#imgModal").modal('hide');
+        }else{
+              alert('aucune image selectionné !!');
+        }
+
+    });
 });
 
-// all item selection
-/*$('.select').click(function () {
-  if ($('li.selected').length == 0) {
-    $('li').addClass('selected');
-    $('.select').addClass('selected');
-  }
-  else {
-    $('li').removeClass('selected');
-    $('.select').removeClass('selected');
-  }
-  counter();
-});*/
-
-// number of selected items
-/*function counter() {
-  if ($('li.selected').length > 0)
-    $('.send').addClass('selected');
-  else
-    $('.send').removeClass('selected');
-  $('.send').attr('data-counter',$('li.selected').length);
-}*/
-
-//# sourceURL=pen.js

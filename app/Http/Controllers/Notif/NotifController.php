@@ -27,18 +27,21 @@ class NotifController extends Controller
 
         if ($request->session()->has('admin_user')) {
             //récuperer les données qui viens dans la requete ajax
-            $id_user = $request->user_id ;
-            $nom_exped = $request->nom_expd;
+            $titre = $request->titre ;
             $rsv_type = $request->type_rsv ;
+            $user_name = $request->user_name;
+            
+            //Récuperer les données d'utilisateur Expéditeur (qui envoyer la demande )
+            $expéd_user =  User::where('name' , $user_name)->get()->first();
+
             //Envoyer la demande et enregistrer les donneés dans la bdd
             $admin_user = $request->session()->get('admin_user');
 
-            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($nom_exped , $id_user , $rsv_type));
+            \Illuminate\Support\Facades\Notification::send($admin_user, new \App\Notifications\first_notif($user_name , $titre , $expéd_user->id , $rsv_type , $expéd_user->avatar_path));
         
            //Récuperer le number de notifications qui concerné l'utilisateur "admin"
-            $user_data = $request->session()->get('admin_user'); 
             //count number notification where read_at field = NULL
-            $notif_row = Notification::where('notifiable_id' , $user_data['id'])->where('read_at' , NULL)->get();                                       
+            $notif_row = Notification::where('notifiable_id' , $admin_user['id'])->where('read_at' , NULL)->get();                                       
             $number_notif = count($notif_row); 
             
             //informer le server websokets de cette nouvelle notification 

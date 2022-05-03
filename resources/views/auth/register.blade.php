@@ -9,6 +9,11 @@
                 <span style="padding:50p 20px">{{ Session::pull('msg_success') }}</span>
             </div>         
         @endif
+        @if (Session::has('img_msg'))
+        <div class="alert alert-warning col-md-8" style="text-align: center">
+            <span style="padding:50p 20px">{{ Session::pull('img_msg') }}</span>
+        </div>         
+        @endif
         <!-- ///////////////// -->
         <div class="col-md-8">
             <div class="card">
@@ -68,14 +73,22 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3" hidden>
+                            <label for="avatar_num" class="col-md-4 col-form-label text-md-end">Avatar path</label>
+
+                            <div class="col-md-6">
+                                <input id="avatar_path" type="text" class="form-control" name="avatar_path" >
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                <button type="submit" class="btn btn-outline-secondary" id="avatar_btn" data-toggle="modal" data-target="#imgModal"  style="float:right">
+                                <a  class="btn btn-outline-secondary" id="avatar_btn" data-toggle="modal" data-target="#imgModal"  style="float:right">
                                     Choisir un avatar .......
-                                </button>
+                                </a>
                             </div>
                             
                         </div>
@@ -89,7 +102,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:640px; margin-top: 3px  ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Avatars</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -97,22 +110,22 @@
             <div class="modal-body avtr_cont"><!-- start body modal-->
                 
                   <ul class="avtr_ul">
-                    <li><img src="https://farm8.staticflickr.com/7326/11287113923_57d37ed9d3_q.jpg" /></li>
-                    <li><img src="https://farm9.staticflickr.com/8184/8095683964_9e27753908_q.jpg" /></li>
-                    <li><img src="https://farm9.staticflickr.com/8171/8018956825_67bf62c098_q.jpg" /></li>
-                    <li><img src="https://farm9.staticflickr.com/8425/7587724752_cdb9f0c444_q.jpg" /></li>
-                    <li><img src="https://farm8.staticflickr.com/7248/7587738254_707a32f27b_q.jpg" /></li>
-                    <li><img src="https://farm9.staticflickr.com/8191/8095680852_893f685cbd_q.jpg" /></li>
+                    <li class="selection"><img src="{{asset('images/avatars/1.jpg')}}" /></li>
+                    <li><img src="{{asset('images/avatars/2.jpg')}}" /></li>
+                    <li><img src="{{asset('images/avatars/3.jpg')}}" /></li>
+                    <li><img src="{{asset('images/avatars/4.jpg')}}" /></li>
+                    {{-- <li><img src="{{asset('images/avatars/')}}" /></li>
+                    <li><img src="{{asset('images/avatars/')}}" /></li> --}}
             
                   </ul>
 
             </div><!-- end body modal-->
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" id="save_btn" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
-      </div>
+    </div>
 </div>
 @endsection
