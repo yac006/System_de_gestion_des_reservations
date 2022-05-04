@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('sweetalert2/css-sweetalert-theme-bootstrap-4/bootstrap-4.css')}}">
     <!-- Hover css -->
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/lib/hover-min.css')}}">
+    <!-- Circle Menu -->
+    <link rel="stylesheet" type="text/css" href="{{asset('styles/css/lib/circle_menu.css')}}">
     <!-- css file -->
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/users_account.css')}}">
     <!-- iconic-font CSS-->

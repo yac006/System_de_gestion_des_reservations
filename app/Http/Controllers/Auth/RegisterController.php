@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'avatar_path' => $request->avatar_path ,
         ]);
 
-        session(['msg_success' => "Les données a été enregistrer avec succée ....."]);
+        session(['msg_success' => "Les données a été enregistrer avec succée ...."]);
 
         return view('auth.register');
     }
