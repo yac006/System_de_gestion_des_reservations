@@ -30,8 +30,8 @@
 
         <!-- Main container  -->             
         <div class="main_cont">
-              @include('../pages/Circle_Menu')
-              {{-- @include('../pages/simple_menu') --}}
+             <!--  @include('../pages/Circle_Menu') -->
+              @include('../pages/simple_menu') 
         </div> 
         <!-- Main container Ends -->
       

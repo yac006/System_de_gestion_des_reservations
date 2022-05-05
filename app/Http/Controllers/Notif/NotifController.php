@@ -45,9 +45,7 @@ class NotifController extends Controller
             $number_notif = count($notif_row); 
             
             //informer le server websokets de cette nouvelle notification 
-            broadcast(new new_demande_rsv($number_notif));
-
-            
+            broadcast(new new_demande_rsv($number_notif)); 
         
         }
 
@@ -59,12 +57,15 @@ class NotifController extends Controller
         
         // récuperer les enregistrements qui concerner "id" d'utilisateur qui vien de "requéte Ajax"
         // et modifier les champs "read at" vide par le temps et la date actual
-        Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)
-                    ->update(['read_at' => now()]);
+        Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->where('type' , 'App\Notifications\first_notif')->update(['read_at' => now()]);
+        
+                    
 
         //response with new list of notification updated 
-        $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)->get();                                       
-                                    
+        $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)->where('type' , 'App\Notifications\first_notif')->get();
+                                               
+        // dd($all_notif_rows);                            
+        
 
         return response()->json($all_notif_rows);
 

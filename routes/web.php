@@ -8,6 +8,7 @@ use App\Http\Controllers\Sessions\SessionsController;
 use App\Http\Controllers\Notif\NotifController;
 use App\Http\Controllers\MultiPages\MultipagesController;
 use App\Http\Controllers\Full_calendar\full_calendar_controller;
+use App\Models\User ;
 
 
 
@@ -32,6 +33,7 @@ Route::view('Register' , 'auth.register')->name('Register');
 
 Route::post('Login' , [ LoginController::class ,'checkUsers']);
 Route::post('Register' , [ RegisterController::class ,'create'])->middleware('register_validate');
+Route::get('NotifAdmin' , [ RegisterController::class ,'notif_admin']);
 
 
 /*--------------------------- Sessions Routes ----------------------------*/
@@ -63,7 +65,15 @@ Route::get('multiPages/{param}' , [MultipagesController::class , 'verification']
 
 
 
+Route::get('test' , function(){
 
+
+		$last_row = User::all()->first();
+
+        dd($last_row);
+
+
+});
 
 
 
