@@ -187,6 +187,12 @@ color: #aaa;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+.table_cont{
+	width:100%;
+	height: auto ;
+	margin-top: 25px;
+}
+
 
 /* view all notifications */
 
@@ -197,16 +203,25 @@ color: #aaa;
 
 
 .main-navbar .navbar .notifications .dropdown-menu .notification__icon{
-  width: 3.1875rem !important;
-  height: 3.1875rem !important;
-  margin-top: 7px !important;
+  width: 3.9875rem !important;
+  height: 3.4875rem !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+  padding-top: 1.5px;
+  border-radius: 10% !important;
 }
 
 .main-navbar .navbar .notifications .dropdown-menu .notification__icon img{
-  width: 100% !important;
+  width: 83% !important;
   height: auto !important;
   border-radius: 30px !important;
 }
 
+.title_item{
+	position: relative;
+    bottom: 10px;
+    font-size: 17px;
+	font-weight: 400;
+}
 
 

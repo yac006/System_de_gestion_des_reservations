@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Lasts_record;
+use App\Models\Notification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Events\new_account;
 
 
 class RegisterController extends Controller
@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    
+
 
     public function __construct()
     {
@@ -46,42 +46,41 @@ class RegisterController extends Controller
      */
 
 
-    protected function create(Request $request )
+    protected function create(Request $request)
     {
         User::create([
-            'name' => $request->name ,
-            'email' => $request->email ,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
-            'remember_token' => $request->_token ,
-            'is_admin' => 0 ,
-            'avatar_path' => $request->avatar_path ,
+            'remember_token' => $request->_token,
+            'is_admin' => 0,
+            'avatar_path' => $request->avatar_path,
         ]);
 
         session(['msg_success' => "Les données a été enregistrer avec succée ...."]);
 
         return redirect('NotifAdmin');
-
     }
 
 
 
-     protected function notif_admin(Request $request )
+    protected function notif_admin(Request $request)
     {
         //recuperation des données de "super admin"
-        $super_admin = User::where('name' , "yacine")->get();
+        $super_admin = User::where('name', "yacine")->get()->first();
+        //recuperation des données de "dernier nouveau compte"
+        $last_row = User::all()->last();
+        //send notifications (save in Notification table)
+        \Illuminate\Support\Facades\Notification::send($super_admin , new \App\Notifications\new_account_notif( $last_row->id , $last_row->email , $last_row->created_at ) );
+        //Récuperer le number de notifications qui concerné "Super admin"
+        //count number notification where read_at field = NULL and type = (new_account_notif)
+        $notif_row = Notification::where('notifiable_id' , $super_admin['id'])->where('read_at' , NULL)
+        ->where('type' , 'App\Notifications\new_account_notif')->get(); 
+        $number_notif = count($notif_row); 
+        //informer le server websokets de nombre notification  
+        broadcast(new new_account($number_notif)); 
 
-       //send notifications
-       \Illuminate\Support\Facades\Notification::send($super_admin, new \App\Notifications\new_account_notif($super_admin->id , $super_admin->name , $super_admin->email ));  
 
-       $last_row = User::all()->last();
-
-       Lasts_record::create(['id_user' => $last_row->id ]);
-
-
-
-       dd("success ...");
-
-       return view('auth.register');
-       
+        return view('auth.register');
     }
 }

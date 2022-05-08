@@ -5,32 +5,47 @@
 @section('content')
         <?php  $arr_data = Session::get(Session::get('user_email'))  ?>
 
+        <!--Verification l'etat du compte actif/inactif -->
+        @if ($arr_data['actif'] == 0) 
+            <script>  
+                  $(document).ready(function(){
+                      $("#jumbotronModal").modal('show');
+                  })
+            </script>
+        @else
+            <script>  
+                  $(document).ready(function(){
+                      $("#jumbotronModal").modal('hide');
+                  })
+            </script>
+        @endif
+
         <!-- NavBar -->
         <nav class="navbar navbar-dark bg-primary">
             <div class="nav_header">
-                 <div class="logo_cont">
-                     <img src="images/img/11005.png" class="img-fluid rounded" alt="Responsive image" width="60%"  style="position: relative; top:-1px; height: 46px;">
-                 </div>
-                 <div class="search_cont">      
-                      <div class="form-group has-search">
-                          <span class="fa fa-search form-control-feedback"></span>
-                          <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                 </div>
-                 <div class="notif_cont">
-                      <ul>
-                        <li><i class="zmdi zmdi-email zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
-                        <li><i class="zmdi zmdi-notifications zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
-                        <li><i class="zmdi zmdi-settings-square zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
+                <div class="logo_cont">
+                    <img src="images/img/11005.png" class="img-fluid rounded" alt="Responsive image" width="60%"  style="position: relative; top:-1px; height: 46px;">
+                </div>
+                <div class="search_cont">      
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div class="notif_cont">
+                    <ul>
+                      <li><i class="zmdi zmdi-email zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
+                      <li><i class="zmdi zmdi-notifications zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
+                      <li><i class="zmdi zmdi-settings-square zmdi-hc-2x hvr-grow" style="color:#c3c7cc;"></i></li>
 
-                      </ul>
-                 </div>
+                    </ul>
+                </div>
             </div>
         </nav> 
 
         <!-- Main container  -->             
         <div class="main_cont">
-             <!--  @include('../pages/Circle_Menu') -->
+              <!--  @include('../pages/Circle_Menu') -->
               @include('../pages/simple_menu') 
         </div> 
         <!-- Main container Ends -->
@@ -38,7 +53,9 @@
               
         
 
-        <!------------------- Model Réservation --------------------->
+        <!------------------- Modals Container --------------------->
+
+            {{-- Modal Réservation --}}
             <div class="modal fade" id="exampleModal_rsv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -70,7 +87,22 @@
                 </div>
               </div>
             </div>
-        <!------------------- Model Réservation Ends --------------------->        
+            {{-- Modal Jumbotron --}}
+            <div class="modal fade bd-example-modal-lg" id="jumbotronModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+              <div class="modal-dialog modal-lg" style="top: 40px">
+                <div class="modal-content">
+                      <!-- Jumbotron -->
+                      <div class="jumbotron" style="margin-bottom: 8px">
+                        <h1 class="display-4">Compte, Inactif !</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <a class="btn btn-primary btn-lg" href="#" role="button" >Contact</a>
+                      </div>
+                </div>
+              </div>
+            </div>
+        <!------------------- Modals container Ends --------------------->        
 
         
           <!-- Profile container  -->
@@ -159,10 +191,8 @@
                                       }
                               });
                       });                  
-                                    
-                    
-                });
 
+          });    
       </script>
 @endsection
 

@@ -31,10 +31,11 @@ class SessionsController extends Controller
                                                 'name'  => $user_data->name ,
                                                 'email' => $user_data->email ,
                                                 'is_admin' => $user_data->is_admin ,
+                                                'actif' => $user_data->actif , 
                                                 'all_fields_user' =>  $user_data 
                                             ]);
                 //dd(Session::all());                                                    
-                if ($user_data->is_admin == 1) {
+                if ($user_data->is_admin == 1 or $user_data->is_admin == 11) {
                         return view('shards-dashboard.panneau_admin');         
                 }
                 return view('shards-dashboard.compte_utilisateurs');

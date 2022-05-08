@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/users_account.css')}}">
     <!-- iconic-font CSS-->
     <link href="{{asset('styles/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <!-- Jquery 3.6.0 -->
+    <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>  
 </head>
 <body>
 
@@ -34,8 +36,7 @@
 
 
 
-    <!-- Jquery 3.6.0 -->
-    <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>            
+
     <!-- Bootstrap 4.1.3 js -->
     <script src="{{ asset("bootstrap_4/bootstrap.min.js") }}"></script>
     <!-- Sweetalert js -->

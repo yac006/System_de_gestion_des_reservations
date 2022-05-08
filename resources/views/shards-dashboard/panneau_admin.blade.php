@@ -53,7 +53,7 @@
                   </a>
                 </li>
                 <li class="nav-item suivi_rsv_link">
-                  <a class="nav-link " href="">
+                  <a class="nav-link " href="{{ route('multiPages' , $param = "suivi_rsv") }}">
                     <i class="material-icons">vertical_split</i>
                     <span>Suivi des Réservations</span>
                   </a>
@@ -65,7 +65,7 @@
                   </a>
                 </li>
                 <li class="nav-item admin_link">
-                  <a class="nav-link " href="">
+                  <a class="nav-link " href="{{ route('multiPages' , $param = "administration") }}">
                     <i class="material-icons">person</i>
                     <span>Administration</span>
                   </a>
@@ -85,147 +85,144 @@
             <!-- Main Navbar -->
             <div class="main-navbar sticky-top bg-white">
               <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                <!-- Search form -->
-              <div class="input-group">
-                    <div class="form-group has-search">
-                        <i class="form-control-feedback material-icons" style="top:6px">search</i>
-                        <input type="text" class="form-control" placeholder="Search" style="border-radius: 15px;">
-                    </div>
-              </div>  
-                <!-- <form action="" method="" class="search_form">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </form> -->
-                <ul class="navbar-nav border-left flex-row ">
-                  <!-- li 01 -->
-                  <li class="nav-item border-right dropdown notifications">
-                    <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="nav-link-icon__wrapper">
-                        <i class="zmdi zmdi-accounts-alt" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                        <span hidden class="badge badge-pill badge-danger"></span>
-                      </div>
-                    </a>
-                    <!-- drop down menu-->
-                    <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                          <div class="notification__icon">
-                            <i class="material-icons">&#xE6E1;</i>
+                    <!-- Search form -->
+                    <div class="input-group">
+                          <div class="form-group has-search">
+                              <i class="form-control-feedback material-icons" style="top:6px">search</i>
+                              <input type="text" class="form-control" placeholder="Search" style="border-radius: 15px;">
                           </div>
-                        </div>
-                        <div class="notification__content">
-                          <span class="notification__category">Analytics</span>
-                          <p>Your website’s active users count increased by
-                            <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                        </div>
-                      </a>
-                      <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                          <div class="notification__icon">
-                            <i class="material-icons">&#xE8D1;</i>
+                    </div>  
+                    <ul class="navbar-nav border-left flex-row ">
+                      <!-- li 01 -->
+                      <li class="nav-item border-right dropdown notifications">
+                        <a class="nav-link nav-link-icon text-center account_notif_btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                          <div class="nav-link-icon__wrapper">
+                            <i class="zmdi zmdi-accounts-alt" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
+                            <span id="account_notif_badge" class="badge badge-pill badge-danger"></span>
                           </div>
-                        </div>
-                        <div class="notification__content">
-                          <span class="notification__category">Sales</span>
-                          <p>Last week your store’s sales count decreased by
-                            <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                        </div>
-                      </a>
-                      <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                    </div>
-                  </li>
-                  <!-- //////// -->
-                  <li class="nav-item border-right dropdown notifications">
-                    <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="nav-link-icon__wrapper">
-                        <i class="zmdi zmdi-email" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                        <span hidden class="badge badge-pill badge-danger"></span>
-                      </div>
-                    </a>
-                    <!-- drop down menu-->
-                    <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                          <div class="notification__icon">
-                            <i class="material-icons">&#xE6E1;</i>
-                          </div>
-                        </div>
-                        <div class="notification__content">
-                          <span class="notification__category">Analytics</span>
-                          <p>Your website’s active users count increased by
-                            <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                        </div>
-                      </a>
-                      <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                          <div class="notification__icon">
-                            <i class="material-icons">&#xE8D1;</i>
-                          </div>
-                        </div>
-                        <div class="notification__content">
-                          <span class="notification__category">Sales</span>
-                          <p>Last week your store’s sales count decreased by
-                            <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                        </div>
-                      </a>
-                      <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                    </div>
-                  </li>
-                  <!-- end li 01 -->
-  
-                  <!-- li 02 -->
-                  <li class="nav-item border-right dropdown notifications principale_li">
-                    <a class="nav-link nav-link-icon text-center notif_btn" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="nav-link-icon__wrapper">
-                        <i class="material-icons">&#xE7F4;</i>
-                        <span id="notif_badge" class="badge badge-pill badge-danger"></span>
-                      </div>
-                    </a>
-                    
-                    <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink" style="max-height: 567px; overflow:auto;">
-                      <!-- first Notif  -->
-                      {{-- @foreach( $arr_data['all_fields_user']['notifications']  as $notif)
-                          <a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo">
+                        </a>
+                        <!-- drop down menu-->
+                        <div class="dropdown-menu dropdown-menu-small li_cont2" aria-labelledby="dropdownMenuLink" style="min-width: 27rem">
+                          {{-- <a class="dropdown-item" href="#">
                             <div class="notification__icon-wrapper">
                               <div class="notification__icon">
                                 <i class="material-icons">&#xE6E1;</i>
                               </div>
                             </div>
                             <div class="notification__content">
-                              <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>  
-                              <p>Vous avez reçue une demande par<span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p> 
+                              <span class="notification__category">Analytics</span>
+                              <p>Your website’s active users count increased by
+                                <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
                             </div>
                           </a>
-                      @endforeach --}}
-                      <!-- first Notif Ends -->
-                      
-                      {{-- <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button> --}}
-                    </div>
-                  </li>
-                  <!-- end li 02 -->
-  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                      <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar">
-                      <span class="d-none d-md-inline-block">{{ $arr_data['name'] }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-small">
-                      <a class="dropdown-item" href="user-profile-lite.html">
-                        <i class="material-icons">&#xE7FD;</i> Profile</a>
-                      <a class="dropdown-item" href="components-blog-posts.html">
-                        <i class="material-icons">vertical_split</i> Blog Posts</a>
-                      <a class="dropdown-item" href="add-new-post.html">
-                        <i class="material-icons">note_add</i> Add New Post</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="{{ route('logout')}}">
-                        <i class="material-icons text-danger">&#xE879;</i> Logout </a>
-                    </div>
-                  </li>
-                </ul>
-                <nav class="nav">
-                  <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
-                    <i class="material-icons">&#xE5D2;</i>
-                  </a>
-                </nav>
+                          <a class="dropdown-item" href="#">
+                            <div class="notification__icon-wrapper">
+                              <div class="notification__icon">
+                                <i class="material-icons">&#xE8D1;</i>
+                              </div>
+                            </div>
+                            <div class="notification__content">
+                              <span class="notification__category">Sales</span>
+                              <p>Last week your store’s sales count decreased by
+                                <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
+                            </div>
+                          </a> --}}
+                          {{-- <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a> --}}
+                        </div>
+                      </li>
+                      <!-- //////// -->
+                      <li class="nav-item border-right dropdown notifications">
+                        <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="nav-link-icon__wrapper">
+                            <i class="zmdi zmdi-email" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
+                            <span hidden class="badge badge-pill badge-danger"></span>
+                          </div>
+                        </a>
+                        <!-- drop down menu-->
+                        <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" href="#">
+                            <div class="notification__icon-wrapper">
+                              <div class="notification__icon">
+                                <i class="material-icons">&#xE6E1;</i>
+                              </div>
+                            </div>
+                            <div class="notification__content">
+                              <span class="notification__category">Analytics</span>
+                              <p>Your website’s active users count increased by
+                                <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
+                            </div>
+                          </a>
+                          <a class="dropdown-item" href="#">
+                            <div class="notification__icon-wrapper">
+                              <div class="notification__icon">
+                                <i class="material-icons">&#xE8D1;</i>
+                              </div>
+                            </div>
+                            <div class="notification__content">
+                              <span class="notification__category">Sales</span>
+                              <p>Last week your store’s sales count decreased by
+                                <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
+                            </div>
+                          </a>
+                          <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
+                        </div>
+                      </li>
+                      <!-- end li 01 -->
+      
+                      <!-- li 02 -->
+                      <li class="nav-item border-right dropdown notifications principale_li">
+                        <a class="nav-link nav-link-icon text-center notif_btn" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="nav-link-icon__wrapper">
+                            <i class="material-icons">&#xE7F4;</i>
+                            <span id="notif_badge" class="badge badge-pill badge-danger"></span>
+                          </div>
+                        </a>
+                        
+                        <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink" style="max-height: 567px; overflow:auto;">
+                          <!-- first Notif  -->
+                          {{-- @foreach( $arr_data['all_fields_user']['notifications']  as $notif)
+                              <a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo">
+                                <div class="notification__icon-wrapper">
+                                  <div class="notification__icon">
+                                    <i class="material-icons">&#xE6E1;</i>
+                                  </div>
+                                </div>
+                                <div class="notification__content">
+                                  <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>  
+                                  <p>Vous avez reçue une demande par<span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p> 
+                                </div>
+                              </a>
+                          @endforeach --}}
+                          <!-- first Notif Ends -->
+                          
+                          {{-- <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button> --}}
+                        </div>
+                      </li>
+                      <!-- end li 02 -->
+      
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                          <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar">
+                          <span class="d-none d-md-inline-block">{{ $arr_data['name'] }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-small" style="left:-49px">
+                          <a class="dropdown-item" href="user-profile-lite.html">
+                            <i class="material-icons">&#xE7FD;</i> Profile</a>
+                          <a class="dropdown-item" href="components-blog-posts.html">
+                            <i class="material-icons">vertical_split</i> Blog Posts</a>
+                          <a class="dropdown-item" href="add-new-post.html">
+                            <i class="material-icons">note_add</i> Add New Post</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item text-danger" href="{{ route('logout')}}">
+                            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                        </div>
+                      </li>
+                    </ul>
+                    <nav class="nav">
+                      <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                        <i class="material-icons">&#xE5D2;</i>
+                      </a>
+                    </nav>
               </nav>
             </div>
             <!-- / .main-navbar ends-->
@@ -332,13 +329,75 @@
                 </div>
               </div>
             </div><!-- Model ends -->
+
+            <!-- Model qui affiche les informations de la notification de nouveau compte-->
+            <div class="modal fade" id="Modal_notif_nv_account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document" style="max-width: 600px;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="th_img_cont" scope="col"> 
+                            <img 
+                              id="account_img" 
+                              src="" 
+                              style="width: 48px; height: 48px" 
+                              class="rounded-circle"/>
+                          </th>
+                              <th scope="col" class="title_item it_name"></th>
+                              <th scope="col" class="title_item"></th>
+                              <th scope="col" class="title_item"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>Id</th>
+                          <td class="it_id"></td>
+                          <th>Creé en</th>
+                          <td class="it_create_at"></td>
+                        </tr>
+                        <tr>
+                          <th>Name</th>
+                          <td class="it_name"></td>
+                          <th>Modifer en</th>
+                          <td class="it_update_at"></td>
+                        </tr>
+                        <tr>
+                          <th>Email</th>
+                          <td class="it_email"></td>
+                          <th></th>
+                          <td ></td>
+                        </tr>        
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button id="_btn_refuser" type="button" class="btn btn-secondary" data-dismiss="modal">Refuser</button>
+                    <button id="_btn_valider" type="button" class="btn btn-primary">Valider</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Model ends -->
+
+
             <!-- --- Models ends --- -->
+
+
 
             <!-- ***** content-container ***** -->
             <div class="main-content-container container-fluid px-4">
-                @if (Session::has('dashboard') or Session::has('pln_salle'))
+                @if (Session::has('dashboard') or Session::has('pln_salle') or Session::has('administration') or Session::has('suivi_rsv'))
                       @includeWhen(Session::get('dashboard') , '../pages.dashboard')
                       @includeWhen(Session::get('pln_salle') , '../pages.planning_salles')
+                      @includeWhen(Session::get('administration') , '../pages.administration')
+                      @includeWhen(Session::get('suivi_rsv') , '../pages.suivi_des_reservations')
                 @else
                       @includeWhen($dashboard = true , '../pages.dashboard')
                 @endif
@@ -361,7 +420,7 @@
 @section('ajax_script')
 <script>
     
-    $(document).ready(function(){
+    $(document).ready(function(){//*** NOTIFICATIONS CONCERNE LES DEMANDE DE RESERVATION **//
 
             $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
 
@@ -381,7 +440,6 @@
                               alert("Error Ajax !!!");
                       }
                     });
-            
             
             //si l'icon notification a été cliquer 
             $('.notif_btn').click(function(){
@@ -424,7 +482,6 @@
             });
 
             
-
             //si le button view all notifications a été cliquer 
             $('.li_cont').on('click' , '#view_all_ntf_btn' , function(){
 
@@ -460,7 +517,6 @@
             });  
             
             
-
             //si une notification a été cliquer 
             $('.li_cont').on('click' , '.notif_item' , function(){
 
@@ -473,7 +529,140 @@
 
 
             });
-        });
+    });
+
+
+
+    $(document).ready(function(){//*** NOTIFICATIONS CONCERNE LES NOUVEAUX COMPTES **//
+
+            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+
+            //verifier si l'utilisateur est un "super admin" 
+            if ({{$arr_data['is_admin']}} == 11 ) {
+                //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+                $.ajax({
+                      method: 'GET' ,
+                      url: 'showNotifBadge2' ,
+                      data: {} ,
+                      success: function (number_notif){                            
+                          if (number_notif > 0) {
+                            $("#account_notif_badge").show();
+                            $("#account_notif_badge").text(number_notif);
+                          }  
+                      },
+                      error: function (){
+                              alert("Error Ajax !!!");
+                      }
+                  });
+            };
+            
+      
+            //si l'icon "new_account" a été cliquer 
+            $('.account_notif_btn').click(function(){
+                if ({{$arr_data['is_admin']}} == 11) {                              
+                    $.ajax({
+                            method: 'GET' ,
+                            url: 'markAsRead2' ,
+                            data: {} ,
+                            success: function (data){
+                                //Cacher le badge                        
+                                $("#account_notif_badge").hide();
+                                //console.log(data);  
+                                var new_arr = [];
+                                for (let i = 0; i < data.length; i++) {
+                                  let objects = JSON.parse(data[i]['data']); 
+                                  new_arr.push(objects);
+                                }; 
+                                //console.log(new_arr);
+                                $(".li_cont2").empty(); //vider la list 
+
+                                $.each( new_arr ,function(key,value){
+
+                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img  src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at+'</i></p></div></a>');
+                                });
+
+                                $(".li_cont2").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="" data-whatever="@mdo"> View all Notifications </button>');
+                                
+                            },
+                            error: function (){
+                                alert("Error Ajax !!!");
+                            }
+                    }); // end ajax
+                    
+                }else{//utilisateur n'pas super admin
+                      //show hint //suit...
+                      alert("You are not super admin !!");
+                }    
+            });//end event button 
+
+
+
+            //si le button view all "new accounts "a été cliquer 
+            $('.li_cont2').on('click' , '#view_all_ntf_btn' , function(){
+
+              //alert('delegation is work ...');
+
+              window.location.href = "{{route('multiPages' , $param = "administration")}}" ;
+            });
+
+
+            //si une notification "new account" a été cliquer 
+            $('.li_cont2').on('click' , '.notif_item' , function(){
+                  $("#Modal_notif_nv_account").modal('show');
+                  var new_user_id =  $(this).attr('id'); 
+                  $.ajax({
+                      method: 'GET' ,
+                      url: 'showNotifData' ,
+                      data: {new_user_id: new_user_id} ,
+                      success: function (user_account_data){                            
+                          //alert((user_account_data['name']));
+                          $(".it_name").text(user_account_data['name']);
+                          $(".it_id").text(user_account_data['id']);
+                          $(".it_email").text(user_account_data['email']);
+                          $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z',''));
+                          $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z',''));
+                          //build path for image
+                          var img_path = `{{asset('')}}`;
+                              img_path += user_account_data['avatar_path'];
+                          $("#account_img").attr('src' , img_path);
+                      },
+                      error: function (){
+                            alert("Error Ajax !!!");
+                      }
+                  });
+                  
+            });//notif_item on click end
+
+
+            //si le button "valider" a été cliquer
+            $("#_btn_valider").click(function(){
+
+                  var new_user_id = $(".it_id").text() ;
+
+                  $.ajax({
+                          method: 'GET' ,
+                          url: 'accountActivation' ,
+                          data: {new_user_id: new_user_id} ,
+                          success: function (msg){                            
+                            swal.fire({
+                                        title : "Activer" ,
+                                        text : msg ,
+                                        icon : "success"                                       
+                                      });
+
+                                $("#Modal_notif_nv_account").modal('hide');
+                          },
+                          error: function (){
+                                  alert("Error Ajax !!!");
+                          }
+                  });
+
+
+            });//btn_valider event end
+
+
+            
+});
 </script>           
 
     

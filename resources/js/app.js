@@ -14,3 +14,17 @@ Echo.channel('ch-441').listen('new_demande_rsv', event => {
 
         
 });
+
+
+
+Echo.channel('ch-445').listen('new_account', event => {
+
+        $(document).ready(function(){
+
+                $("#account_notif_badge").show();
+                $("#account_notif_badge").text(event['nombre_notif']);
+
+        });
+
+        
+});

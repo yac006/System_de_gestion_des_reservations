@@ -10,6 +10,7 @@ class MultipagesController extends Controller
     
 
 
+
     //Verifivation de type de lien cliquer 
     public function verification($param)
     {
@@ -17,18 +18,60 @@ class MultipagesController extends Controller
         if ($param == "pln_salles") {
             $dashboard = false ;
             $pln_salle = true ;
-            session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-            //return redirect('getInSession');
+            $administration = false ;
+            $suivi_rsv = false ;
+            session([   
+                'dashboard' => $dashboard ,
+                'pln_salle' => $pln_salle ,
+                'administration' => $administration ,
+                'suivi_rsv' => $suivi_rsv
+            ]);
+            
             return redirect('storeInSession'); 
     
         }elseif($param == "accueil"){
             $dashboard = true ;
             $pln_salle = false ;
-            session(['dashboard' => $dashboard , 'pln_salle' => $pln_salle]);
-            //return redirect('getInSession');
+            $administration = false ;
+            $suivi_rsv = false ;
+            session([   
+                'dashboard' => $dashboard ,
+                'pln_salle' => $pln_salle ,
+                'administration' => $administration ,
+                'suivi_rsv' => $suivi_rsv
+            ]);
+
             return redirect('storeInSession'); 
-        };
-    }
+
+        }elseif($param == "administration"){
+            $dashboard = false ;
+            $pln_salle = false ;
+            $administration = true ;
+            $suivi_rsv = false ;
+            session([   
+                        'dashboard' => $dashboard ,
+                        'pln_salle' => $pln_salle ,
+                        'administration' => $administration ,
+                        'suivi_rsv' => $suivi_rsv
+                    ]);
+
+            return redirect('storeInSession'); 
+
+        }elseif($param == "suivi_rsv"){
+            $dashboard = false ;
+            $pln_salle = false ;
+            $administration = false ;
+            $suivi_rsv = true ;
+            session([   
+                        'dashboard' => $dashboard ,
+                        'pln_salle' => $pln_salle ,
+                        'administration' => $administration ,
+                        'suivi_rsv' => $suivi_rsv 
+                    ]);
+
+            return redirect('storeInSession'); 
+        }
 
 
+    }//end of function
 }

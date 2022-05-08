@@ -6,9 +6,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Sessions\SessionsController;
 use App\Http\Controllers\Notif\NotifController;
+use App\Http\Controllers\Notif\New_account_notif_cont;
 use App\Http\Controllers\MultiPages\MultipagesController;
 use App\Http\Controllers\Full_calendar\full_calendar_controller;
-use App\Models\User ;
+
 
 
 
@@ -42,10 +43,16 @@ Route::get('deleteInSession' , [ SessionsController::class  , 'delete_session_da
 
 
 /*--------------------------- Notifications Routes ----------------------------*/
+/*----- First notif -----*/
 Route::post('sendNotif' , [ NotifController::class ,'send_demande'])->middleware('verification_demande_rsv')->name('sendNotif');
 Route::get('markAsRead' , [NotifController::class ,'mark_as_read']);
 Route::get('retriveAllNotif' , [NotifController::class ,'retrieve_all_notif']);
 Route::get('showNotifBadge' , [NotifController::class ,'number_notif_badge']);
+/*---- New account notif ----*/
+Route::get('markAsRead2' , [New_account_notif_cont::class ,'mark_as_read']);
+Route::get('showNotifBadge2' , [New_account_notif_cont::class ,'number_notif_badge']);
+Route::get('showNotifData' , [New_account_notif_cont::class ,'display_notif_data']);
+Route::get('accountActivation' , [New_account_notif_cont::class ,'compte_activation']);
 
 
 
@@ -62,18 +69,6 @@ Route::delete('deleteData' , [ full_calendar_controller::class ,'delete']);
 //---------- Multi pages  -------------//
 Route::get('multiPages/{param}' , [MultipagesController::class , 'verification'] )->name('multiPages');
 
-
-
-
-Route::get('test' , function(){
-
-
-		$last_row = User::all()->first();
-
-        dd($last_row);
-
-
-});
 
 
 

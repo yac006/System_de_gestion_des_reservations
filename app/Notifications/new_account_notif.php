@@ -11,14 +11,19 @@ class new_account_notif extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+
+    public $id ;
+    public $email ;
+    public $created_at ;
+
+
+
+    public function __construct($id , $email , $created_at )
     {
-        //
+        $this->id = $id ;
+        $this->email = $email ;
+        $this->created_at = $created_at ;
     }
 
     /**
@@ -32,19 +37,18 @@ class new_account_notif extends Notification
         return ['database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toDtabase($notifiable)
+
+
+    public function toDatabase()
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+
+        return [
+                'last_users_id' => $this->id ,
+                'email' => $this->email ,
+                'created_at' => $this->created_at
+        ];
     }
+
 
     public function toMail($notifiable)
     {
