@@ -203,25 +203,26 @@ color: #aaa;
 
 
 .main-navbar .navbar .notifications .dropdown-menu .notification__icon{
-  width: 3.9875rem !important;
-  height: 3.4875rem !important;
+  width: 3.5875rem !important;
+  height: 3.5875rem !important;
   margin-top: 3px !important;
   margin-bottom: 3px !important;
   padding-top: 1.5px;
-  border-radius: 10% !important;
+  border-radius: 50% !important;
 }
 
 .main-navbar .navbar .notifications .dropdown-menu .notification__icon img{
-  width: 83% !important;
+  width: 100% !important;
   height: auto !important;
-  border-radius: 30px !important;
 }
 
 .title_item{
 	position: relative;
-    bottom: 10px;
     font-size: 17px;
 	font-weight: 400;
+}
+.it_name{
+	line-height: 2.5;
 }
 
 

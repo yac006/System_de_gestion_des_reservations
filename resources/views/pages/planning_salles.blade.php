@@ -11,7 +11,7 @@
                 <div class="modal-dialog  new_model_lg">
                     <div class="modal-content" style="font-size: 15px ; height: auto ; background: rgba(247, 247, 247, 1) ;">
                             <div class="card card-small">
-                              <div class="card-header border-bottom" style="background-color:#a1b2fb">
+                              <div class="card-header border-bottom">
                                 <h6 class="m-0">Details</h6>
                               </div>
                               <ul class="list-group list-group-flush">
@@ -21,7 +21,7 @@
                                       <form>
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
-                                            <label for="fetitle">Title</label>
+                                            <label id="labelForTitle" for="fetitle">Title</label>
                                             <input type="text" class="form-control model_inputs" id="fetitle" placeholder="title"> </div>
                                           <div class="form-group col-md-6">
                                             <label for="feClient">Client</label>
@@ -36,8 +36,8 @@
                                             <input type="text" class="form-control model_inputs" id="fePrenom" placeholder="prénom de client"> </div>
                                         </div>
                                         <div class="form-group">
-                                          <label for="feAddress">Address</label>
-                                          <input type="text" class="form-control model_inputs" id="feAddress" placeholder=""> </div>
+                                          <label for="feNum_rsv">Num réservation</label>
+                                          <input type="text" class="form-control model_inputs" id="feNum_rsv" placeholder=""> </div>
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="feEmail">Email</label>
@@ -59,7 +59,7 @@
                                   </div>
                                 </li>
                               </ul>
-                              <div class="container_btn" style="background: #f1f1f1;"> 
+                              <div class="container_btn" > 
                                 <button type="submit" class="btn btn-outline-danger" id="btn_save">Enregistrer</button>
                             </div>
                             </div>
@@ -131,30 +131,29 @@
                                             $("#display_model").modal("show");
                                           
                                         } else {
-
-                                          let title = info.event.title ;
-
-                                          $.ajaxSetup({
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                            }
-                                          });
-                                          //-----------------------//
-                                          $.ajax({
-                                            method : 'DELETE' ,
-                                            url : 'deleteData' , 
-                                            data : { title : title },
-                                                                  
-                                            success : function(){
-                                                swal.fire({
-                                                  icon : "success",
-                                                  title : "Supprimer",
-                                                  text : "L'évenement a été Supprimer avec succée ...."
-                                                });
-                                                location.reload();
-                                            }
-                                        });               
-                                        }                        
+                                              let title = info.event.title;
+                                          
+                                              $.ajaxSetup({
+                                                headers: {
+                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                }
+                                              });
+                                              //-----------------------//
+                                              $.ajax({
+                                                method : 'DELETE' ,
+                                                url : 'deleteData' , 
+                                                data : { title: title },
+                                                                      
+                                                success : function(){
+                                                    swal.fire({
+                                                      icon : "success",
+                                                      title : "Supprimer",
+                                                      text : "L'évenement a été Supprimer avec succée ...."
+                                                    });
+                                                    location.reload();
+                                                }
+                                            });               
+                                        }//end else                        
                                       })
                                 });      
                             },
@@ -166,13 +165,13 @@
 
                                         let title = $("#fetitle").val();
                                         let formatted_start_date = selectionInfo.start.getFullYear() + "-" + (selectionInfo.start.getMonth() +1) + "-" + selectionInfo.start.getDate() ;
-                                        let formatted_end_date = selectionInfo.end.getFullYear() + "-" + (selectionInfo.end.getMonth() +1) + "-" + (parseInt(selectionInfo.end.getDate())) ;
+                                        let formatted_end_date = selectionInfo.end.getFullYear() + "-" + (selectionInfo.end.getMonth() +1) + "-" + (selectionInfo.end.getDate()) ;
                                         //alert(selectionInfo.start.getDate());
 
                                         let type_client = $("#feClient").val();
                                         let nom = $("#feNom").val();
                                         let prenom = $("#fePrenom").val();
-                                        let address = $("#feAddress").val();
+                                        let num_rsv = $("#feNum_rsv").val();
                                         let email = $("#feEmail").val();
                                         let type_rsv = $("#feReservation").val();
                                         let tele = $("#feTele").val();
@@ -194,24 +193,32 @@
                                                 t_client : type_client ,
                                                 nom : nom ,
                                                 prenom : prenom ,
-                                                address : address ,
+                                                num_rsv : num_rsv ,
                                                 email : email ,
                                                 t_rsv : type_rsv ,
                                                 tele : tele                                          
                                             },
-                                            success : function(){                   
-                                                swal.fire({
-                                                  title : "Enregistrer" ,
-                                                  text : "L'évenement été enregistrer avec succée ....",
-                                                  icon : "success",                                       
-                                                }); 
-                                                location.reload();                                  
-                                            }
-                                        });
-                                      });
+                                            success : function(msg){
+                                                  if (msg == "repetition_num_rsv") {
+                                                        location.reload(); 
+              
+                                                  }else if(msg == "repetition_title"){
+                                                      $("#labelForTitle").text("Ce titre existe déja !!");
+                                                      $("#labelForTitle").css('color',"red");
+                                                      $("#fetitle").css('border' , "solid 1px red")
+                                                  }else {
+                                                        swal.fire({
+                                                          title : "Enregistrer" ,
+                                                          text : "L'évenement été enregistrer avec succée ....",
+                                                          icon : "success"                                       
+                                                        }); 
 
-
-                                });                       
+                                                        location.reload(); 
+                                                  }    
+                                            }               
+                                            });//ajax end
+                                        });//btn_save end
+                                      });//document.ready end
                             },
 
                             eventDrop : function(info) {                

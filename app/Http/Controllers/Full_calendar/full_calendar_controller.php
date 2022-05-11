@@ -37,7 +37,7 @@ class full_calendar_controller extends Controller
             $evenment->type_client = $request->t_client ;
             $evenment->nom = $request->nom ;
             $evenment->prenom = $request->prenom ;
-            $evenment->address = $request->address ;
+            $evenment->num_rsv = $request->num_rsv ;
             $evenment->email = $request->email ;
             $evenment->type_rsv = $request->t_rsv ; 
             $evenment->tele = $request->tele ;
@@ -45,7 +45,6 @@ class full_calendar_controller extends Controller
 
             return response()->json(["success" => "added"]);
         }
-
 
 
 

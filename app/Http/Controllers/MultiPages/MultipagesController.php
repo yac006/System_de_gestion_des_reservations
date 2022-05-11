@@ -20,11 +20,13 @@ class MultipagesController extends Controller
             $pln_salle = true ;
             $administration = false ;
             $suivi_rsv = false ;
+            $contact = false ;
             session([   
                 'dashboard' => $dashboard ,
                 'pln_salle' => $pln_salle ,
                 'administration' => $administration ,
-                'suivi_rsv' => $suivi_rsv
+                'suivi_rsv' => $suivi_rsv ,
+                'contact' => $contact
             ]);
             
             return redirect('storeInSession'); 
@@ -34,11 +36,13 @@ class MultipagesController extends Controller
             $pln_salle = false ;
             $administration = false ;
             $suivi_rsv = false ;
+            $contact = false ;
             session([   
                 'dashboard' => $dashboard ,
                 'pln_salle' => $pln_salle ,
                 'administration' => $administration ,
-                'suivi_rsv' => $suivi_rsv
+                'suivi_rsv' => $suivi_rsv ,
+                'contact' => $contact
             ]);
 
             return redirect('storeInSession'); 
@@ -48,11 +52,13 @@ class MultipagesController extends Controller
             $pln_salle = false ;
             $administration = true ;
             $suivi_rsv = false ;
+            $contact = false ;
             session([   
                         'dashboard' => $dashboard ,
                         'pln_salle' => $pln_salle ,
                         'administration' => $administration ,
-                        'suivi_rsv' => $suivi_rsv
+                        'suivi_rsv' => $suivi_rsv ,
+                        'contact' => $contact
                     ]);
 
             return redirect('storeInSession'); 
@@ -62,11 +68,29 @@ class MultipagesController extends Controller
             $pln_salle = false ;
             $administration = false ;
             $suivi_rsv = true ;
+            $contact = false ;
             session([   
                         'dashboard' => $dashboard ,
                         'pln_salle' => $pln_salle ,
                         'administration' => $administration ,
-                        'suivi_rsv' => $suivi_rsv 
+                        'suivi_rsv' => $suivi_rsv ,
+                        'contact' => $contact
+                    ]);
+
+            return redirect('storeInSession'); 
+
+        }elseif($param == "contact"){
+            $dashboard = false ;
+            $pln_salle = false ;
+            $administration = false ;
+            $suivi_rsv = false ;
+            $contact = true ;
+            session([   
+                        'dashboard' => $dashboard ,
+                        'pln_salle' => $pln_salle ,
+                        'administration' => $administration ,
+                        'suivi_rsv' => $suivi_rsv ,
+                        'contact' => $contact
                     ]);
 
             return redirect('storeInSession'); 

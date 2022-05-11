@@ -4,36 +4,46 @@
       <div class="col-lg col-md-6 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
           <div class="cont_icon hvr-radial-out">
-              <i class="zmdi zmdi-email zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+            <a href="{{ route('multiPages' , $param = "accueil")}}">
+              <i class="zmdi zmdi-home zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+            </a>
           </div>
         </div>
       </div>
       <div class="col-lg col-md-6 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
           <div class="cont_icon hvr-radial-out">
+            <a href="{{ route('multiPages' , $param = "pln_salles")}}">
               <i class="zmdi zmdi-calendar-note zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+            </a>
           </div>
         </div>
       </div>
       <div class="col-lg col-md-4 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
         <div class="cont_icon hvr-radial-out">
-              <i class="zmdi zmdi-notifications-active zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
-          </div>
+          <a href="{{ route('multiPages' , $param = "contact")}}">
+              <i class="zmdi zmdi-email zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+          </a>
+        </div>
         </div>
       </div>
       <div class="col-lg col-md-4 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
         <div class="cont_icon hvr-radial-out">
-              <i class="zmdi zmdi-file-text zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
-          </div>
+          <a href="{{ route('multiPages' , $param = "suivi_rsv")}}">
+              <i class="zmdi zmdi-assignment-o zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+          </a>
+        </div>
         </div>
       </div>
       <div class="col-lg col-md-4 col-sm-12 mb-4">
         <div class="stats-small stats-small--1 card card-small">
         <div class="cont_icon hvr-radial-out">
-              <i class="zmdi zmdi-help-outline zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
-          </div>
+          <a href="{{ route('multiPages' , $param = "administration")}}">
+              <i class="zmdi zmdi-accounts zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
+          </a>
+        </div>
         </div>
       </div>
     </div>

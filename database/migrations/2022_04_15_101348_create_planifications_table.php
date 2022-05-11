@@ -14,14 +14,13 @@ class CreatePlanificationsTable extends Migration
     public function up()
     {
         Schema::create('planifications', function (Blueprint $table) {
-            $table->id();
+            $table->integer('num_rsv');
             $table->string('title');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('type_client');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('address');
             $table->string('email');
             $table->string('type_rsv');
             $table->integer('tele');

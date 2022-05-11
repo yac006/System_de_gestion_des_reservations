@@ -59,7 +59,7 @@
                   </a>
                 </li>
                 <li class="nav-item contact_link">
-                  <a class="nav-link " href="">
+                  <a class="nav-link " href="{{ route('multiPages' , $param = "contact") }}">
                     <i class="material-icons">mail</i>
                     <span>Contact &amp; Email</span>
                   </a>
@@ -340,9 +340,9 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" style="padding: 1.175rem 2.1875rem;">
                     <table class="table">
-                      <thead>
+                      <thead style="background-color: rgba(0,0,0,.03);">
                         <tr>
                           <th class="th_img_cont" scope="col"> 
                             <img 
@@ -398,6 +398,7 @@
                       @includeWhen(Session::get('pln_salle') , '../pages.planning_salles')
                       @includeWhen(Session::get('administration') , '../pages.administration')
                       @includeWhen(Session::get('suivi_rsv') , '../pages.suivi_des_reservations')
+                      @includeWhen(Session::get('contact') , '../pages.contact_page')
                 @else
                       @includeWhen($dashboard = true , '../pages.dashboard')
                 @endif
@@ -578,7 +579,7 @@
 
                                 $.each( new_arr ,function(key,value){
 
-                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img  src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at+'</i></p></div></a>');
+                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="background-color: white;" src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at.replace('.000000Z','').replace('T',' ')+'</i></p></div></a>');
                                 });
 
                                 $(".li_cont2").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="" data-whatever="@mdo"> View all Notifications </button>');
@@ -619,8 +620,8 @@
                           $(".it_name").text(user_account_data['name']);
                           $(".it_id").text(user_account_data['id']);
                           $(".it_email").text(user_account_data['email']);
-                          $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z',''));
-                          $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z',''));
+                          $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z','').replace('T',' '));
+                          $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z','').replace('T',' '));
                           //build path for image
                           var img_path = `{{asset('')}}`;
                               img_path += user_account_data['avatar_path'];

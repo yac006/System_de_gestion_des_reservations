@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'verification_demande_rsv' => \App\Http\Middleware\Notifications\verification_demande_rsv::class,
         'register_validate' => \App\Http\Middleware\middlewar_auth\register_validate::class,
+        'check_repetition' => \App\Http\Middleware\full_calendar\check_repetition::class
     ];
 }

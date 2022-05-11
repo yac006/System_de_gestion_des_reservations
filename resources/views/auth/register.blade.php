@@ -100,31 +100,31 @@
     <!-- images avtr Modal -->
     <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:640px; margin-top: 3px  ">
-          <div class="modal-content">
+            <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Avatars</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Avatars</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+                </button>
             </div>
             <div class="modal-body avtr_cont"><!-- start body modal-->
                 
-                  <ul class="avtr_ul">
+                    <ul class="avtr_ul">
                     <li class="selection"><img src="{{asset('images/avatars/1.jpg')}}" /></li>
                     <li><img src="{{asset('images/avatars/2.jpg')}}" /></li>
                     <li><img src="{{asset('images/avatars/3.jpg')}}" /></li>
                     <li><img src="{{asset('images/avatars/4.jpg')}}" /></li>
-                    {{-- <li><img src="{{asset('images/avatars/')}}" /></li>
-                    <li><img src="{{asset('images/avatars/')}}" /></li> --}}
+                    <li><img src="{{asset('images/avatars/5.jpg')}}" /></li>
+                    <li><img src="{{asset('images/avatars/6.jpg')}}" /></li>
             
-                  </ul>
+                    </ul>
 
             </div><!-- end body modal-->
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" id="save_btn" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="save_btn" class="btn btn-primary">Save changes</button>
             </div>
-          </div>
+            </div>
         </div>
     </div>
 </div>

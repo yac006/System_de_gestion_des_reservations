@@ -57,10 +57,8 @@ Route::get('accountActivation' , [New_account_notif_cont::class ,'compte_activat
 
 
 //---------- Full-Calendar -------------//
-Route::get('calendar_view' , function(){ return view('full_calendar.calendar'); })->name('calendar_view');
-        
 Route::get('getData' , [ full_calendar_controller::class ,'retrieve']);
-Route::get('storeData' , [ full_calendar_controller::class , 'store']);
+Route::get('storeData' , [ full_calendar_controller::class , 'store'])->middleware('check_repetition');
 Route::put('updateData' , [  full_calendar_controller::class, 'update']);
 Route::delete('deleteData' , [ full_calendar_controller::class ,'delete']);
 
