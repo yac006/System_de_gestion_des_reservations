@@ -3,11 +3,13 @@
     <div class="row row02">
       <div class="col-lg col-md-6 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
-          <div class="cont_icon hvr-radial-out">
+          <div class="cont_icon hvr-radial-out" >
             <a href="{{ route('multiPages' , $param = "accueil")}}">
               <i class="zmdi zmdi-home zmdi-hc-5x hvr-wobble-horizontal" style="color:#c3c7cc; "></i>
             </a>
+            
           </div>
+          {{-- <span style="display:block">Accueil</span> --}}
         </div>
       </div>
       <div class="col-lg col-md-6 col-sm-6 mb-4">

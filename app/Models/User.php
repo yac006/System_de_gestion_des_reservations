@@ -11,6 +11,19 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    public function employes()
+    {
+        return $this->hasMany(Employe::class , 'user_id' , 'user_id'); 
+    }
+
+    
+    public function roles()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

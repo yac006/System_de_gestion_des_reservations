@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\new_account' => $baseDir . '/app/Events/new_account.php',
     'App\\Events\\new_demande_rsv' => $baseDir . '/app/Events/new_demande_rsv.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -20,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Full_calendar\\full_calendar_controller' => $baseDir . '/app/Http/Controllers/Full_calendar/full_calendar_controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\MultiPages\\MultipagesController' => $baseDir . '/app/Http/Controllers/MultiPages/MultipagesController.php',
+    'App\\Http\\Controllers\\Notif\\New_account_notif_cont' => $baseDir . '/app/Http/Controllers/Notif/New_account_notif_cont.php',
     'App\\Http\\Controllers\\Notif\\NotifController' => $baseDir . '/app/Http/Controllers/Notif/NotifController.php',
     'App\\Http\\Controllers\\Notif\\NotifOptionsController' => $baseDir . '/app/Http/Controllers/Notif/NotifOptionsController.php',
     'App\\Http\\Controllers\\Sessions\\SessionsController' => $baseDir . '/app/Http/Controllers/Sessions/SessionsController.php',
@@ -33,6 +35,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Middleware\\full_calendar\\check_repetition' => $baseDir . '/app/Http/Middleware/full_calendar/check_repetition.php',
     'App\\Http\\Middleware\\middlewar_auth\\register_validate' => $baseDir . '/app/Http/Middleware/middlewar_auth/register_validate.php',
     'App\\Models\\Notification' => $baseDir . '/app/Models/Notification.php',
     'App\\Models\\Planification' => $baseDir . '/app/Models/Planification.php',

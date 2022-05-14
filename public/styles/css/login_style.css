@@ -116,3 +116,10 @@ a{
 	color: #ff0000;
  }
  #second{display:none;}
+ 
+.label_style{
+	max-width: 25%;
+	margin-left: 58px;
+ }
+ 
+ 

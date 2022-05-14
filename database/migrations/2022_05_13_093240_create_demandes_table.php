@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanificationsTable extends Migration
+class CreateDemandesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreatePlanificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('planifications', function (Blueprint $table) {
-            $table->id('id_pln');
-            $table->string('title');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->unsignedBigInteger('num_demande');
-            $table->foreign('num_demande')->references('num_demande')->on('demandes');
+        Schema::create('demandes', function (Blueprint $table) {
+            $table->id('num_demande');
+            $table->string('type_dmnd');
+            $table->date('date_dmnd');
             $table->unsignedBigInteger('num_emp');
             $table->foreign('num_emp')->references('num_emp')->on('employes');
-
+            
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreatePlanificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planifications');
+        Schema::dropIfExists('demandes');
     }
 }

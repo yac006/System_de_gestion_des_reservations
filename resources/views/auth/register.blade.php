@@ -15,7 +15,7 @@
         </div>         
         @endif
         <!-- ///////////////// -->
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin-top: 40px;">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 

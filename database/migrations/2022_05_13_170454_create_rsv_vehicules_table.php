@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanificationsTable extends Migration
+class CreateRsvVehiculesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreatePlanificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('planifications', function (Blueprint $table) {
-            $table->id('id_pln');
-            $table->string('title');
-            $table->date('start_date');
-            $table->date('end_date');
+        Schema::create('rsv_vehicules', function (Blueprint $table) {
+            $table->id('id_rsv_vehc');
+            $table->string('motif');
+            $table->string('dest');
+            $table->date('date_rsv');
+            $table->boolean('chauffeur');
             $table->unsignedBigInteger('num_demande');
             $table->foreign('num_demande')->references('num_demande')->on('demandes');
-            $table->unsignedBigInteger('num_emp');
-            $table->foreign('num_emp')->references('num_emp')->on('employes');
+            $table->unsignedBigInteger('id_vehc');
+            $table->foreign('id_vehc')->references('id_vehc')->on('vehicules');
 
             $table->timestamps();
         });
@@ -34,6 +35,6 @@ class CreatePlanificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planifications');
+        Schema::dropIfExists('rsv_vehicules');
     }
 }
