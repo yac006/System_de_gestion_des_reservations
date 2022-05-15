@@ -9,10 +9,9 @@ use App\Http\Controllers\Notif\NotifController;
 use App\Http\Controllers\Notif\New_account_notif_cont;
 use App\Http\Controllers\MultiPages\MultipagesController;
 use App\Http\Controllers\Full_calendar\full_calendar_controller;
-use App\Models\Employe;
-use App\Models\User;
-use App\Models\Role;
-use App\Models\Secteur;
+
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -77,14 +76,14 @@ Route::get('multiPages/{param}' , [MultipagesController::class , 'verification']
 Route::get('test' , function(){
 
 
-        // $result = User::with('employes')->get();
+        //$result = DB::table('employes')->where('prenom_emp' , "ikken")->get();
+
+        $result = DB::table('demandes')->join('employes' , 'num_demande' , '=' , 'employes.num_emp')
+                        ->where('date_dmnd' , '2022-05-10')->get()->first();     
         
-        // echo $result[0]['employes']->first()->poste ; 
-
-        $result = Employe::with('demandes')->get();
+        echo $result->prenom_emp ;
 
 
-        echo  $result; 
 
 });
 

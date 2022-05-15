@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValidationTable extends Migration
+class CreateValidationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateValidationTable extends Migration
      */
     public function up()
     {
-        Schema::create('validation', function (Blueprint $table) {
+        Schema::create('validations', function (Blueprint $table) {
             $table->id();
             $table->date('date_val');
             $table->boolean('valider');
@@ -33,6 +33,6 @@ class CreateValidationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('validation');
+        Schema::dropIfExists('validations');
     }
 }

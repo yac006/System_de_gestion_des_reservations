@@ -22,8 +22,8 @@ class CreateEmployerTable extends Migration
             $table->string('tele');
             $table->unsignedBigInteger('num_secteur');
             $table->foreign('num_secteur')->references('num_secteur')->on('secteurs');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->unsignedBigInteger('prfl_id');
+            $table->foreign('prfl_id')->references('prfl_id')->on('profiles');
 
             $table->timestamps();
         });
