@@ -7,7 +7,11 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Events\new_account;
+use App\Models\Notification;
+use App\Models\User;
+
 
 
 class RegisterController extends Controller
@@ -47,13 +51,24 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'remember_token' => $request->_token,
-            'is_admin' => 0,
-            'avatar_path' => $request->avatar_path,
-        ]);
+                        'pseudo' => $request->pseudo,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'avatar_path' => $request->avatar_path ,
+                    ]);
+        //Recuperation de user_id et num_secteur dans la table users et la table secteurs                            
+        $user = DB::table('users')->where('pseudo' , $request->pseudo)->get()->first(); 
+        $depart = DB::table('secteurs')->where('nom_secteur' , $request->depart)->get()->first();                           
+
+        DB::table('employes')->insert([
+                                        'nom_emp' => $request->nom_emp ,
+                                        'prenom_emp' => $request->prenom_emp ,
+                                        'poste' => $request->poste ,
+                                        'type' => $request->inlineRadioOptions ,
+                                        'tele' => $request->tele ,
+                                        'num_secteur' => $depart->num_secteur,
+                                        'user_id' => $user->user_id 
+                                    ]);
 
         session(['msg_success' => "Les données a été enregistrer avec succée ...."]);
 
@@ -64,18 +79,18 @@ class RegisterController extends Controller
 
     protected function notif_admin(Request $request)
     {
-        //recuperation des données de "super admin"
-        $super_admin = User::where('name', "yacine")->get()->first();
-        //recuperation des données de "dernier nouveau compte"
-        $last_row = User::all()->last();
-        //send notifications (save in Notification table)
-        \Illuminate\Support\Facades\Notification::send($super_admin , new \App\Notifications\new_account_notif( $last_row->id , $last_row->email , $last_row->created_at ) );
-        //Récuperer le number de notifications qui concerné "Super admin"
-        //count number notification where read_at field = NULL and type = (new_account_notif)
-        $notif_row = Notification::where('notifiable_id' , $super_admin['id'])->where('read_at' , NULL)
+        // //recuperation des données de "super admin"
+        $super_admin = User::where('id_role', 1)->get()->first();
+        // //recuperation des données de "dernier nouveau compte"
+        $last_row = DB::table('users')->get()->last();
+        // //send notifications (save in Notification table)
+        \Illuminate\Support\Facades\Notification::send($super_admin , new \App\Notifications\new_account_notif( $last_row->user_id , $last_row->email , $last_row->created_at ) );
+        // //Récuperer le number de notifications qui concerné "Super admin"
+        // //count number notification where read_at field = NULL and type = (new_account_notif)
+        $notif_row = Notification::where('notifiable_id' , $super_admin->user_id)->where('read_at' , NULL)
         ->where('type' , 'App\Notifications\new_account_notif')->get(); 
         $number_notif = count($notif_row); 
-        //informer le server websokets de nombre notification  
+        // //informer le server websokets de nombre notification  
         broadcast(new new_account($number_notif)); 
 
 

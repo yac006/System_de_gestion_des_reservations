@@ -37,7 +37,7 @@
             <div class="nav-wrapper">
               <ul class="nav flex-column">
                 <div class="cont_user_img">
-                  <img src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" class="rounded-circle">
+                  <img src="{{ asset($arr_data['all_fields_user']->avatar_path) }}" class="rounded-circle">
                   {{-- <span class="spn_user">{{ $arr_data['name'] }}</span> --}}
                 </div>
                 <li class="nav-item accueil_link" style="border-top: 1px solid #e1e5eb">
@@ -202,7 +202,7 @@
       
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                          <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar">
+                          <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']->avatar_path) }}" alt="User Avatar">
                           <span class="d-none d-md-inline-block">{{ $arr_data['name'] }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-small" style="left:-49px">
@@ -351,7 +351,7 @@
                               style="width: 48px; height: 48px" 
                               class="rounded-circle"/>
                           </th>
-                              <th scope="col" class="title_item it_name"></th>
+                              <th scope="col" class="title_item it_name" style="line-height: 2.5"></th>
                               <th scope="col" class="title_item"></th>
                               <th scope="col" class="title_item"></th>
                         </tr>
@@ -364,8 +364,8 @@
                           <td class="it_create_at"></td>
                         </tr>
                         <tr>
-                          <th>Name</th>
-                          <td class="it_name"></td>
+                          <th>Nom</th>
+                          <td class="it_name" style="line-height: 1.5"></td>
                           <th>Modifer en</th>
                           <td class="it_update_at"></td>
                         </tr>
@@ -539,7 +539,7 @@
             $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
 
             //verifier si l'utilisateur est un "super admin" 
-            if ({{$arr_data['is_admin']}} == 11 ) {
+            if ({{$arr_data['id_role']}} == 1 ) {
                 //afficher dans le badge le nombre de notification non lue "without click in notif icon"
                 $.ajax({
                       method: 'GET' ,
@@ -560,7 +560,7 @@
       
             //si l'icon "new_account" a été cliquer 
             $('.account_notif_btn').click(function(){
-                if ({{$arr_data['is_admin']}} == 11) {                              
+                if ({{$arr_data['id_role']}} == 1) {                             
                     $.ajax({
                             method: 'GET' ,
                             url: 'markAsRead2' ,
@@ -579,7 +579,7 @@
 
                                 $.each( new_arr ,function(key,value){
 
-                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="background-color: white;" src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at.replace('.000000Z','').replace('T',' ')+'</i></p></div></a>');
+                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="background-color: white;" src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at+'</i></p></div></a>');
                                 });
 
                                 $(".li_cont2").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="" data-whatever="@mdo"> View all Notifications </button>');
@@ -617,8 +617,8 @@
                       data: {new_user_id: new_user_id} ,
                       success: function (user_account_data){                            
                           //alert((user_account_data['name']));
-                          $(".it_name").text(user_account_data['name']);
-                          $(".it_id").text(user_account_data['id']);
+                          $(".it_name").text(user_account_data['nom_emp']+' '+user_account_data['prenom_emp']);
+                          $(".it_id").text(user_account_data['user_id']);
                           $(".it_email").text(user_account_data['email']);
                           $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z','').replace('T',' '));
                           $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z','').replace('T',' '));

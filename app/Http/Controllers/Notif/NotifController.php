@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Session;
 use App\Events\new_demande_rsv ;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -31,6 +32,7 @@ class NotifController extends Controller
             $rsv_type = $request->type_rsv ;
             $user_name = $request->user_name; 
             //Récuperer les données d'utilisateur Expéditeur (qui envoyer la demande )
+            //$expéd_user =  DB::table('user')::where('name' , $user_name)->get()->first();
             $expéd_user =  User::where('name' , $user_name)->get()->first();
             //Envoyer la demande et enregistrer les donneés dans la bdd
             $admin_user = $request->session()->get('admin_user');
@@ -53,7 +55,9 @@ class NotifController extends Controller
     public function mark_as_read(Request $request){
         // récuperer les enregistrements qui concerner "id" d'utilisateur qui vien de "requéte Ajax"
         // et modifier les champs "read at" vide par le temps et la date actual
-        Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)->where('type' , 'App\Notifications\first_notif')->update(['read_at' => now()]);
+        Notification::where('notifiable_id' , $request->user_id)->where('read_at' , NULL)
+                    ->where('type' , 'App\Notifications\first_notif')
+                    ->update(['read_at' => now()]);
         //response with new list of notification updated 
         $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)->where('type' , 'App\Notifications\first_notif')->get();
 

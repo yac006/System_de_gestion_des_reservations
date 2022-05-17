@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Sessions\SessionsController;
+use Illuminate\Support\Facades\DB;
+
 
 class LoginController extends Controller
 {
@@ -39,16 +41,15 @@ class LoginController extends Controller
 
     public function checkUsers(Request $request){
 
-        $results = User::where('email' , $request->email)->get();
+        //$results = User::where('email' , $request->email)->get();
+        $results = DB::table('users')->where('email' , $request->email)->get();
 
         //Verification si l'email exist dans la bdd
         if(count($results) == 0){//change
             session(['msg_error_email' => "Email ou Mot de pass incorrect !!"]);
             return view('auth.login');
         }
-
         $results = $results->first();  
-    
         //Verification si le mot de pass est correcte
         $check_password = Hash::check($request->password , $results->password);
 
@@ -60,10 +61,6 @@ class LoginController extends Controller
         $email_var = $results->email ; 
         //dd($email_var);
         $request->session()->put('email_var', $email_var);
-
-        //pass l'email d'utilisateur pour le controller (SessionsController) "store_session_data func"
-        // $inst = new SessionsController;
-        // $inst->store_session_data($email_var);
 
         return redirect('storeInSession');
     }
