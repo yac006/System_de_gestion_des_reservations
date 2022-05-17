@@ -19,6 +19,7 @@
                   })
             </script>
         @endif
+        <!-- ------------------------------------------------- -->
 
         <!-- NavBar -->
         <nav class="navbar navbar-dark bg-primary">
@@ -45,7 +46,6 @@
 
         <!-- Main container  -->             
         <div class="main_cont">
-              <!--  @include('../pages/Circle_Menu') -->
               @include('../pages/simple_menu') 
         </div> 
         <!-- Main container Ends -->
@@ -66,19 +66,8 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="nom_expidéteur" class="col-form-label">Nom & Prénom</label>
-                        <input type="text" class="form-control" id="nom_expidéteur">
-                      </div>
-                      <div class="form-group">
-                        <label for="tp_réservation" class="col-form-label">Type de réservation</label>
-                        <select class="form-control" id="tp_réservation" name="type_rsv">
-                          <option>Salle</option>
-                          <option>Vehicule</option>
-                      </select>
-                      </div>
-                    </form>
+
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -110,7 +99,7 @@
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
                     <div class="mb-3 mx-auto">
-                      <img class="rounded-circle" src="{{ asset($arr_data['all_fields_user']['avatar_path']) }}" alt="User Avatar" width="110"> </div>
+                      <img class="rounded-circle" src="{{ asset($arr_data['all_fields_user']->avatar_path) }}" alt="User Avatar" width="110"> </div>
                     <h4 id="h4_user_name" class="mb-0">{{ $arr_data['name'] }}</h4>
                     <span class="text-muted d-block mb-2">Project Manager</span>
                     <a href="{{ route('logout') }}" type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2"> 

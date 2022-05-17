@@ -207,3 +207,28 @@ body {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+/***************************/
+.rad_btn_cont{
+	margin: 30px auto;
+}
+.cont_labl_inpt{
+	position: relative;
+    top: -18px;
+    margin-left: 17px;
+}
+.salles_form_cont{
+	display: none;
+}
+.vehc_form_cont{
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
