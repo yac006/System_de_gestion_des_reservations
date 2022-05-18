@@ -53,7 +53,7 @@ $(document).ready(function () {
 });
 
 
-/*********  Model réservation script  *********/
+/********* --------- Model réservation script --------- *********/
 $(document).ready(function (){
 	
 	$("#btn_next").click(function(){
@@ -62,13 +62,18 @@ $(document).ready(function (){
 		
 		if( radio_btn_val == "Salles" ){
 			$(".salles_form_cont").show();
-			$(".rad_btn_cont").hide();	
+			$(".rad_btn_cont").hide();
+            $(".modal_dlg_rsv").css("max-width" , "700px");
+            $("#btn_next").hide();
+            $("#btn_envoyer").show();
 			
 		}else{	
 			if(radio_btn_val == "Vehicules"){
 				$(".vehc_form_cont").show();
 				$(".rad_btn_cont").hide();
-				
+                $(".modal_dlg_rsv").css("max-width" , "700px");
+                $("#btn_next").hide();
+                $("#btn_envoyer").show();
 			}
 		};
 		
@@ -79,6 +84,9 @@ $(document).ready(function (){
 		$(".vehc_form_cont").hide();
 		$(".salles_form_cont").hide();
 		$(".rad_btn_cont").show();
+        $(".modal_dlg_rsv").css("max-width" , "500px");
+        $("#btn_envoyer").hide();
+        $("#btn_next").show();
 		
 		
 		

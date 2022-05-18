@@ -209,7 +209,9 @@ body {
 }
 /***************************/
 .rad_btn_cont{
-	margin: 30px auto;
+	margin: 20px auto;
+	height: 128px;
+    /*background: red;*/
 }
 .cont_labl_inpt{
 	position: relative;
@@ -223,6 +225,27 @@ body {
 	display: none;
 }
 
+.modal_dlg_rsv{
+	margin:5.55rem auto;
+	max-width: 713px !important;
+}
+
+.salles_form_cont .row{
+	margin: 22px auto;
+	/*margin-bottom:10px;*/
+}
+
+.icon_inpt_container{
+	width: 44%;
+    height: 127px;
+	float:left;
+    border: dotted 1px gray;
+    text-align: center;
+    border-radius: 16px;
+    padding-top: 24px;
+	display:inline;
+	
+}
 
 
 
