@@ -8,9 +8,4 @@
 
 ![Annotation 2022-09-12 181909257](https://user-images.githubusercontent.com/78097243/215291394-dd69934c-6275-45ce-9761-5c4f007cc233.png)
 
-![Annotation 2022-09-12 1819092578077](https://user-images.githubusercontent.com/78097243/215291402-43d1c1b7-f4ba-4e10-b42f-5aa8228dc18f.png)
-
-![Annotation 2022-09-12 1819092578077121](https://user-images.githubusercontent.com/78097243/215291404-6e9b7e93-3ecc-4de2-96c5-62f771b400ea.png)
-
-
 
