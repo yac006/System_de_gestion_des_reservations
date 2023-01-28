@@ -18,17 +18,24 @@ class verification_demande_rsv
     public function handle(Request $request, Closure $next)
     {
 
-            if ($request->type_rsv == "Salle") {
-                $admin_user = User::where('name' , "yacine")->get()->first();
-                $request->session()->put('admin_user' , $admin_user);
+            if ($request->type_rsv == "Salles") {
+                
+                $request->session()->put('admin_users' , 
+                [
+                    'chef' => User::where('id_role' , 5)->get()->first(),
+                    'resp' => User::where('id_role' , 6)->get()->first(),
+                ]);
             }
 
-            if ($request->type_rsv == "Vehicule") {
-                $admin_user = User::where('name' , "ali")->get()->first();
-                $request->session()->put('admin_user' , $admin_user);
+            if ($request->type_rsv == "Vehicules") {
+
+                $request->session()->put('admin_users' , 
+                [
+                    'chef'  => User::where('id_role' , 3)->get()->first(),
+                    'resp' => User::where('id_role' , 4)->get()->first(),
+                ]);
             }
         
-
-        return $next($request); //vers (sendNotif) route
+        return $next($request); //vers "insertData" route
     }
 }

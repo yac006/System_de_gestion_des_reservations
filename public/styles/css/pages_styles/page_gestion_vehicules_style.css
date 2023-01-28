@@ -1,0 +1,25 @@
+#add_vech_btn{
+	position: absolute;
+    right: 338px;
+    top: 143px;
+	z-index: 30;
+}
+
+#vehc_table button{
+	padding: 7px;
+    margin-left: 11px;
+    width: 80px;
+}
+
+#insertVehcModal .row{
+	margin-bottom : 20px;
+}
+
+#insertVehcModal .row .col input{
+	padding: 9px;
+}
+
+#insertVehcModal .row #input_slct_type_vehc{
+	width: 94%;
+    margin-left: 14px;
+}

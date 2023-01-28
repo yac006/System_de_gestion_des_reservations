@@ -5,230 +5,28 @@
 
 @section('content')
 <!-- Stockage des données de la session d'utilisateur dans la variable "arr_data" -->
-<?php  $arr_data = Session::get(Session::get('user_email'))  ?>
+@php
+    $arr_data = Session::get(Session::get('user_id_var'))   
+@endphp  
 
+<!-- ------------------------------  -->
+<input type="text" id="user_id_input" value="{{ $arr_data['id'] }}" hidden>
+<input type="text" id="user_id_role_input" value="{{ $arr_data['id_role'] }}" hidden>
+<!-- ------------------------------  -->
 
       <div class="container-fluid">
         <div class="row">
           <!-- Main Sidebar -->
-          <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
-            <div class="main-navbar">
-              <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-                <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
-                  <div class="d-table m-auto">
-                    <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{asset('images/shards-dashboards-logo.svg')}}" alt="Shards Dashboard">
-                    <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
-                  </div>           
-                </a>
-                <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
-                  <i class="material-icons">&#xE5C4;</i>
-                </a>
-              </nav>
-            </div>
-            <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
-              <div class="input-group input-group-seamless ml-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fas fa-search"></i>
-                  </div>
-                </div>
-                <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
-            </form>
-            <div class="nav-wrapper">
-              <ul class="nav flex-column">
-                <div class="cont_user_img">
-                  <img src="{{ asset($arr_data['all_fields_user']->avatar_path) }}" class="rounded-circle">
-                  {{-- <span class="spn_user">{{ $arr_data['name'] }}</span> --}}
-                </div>
-                <li class="nav-item accueil_link" style="border-top: 1px solid #e1e5eb">
-                  <a class="nav-link accueil_a" href="{{ route('multiPages' , $param = "accueil")}}">                    
-                    <i class="material-icons">home</i>
-                    <span>Accueil</span>
-                  </a>
-                </li>
-                <li class="nav-item pln_salles_link">
-                  <a class="nav-link pln_salles_a" href="{{ route('multiPages' , $param = "pln_salles") }}" >
-                    <i class="material-icons">date_range</i>
-                    <span>Planning de Salles</span>
-                  </a>
-                </li>
-                <li class="nav-item suivi_rsv_link">
-                  <a class="nav-link " href="{{ route('multiPages' , $param = "suivi_rsv") }}">
-                    <i class="material-icons">vertical_split</i>
-                    <span>Suivi des Réservations</span>
-                  </a>
-                </li>
-                <li class="nav-item contact_link">
-                  <a class="nav-link " href="{{ route('multiPages' , $param = "contact") }}">
-                    <i class="material-icons">mail</i>
-                    <span>Contact &amp; Email</span>
-                  </a>
-                </li>
-                <li class="nav-item admin_link">
-                  <a class="nav-link " href="{{ route('multiPages' , $param = "administration") }}">
-                    <i class="material-icons">person</i>
-                    <span>Administration</span>
-                  </a>
-                </li>
-                <li class="nav-item param_link">
-                  <a class="nav-link " href="">
-                    <i class="material-icons">settings</i>
-                    <span>Paramètres</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </aside>
+          @include('components.main_sidebar')
           <!-- End Main Sidebar -->
   
           <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
             <!-- Main Navbar -->
-            <div class="main-navbar sticky-top bg-white">
-              <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                    <!-- Search form -->
-                    <div class="input-group">
-                          <div class="form-group has-search">
-                              <i class="form-control-feedback material-icons" style="top:6px">search</i>
-                              <input type="text" class="form-control" placeholder="Search" style="border-radius: 15px;">
-                          </div>
-                    </div>  
-                    <ul class="navbar-nav border-left flex-row ">
-                      <!-- li 01 -->
-                      <li class="nav-item border-right dropdown notifications">
-                        <a class="nav-link nav-link-icon text-center account_notif_btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                          <div class="nav-link-icon__wrapper">
-                            <i class="zmdi zmdi-accounts-alt" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                            <span id="account_notif_badge" class="badge badge-pill badge-danger"></span>
-                          </div>
-                        </a>
-                        <!-- drop down menu-->
-                        <div class="dropdown-menu dropdown-menu-small li_cont2" aria-labelledby="dropdownMenuLink" style="min-width: 27rem">
-                          {{-- <a class="dropdown-item" href="#">
-                            <div class="notification__icon-wrapper">
-                              <div class="notification__icon">
-                                <i class="material-icons">&#xE6E1;</i>
-                              </div>
-                            </div>
-                            <div class="notification__content">
-                              <span class="notification__category">Analytics</span>
-                              <p>Your website’s active users count increased by
-                                <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                            </div>
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <div class="notification__icon-wrapper">
-                              <div class="notification__icon">
-                                <i class="material-icons">&#xE8D1;</i>
-                              </div>
-                            </div>
-                            <div class="notification__content">
-                              <span class="notification__category">Sales</span>
-                              <p>Last week your store’s sales count decreased by
-                                <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                            </div>
-                          </a> --}}
-                          {{-- <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a> --}}
-                        </div>
-                      </li>
-                      <!-- //////// -->
-                      <li class="nav-item border-right dropdown notifications">
-                        <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <div class="nav-link-icon__wrapper">
-                            <i class="zmdi zmdi-email" style="color:#c3c7cc; font-size: 1.4925rem; margin-top: -3px;"></i>
-                            <span hidden class="badge badge-pill badge-danger"></span>
-                          </div>
-                        </a>
-                        <!-- drop down menu-->
-                        <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="#">
-                            <div class="notification__icon-wrapper">
-                              <div class="notification__icon">
-                                <i class="material-icons">&#xE6E1;</i>
-                              </div>
-                            </div>
-                            <div class="notification__content">
-                              <span class="notification__category">Analytics</span>
-                              <p>Your website’s active users count increased by
-                                <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                            </div>
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <div class="notification__icon-wrapper">
-                              <div class="notification__icon">
-                                <i class="material-icons">&#xE8D1;</i>
-                              </div>
-                            </div>
-                            <div class="notification__content">
-                              <span class="notification__category">Sales</span>
-                              <p>Last week your store’s sales count decreased by
-                                <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                            </div>
-                          </a>
-                          <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                        </div>
-                      </li>
-                      <!-- end li 01 -->
-      
-                      <!-- li 02 -->
-                      <li class="nav-item border-right dropdown notifications principale_li">
-                        <a class="nav-link nav-link-icon text-center notif_btn" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <div class="nav-link-icon__wrapper">
-                            <i class="material-icons">&#xE7F4;</i>
-                            <span id="notif_badge" class="badge badge-pill badge-danger"></span>
-                          </div>
-                        </a>
-                        
-                        <div class="dropdown-menu dropdown-menu-small li_cont" aria-labelledby="dropdownMenuLink" style="max-height: 567px; overflow:auto;">
-                          <!-- first Notif  -->
-                          {{-- @foreach( $arr_data['all_fields_user']['notifications']  as $notif)
-                              <a class="dropdown-item" id="notif_item"  data-toggle="modal" data-target="" data-whatever="@mdo">
-                                <div class="notification__icon-wrapper">
-                                  <div class="notification__icon">
-                                    <i class="material-icons">&#xE6E1;</i>
-                                  </div>
-                                </div>
-                                <div class="notification__content">
-                                  <span class="notification__category">{{ $notif->data['nom_expd'] }}</span>  
-                                  <p>Vous avez reçue une demande par<span class="text-success text-semibold">{{ $notif->data['nom_expd'] }}</span> pour une réservation d'une salle</p> 
-                                </div>
-                              </a>
-                          @endforeach --}}
-                          <!-- first Notif Ends -->
-                          
-                          {{-- <button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button> --}}
-                        </div>
-                      </li>
-                      <!-- end li 02 -->
-      
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-nowrap px-3" id="img_cont" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                          <img class="user-avatar rounded-circle mr-2" src="{{ asset($arr_data['all_fields_user']->avatar_path) }}" alt="User Avatar">
-                          <span class="d-none d-md-inline-block">{{ $arr_data['name'] }}</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-small" style="left:-49px">
-                          <a class="dropdown-item" href="user-profile-lite.html">
-                            <i class="material-icons">&#xE7FD;</i> Profile</a>
-                          <a class="dropdown-item" href="components-blog-posts.html">
-                            <i class="material-icons">vertical_split</i> Blog Posts</a>
-                          <a class="dropdown-item" href="add-new-post.html">
-                            <i class="material-icons">note_add</i> Add New Post</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="{{ route('logout')}}">
-                            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
-                        </div>
-                      </li>
-                    </ul>
-                    <nav class="nav">
-                      <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
-                        <i class="material-icons">&#xE5D2;</i>
-                      </a>
-                    </nav>
-              </nav>
-            </div>
+            @include('components.main_navbar')
             <!-- / .main-navbar ends-->
   
   
-            <!-- ----- Models ----- -->
+            <!-- ----- *********** Models *********** ----- -->
             <!-- Model qui affiche la list de tout les notifications --> 
             <div class="modal fade" id="all_notif_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document" style="left:124px">
@@ -299,6 +97,9 @@
                     </button>
                   </div>
                   <div class="modal-body">
+
+                
+                        
                     ...
                   </div>
                   <div class="modal-footer">
@@ -311,7 +112,7 @@
 
             <!-- Model qui affiche les information de notification --> 
             <div class="modal fade" id="Modal_show_notif_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document" style="max-width:560px;">
+              <div class="modal-dialog" role="document" style="max-width:648px;">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Détails</h5>
@@ -319,12 +120,98 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body" style="padding: 32px;">
-                          @include('../pages.small_table')
+                  <div class="modal-body" style="padding: 32px; height: 310px; margin-bottom: 12px; margin-top:-12px">
+                          {{-- @include('../pages.small_table') --}}
+                          <div class="card card-margin card_container">
+                            {{-- <div class="card-header no-border">
+                                <h5 class="card-title">Num :</h5>
+                            </div> --}}
+                            <div class="card-body pt-0 new_body_card">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
+                                        <div class="widget-49-date-primary">
+                                            <span class="widget-49-date-day" id="spn_day">?</span>
+                                            <span class="widget-49-date-month" id="spn_month">?</span>
+                                        </div>
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">Num demande : <span id="num_dmnd"></span></span>
+                                            <span class="widget-49-meeting-time"><span id="date_dmnd"></span></span>
+                                        </div>
+                                    </div>
+                                    <!--------- DEMANDE SALLES  ---------->
+                                    <ol class="widget-49-meeting-points" id="_for_salles">
+                                      <div class="row">
+                                        <div class="col-md-7">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Type demande :</span><span id="type_dmnd"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item" ><span><span class="chmp_style">Heur début :</span><span id="heur_d"> ? </span></span></li>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-7">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Date réservation :</span><span id="date_rsv_sal"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Heur fin :</span><span id="heur_f"> ? </span></span></li>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-7">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Salle :</span><span id="salle"> ? </span></span></li>
+                                        </div>
+                                      </div>   
+                                    </ol>
+                                    <!--------- DEMANDE VEHICULES  ---------->
+                                    <ol class="widget-49-meeting-points" id="_for_vehc">
+                                      <div class="row">
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Type demande :</span><span id="type_dmnd_v"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <li class="widget-49-meeting-item" ><span><span class="chmp_style">Date réservation :</span><span id="date_rsv_vehc"> ? </span></span></li>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Motif :</span><span id="motif"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Déstination :</span><span id="dest"> ? </span></span></li>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Date départ :</span><span id="date_dep"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Date estimé de retour :</span><span id="date_est_retr"> ? </span></span></li>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-md-5">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Heure départ :</span><span id="heure_dep"> ? </span></span></li>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Heure retour :</span><span id="heure_retr"> ? </span></span></li>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-md-8">
+                                          <li class="widget-49-meeting-item"><span><span class="chmp_style">Type vehicule :</span><span id="vehicule"> ? </span></span></li>
+                                        </div>
+                                      </div>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Refuser</button>
-                    <button type="button" class="btn btn-primary">Valider</button>
+                  <div class="modal-footer modal_ftr_dmnd_info">
+                    <button type="button" class="btn btn-secondary" id="btn_reject">Refuser</button>
+                    <button type="button" class="btn btn-primary" id="btn_valider">Valider</button>
                   </div>
                 </div>
               </div>
@@ -332,7 +219,7 @@
 
             <!-- Model qui affiche les informations de la notification de nouveau compte-->
             <div class="modal fade" id="Modal_notif_nv_account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document" style="max-width: 600px;">
+              <div class="modal-dialog" role="document" style="max-width: 635px;">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Detail</h5>
@@ -351,23 +238,28 @@
                               style="width: 48px; height: 48px" 
                               class="rounded-circle"/>
                           </th>
-                              <th scope="col" class="title_item it_name" style="line-height: 2.5"></th>
+                              <th scope="col" class="title_item it_pseudo" style="line-height: 2.5"></th>
                               <th scope="col" class="title_item"></th>
                               <th scope="col" class="title_item"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th>Id</th>
-                          <td class="it_id"></td>
-                          <th>Creé en</th>
-                          <td class="it_create_at"></td>
-                        </tr>
+                        <!-- --------- -->
+                        <input type="text" id="inpt_id" value="" hidden>
+                        <!-- --------- -->
+                        
+
                         <tr>
                           <th>Nom</th>
                           <td class="it_name" style="line-height: 1.5"></td>
-                          <th>Modifer en</th>
+                          <th>Prénom</th>
+                          <td class="it_prenom"></td>
+                        </tr>
+                        <tr>
+                          <th>Modifiée le</th>
                           <td class="it_update_at"></td>
+                          <th>Crée le</th>
+                          <td class="it_create_at"></td>
                         </tr>
                         <tr>
                           <th>Email</th>
@@ -386,19 +278,29 @@
               </div>
             </div><!-- Model ends -->
 
+  
 
-            <!-- --- Models ends --- -->
+            <!-- --- *********** Models ends *********** --- -->
 
 
 
             <!-- ***** content-container ***** -->
             <div class="main-content-container container-fluid px-4">
-                @if (Session::has('dashboard') or Session::has('pln_salle') or Session::has('administration') or Session::has('suivi_rsv'))
+
+                @if (Session::has('dashboard') or Session::has('Planifications') or Session::has('administration') or Session::has('suivi_rsv')
+                or Session::has('Demandes') or Session::has('gest_employes') or Session::has('admin_rsv')
+                or Session::has('gest_salles') or Session::has('gest_vehicules'))
                       @includeWhen(Session::get('dashboard') , '../pages.dashboard')
-                      @includeWhen(Session::get('pln_salle') , '../pages.planning_salles')
+                      @includeWhen(Session::get('Planifications') , '../pages.planning_reservations')
                       @includeWhen(Session::get('administration') , '../pages.administration')
                       @includeWhen(Session::get('suivi_rsv') , '../pages.suivi_des_reservations')
                       @includeWhen(Session::get('contact') , '../pages.contact_page')
+                      @includeWhen(Session::get('Demandes') , '../pages.demandes')
+                      @includeWhen(Session::get('gest_employes') , '../pages.gestion_des_employées')
+                      @includeWhen(Session::get('admin_rsv') , '../pages.admins_reservations')
+                      @includeWhen(Session::get('gest_salles') , '../pages.gestion_salles')
+                      @includeWhen(Session::get('gest_vehicules') , '../pages.gestion_vehicules')
+
                 @else
                       @includeWhen($dashboard = true , '../pages.dashboard')
                 @endif
@@ -409,8 +311,8 @@
             <!-- ***** content-container ends ***** -->
             
             <footer class="main-footer d-flex p-2 px-3 bg-white border-top" style="height: 2.50rem; font-size:13px">
-              <span class="copyright ml-auto my-auto mr-2">Copyright © 2018
-                <a href="https://designrevision.com" rel="nofollow">DesignRevision</a>
+              <span class="copyright ml-auto my-auto mr-2">Copyright © 2022
+                <a href="#" rel="nofollow" style="color:orange">Ikken Yacine <span style="color:gray">&</span> Taggeub Ali</a>
               </span>
             </footer>
           </main>
@@ -420,254 +322,500 @@
 
 @section('ajax_script')
 <script>
-    
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+        
     $(document).ready(function(){//*** NOTIFICATIONS CONCERNE LES DEMANDE DE RESERVATION **//
 
-            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+          //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+          let user_id = {{ $arr_data['id'] }} ;
+          $.ajax({
+                    method: 'GET' ,
+                    url: 'showNotifBadge' ,
+                    data: {user_id: user_id} ,
+                    success: function (number_notif){                            
+                        if (number_notif > 0) {
+                          $("#notif_badge").show();
+                          $("#notif_badge").text(number_notif);
+                        }  
+                    },
+                    error: function (){
+                          alert("Error Ajax !!!");
+                    }
+                  })//end ajax;
+          
+          //si l'icon notification a été cliquer 
+          $('.notif_btn').click(function(){
+                  
+                  let user_id = {{$arr_data['id']}} ;                               
 
-            //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+                  $.ajax({
+                          method: 'GET' ,
+                          url: 'markAsRead' ,
+                          data: { user_id : user_id } ,
+                          success: function (data){
+                              //Cacher le badge                        
+                              $("#notif_badge").hide();
+                              console.log(data);  
+                              var new_arr = [];
+
+                              for (let i = 0; i < data.length; i++) { 
+                                var objects = JSON.parse(data[i]['data']);
+                                objects.num_notif = JSON.parse(data[i]['num_notif']);
+                                new_arr.push(objects);
+                              }; 
+                              //console.log(new_arr);
+                              $(".li_cont").empty(); //vider la list 
+
+                              $.each( new_arr ,function(key ,value){
+                                      $(".li_cont").prepend('<a class="dropdown-item notif_item" id="'+value.num_notif+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="width:20px ; height: 20px ; border-radius:30px"  src="'+value.avatar_path+'" /></div></div><div class="notification__content"><span class="notification__category">'+value.nom+' '+value.prenom+'</span><p>Vous avez reçue une demande de <span class="text-success text-semibold">'+value.nom+' '+value.prenom+'</span> pour une réservation.</p></div></a>');
+                              });
+
+                              $(".li_cont").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>');
+                              
+                          },
+                          error: function (){
+                              alert("Error Ajax !!!");
+                          }
+                  });
+          });
+
+          
+          //si le button view all notifications a été cliquer 
+          $('.li_cont').on('click' , '#view_all_ntf_btn' , function(){
+            //alert('delegation is work ...');
             let user_id = {{ $arr_data['id'] }} ;
             $.ajax({
-                      method: 'GET' ,
-                      url: 'showNotifBadge' ,
-                      data: {user_id: user_id} ,
-                      success: function (number_notif){                            
-                          if (number_notif > 0) {
-                            $("#notif_badge").show();
-                            $("#notif_badge").text(number_notif);
-                          }  
-                      },
-                      error: function (){
-                              alert("Error Ajax !!!");
-                      }
-                    });
+                    method: 'GET' ,
+                    url: 'retriveAllNotif' ,
+                    data: {user_id: user_id} ,
+                    success: function (data){
+                        //alert(data);
+                        var new_arr = [];
+                        for (let i = 0; i < data.length; i++) {
+                          let objects = JSON.parse(data[i]['data']); 
+                          new_arr.push(objects);
+                        };
+
+                        $(".principle_cont").empty(); //vider la list
+
+                        $.each( new_arr ,function(key,value){
+                          //console.log(value.avatar_path);
+                          $(".principle_cont").prepend('<div class="col-md-12 col-sm-12" style="padding:0"><div class="card card-small blog-comments notif_box"><div class="card-body p-0"><div class="blog-comments__item d-flex p-3"><div class="blog-comments__avatar mr-3"><img src="'+value.avatar_path+'" alt="User avatar" /></div><div class="blog-comments__content"><div class="blog-comments__meta text-muted"><a class="text-secondary" href="#" >'+value.nom_expd+'</a> a été demander une réservation d une <a class="text-secondary" href="#">'+value.type+'</a><span class="text-muted">– 3 days ago</span></div><p class="m-0 my-1 mb-2 text-muted"></p><div class="blog-comments__actions"><div class="btn-group btn-group-sm"><button type="button" class="btn btn-white"><span class="text-success"><i class="material-icons">check</i></span>valider</button><button type="button" class="btn btn-white"><span class="text-danger"><i class="material-icons">clear</i></span>supprimer</button><button type="button" class="btn btn-white"><span class="text-light"><i class="material-icons">more_vert</i></span>voir</button></div></div></div></div></div></div></div>');
+                        });
+
+
+                    },
+                    error: function (){
+                            alert("Error Ajax !!!");
+                    }
+                  });
+          });  
+          
+          
+          //si une notification a été cliquer 
+          $('.li_cont').on('click' , '.notif_item' , function(){
             
-            //si l'icon notification a été cliquer 
-            $('.notif_btn').click(function(){
-                    
-                    let user_id = {{$arr_data['id']}} ;                               
+                $("#Modal_show_notif_data").modal('show');
 
-                    $.ajax({
-                            method: 'GET' ,
-                            url: 'markAsRead' ,
-                            data: { user_id : user_id } ,
+                function animation_func() {  
+                    $(".card_container").css('opacity','0'); 
+                    $(".card_container").css('top','-17px');
+                    $(".card_container").css('left','-27px');
+                    //Animation pour modal d'affichage les informations de demande 
+                    $(".card_container").animate({opacity:'1' , top:'3px' , left:'0px'} , 2000);
+                }
+                
+                animation_func(); //call func
+                
+                let user_id_role = $("#user_id_role_input").val(); 
+                
+                let notif_id = $(this).attr('id');
 
-                            success: function (data){
-                                //Cacher le badge                        
-                                $("#notif_badge").hide();
+                //Verifier si l'admin est un chef depart
+                // if (user_id_role !== 3 || user_id_role !== 5) {
+                //     $(".modal_ftr_dmnd_info button").prop('disabled' , true);
+                // } 
+                
 
-                                //console.log(data);  
-                                var new_arr = [];
+                //alert(notif_id);
 
-                                for (let i = 0; i < data.length; i++) {
-                                  
-                                  let objects = JSON.parse(data[i]['data']); 
-
-                                  new_arr.push(objects);
-                                }; 
-                                //console.log(new_arr);
-                                $(".li_cont").empty(); //vider la list 
-
-                                $.each( new_arr ,function(key,value){
-
-                                        $(".li_cont").prepend('<a class="dropdown-item notif_item" id="'+value.user_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="width:20px ; height: 20px ; border-radius:30px"  src="'+value.avatar_path+'" /></div></div><div class="notification__content"><span class="notification__category">'+value.user_name+'</span><p>Vous avez reçue une demande par <span class="text-success text-semibold">'+value.user_name+'</span> pour une réservation d une salle</p></div></a>');
-                                });
-
-                                $(".li_cont").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="#all_notif_modal" data-whatever="@mdo"> View all Notifications </button>');
-                                
-                            },
-                            error: function (){
-                                alert("Error Ajax !!!");
-                            }
-                    });
-            });
-
-            
-            //si le button view all notifications a été cliquer 
-            $('.li_cont').on('click' , '#view_all_ntf_btn' , function(){
-
-              //alert('delegation is work ...');
-
-              let user_id = {{ $arr_data['id'] }} ;
-              $.ajax({
-                      method: 'GET' ,
-                      url: 'retriveAllNotif' ,
-                      data: {user_id: user_id} ,
-                      success: function (data){
-                          //alert(data);
-                          var new_arr = [];
-                          for (let i = 0; i < data.length; i++) {
-                            
-                            let objects = JSON.parse(data[i]['data']); 
-                            new_arr.push(objects);
-                          };
-
-                          $(".principle_cont").empty(); //vider la list
-
-                          $.each( new_arr ,function(key,value){
-                            //console.log(value.avatar_path);
-                            $(".principle_cont").prepend('<div class="col-md-12 col-sm-12" style="padding:0"><div class="card card-small blog-comments notif_box"><div class="card-body p-0"><div class="blog-comments__item d-flex p-3"><div class="blog-comments__avatar mr-3"><img src="'+value.avatar_path+'" alt="User avatar" /></div><div class="blog-comments__content"><div class="blog-comments__meta text-muted"><a class="text-secondary" href="#" >'+value.nom_expd+'</a> a été demander une réservation d une <a class="text-secondary" href="#">'+value.type+'</a><span class="text-muted">– 3 days ago</span></div><p class="m-0 my-1 mb-2 text-muted"></p><div class="blog-comments__actions"><div class="btn-group btn-group-sm"><button type="button" class="btn btn-white"><span class="text-success"><i class="material-icons">check</i></span>valider</button><button type="button" class="btn btn-white"><span class="text-danger"><i class="material-icons">clear</i></span>supprimer</button><button type="button" class="btn btn-white"><span class="text-light"><i class="material-icons">more_vert</i></span>voir</button></div></div></div></div></div></div></div>');
-                          });
-
-
-                      },
-                      error: function (){
-                              alert("Error Ajax !!!");
-                      }
-                    });
-            });  
-            
-            
-            //si une notification a été cliquer 
-            $('.li_cont').on('click' , '.notif_item' , function(){
-
-                  $("#Modal_show_notif_data").modal('show');
-
-
-                  //alert($(this).attr('id')); 
-                  
-                  
-
-
-            });
-    });
-
-
-
-    $(document).ready(function(){//*** NOTIFICATIONS CONCERNE LES NOUVEAUX COMPTES **//
-
-            $.ajaxSetup({ headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
-
-            //verifier si l'utilisateur est un "super admin" 
-            if ({{$arr_data['id_role']}} == 1 ) {
-                //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+                //Afficher les information de la demande 
                 $.ajax({
                       method: 'GET' ,
-                      url: 'showNotifBadge2' ,
-                      data: {} ,
-                      success: function (number_notif){                            
-                          if (number_notif > 0) {
-                            $("#account_notif_badge").show();
-                            $("#account_notif_badge").text(number_notif);
-                          }  
-                      },
-                      error: function (){
-                              alert("Error Ajax !!!");
-                      }
-                  });
-            };
-            
-      
-            //si l'icon "new_account" a été cliquer 
-            $('.account_notif_btn').click(function(){
-                if ({{$arr_data['id_role']}} == 1) {                             
-                    $.ajax({
-                            method: 'GET' ,
-                            url: 'markAsRead2' ,
-                            data: {} ,
-                            success: function (data){
-                                //Cacher le badge                        
-                                $("#account_notif_badge").hide();
-                                //console.log(data);  
-                                var new_arr = [];
-                                for (let i = 0; i < data.length; i++) {
-                                  let objects = JSON.parse(data[i]['data']); 
-                                  new_arr.push(objects);
-                                }; 
-                                //console.log(new_arr);
-                                $(".li_cont2").empty(); //vider la list 
+                      url: 'DisplayNotifData' ,
+                      data: {notif_id: notif_id} ,
+                      success: function (json_data){  
+                          //console.log(json_data[0]);
+                          function product_month_name() {
+                              var month_nbr = json_data[0]['date_rsv'].substring(5,7);
+                              //var date = json_data[0]['date_rsv'];
+                              let date = new Date(2022, (parseInt(month_nbr)-1), 21);//in test
+                              var month_name = date.toLocaleString('en-us', { month: 'short' }); /* Jun */
+                              return month_name ; 
+                          }
 
-                                $.each( new_arr ,function(key,value){
+                          function get_day() {
+                              var day = json_data[0]['date_rsv'].substring(8,10);
+                              return day ;
+                          }
 
-                                        $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="background-color: white;" src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> en <i style="color:#000000">'+value.created_at+'</i></p></div></a>');
-                                });
+                          function random_color() {
+                              let array_colors = [ '#17c671' , '#ffb400' , '#007bff'];
+                              var randomItem = array_colors[Math.floor(Math.random()*array_colors.length)];
+                              $("#spn_day").css('color', randomItem);
+                              $("#spn_month").css('color', randomItem);
+                          }
 
-                                $(".li_cont2").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="" data-whatever="@mdo"> View all Notifications </button>');
+                          //alert(random_color());
+                          random_color()
+
+                          function set_data_for_sal_form() {
+                              $("#spn_day").text(get_day());
+                              $("#spn_month").text(product_month_name);
+
+                              $("#num_dmnd").text(json_data[0]['num_demande']);
+                              $("#date_dmnd").text(json_data[0]['date_dmnd']);
+                              $("#type_dmnd").text(json_data[0]['type_dmnd']);
+                              $("#date_rsv_sal").text(json_data[0]['date_rsv']);
+                              $("#heur_d").text(json_data[0]['heur_d'].replace(':00.0000000',''));
+                              $("#heur_f").text(json_data[0]['heur_f'].replace(':00.0000000',''));
+                              $("#salle").text(json_data[0]['designation']);
+                          }
+
+                          function set_data_for_vech_form() {
+                              $("#spn_day").text(get_day());
+                              $("#spn_month").text(product_month_name);
+
+                              $("#num_dmnd").text(json_data[0]['num_demande']);
+                              $("#date_dmnd").text(json_data[0]['date_dmnd']);
+                              $("#type_dmnd_v").text(json_data[0]['type_dmnd']);
+                              $("#date_rsv_vehc").text(json_data[0]['date_rsv']);
+                              $("#motif").text(json_data[0]['motif']);
+                              $("#dest").text(json_data[0]['dest']);
+
+                              $("#date_dep").text(json_data[0]['date_dep']);
+                              $("#date_est_retr").text(json_data[0]['date_est_retour']);
+                              $("#heure_dep").text(json_data[0]['heure_dep']);
+                              $("#heure_retr").text(json_data[0]['heure_retr']);
+
+                              $("#vehicule").text(json_data[0]['type']);
+                          }
+
+
+                          if (json_data[0]['type_dmnd'] == "Salles") {
+                              $("#_for_vehc").hide();  
+                              $("#_for_salles").show();
                                 
-                            },
-                            error: function (){
-                                alert("Error Ajax !!!");
-                            }
-                    }); // end ajax
-                    
-                }else{//utilisateur n'pas super admin
-                      //show hint //suit...
-                      alert("You are not super admin !!");
-                }    
-            });//end event button 
+                              set_data_for_sal_form(); //call func
+                          }
 
 
+                          if (json_data[0]['type_dmnd'] == "Vehicules") {
+                              $("#_for_salles").hide();
+                              $("#_for_vehc").show();
+                              
+                              set_data_for_vech_form(); //call func
+                          }
 
-            //si le button view all "new accounts "a été cliquer 
-            $('.li_cont2').on('click' , '#view_all_ntf_btn' , function(){
+                          //Si le button valider a été cliquer
+                          $("#btn_valider").click(function(){  
+                            //lancer l'animation wait si le btn valider a été cliquer
+                            $("#Modal_show_notif_data .modal-body").waitMe({
+                              effect : 'stretch',
+                              maxSize : '40',                 
+                              textPos : 'horizontal',
+                            });
+                            //console.log(json_data[0]);
+                            //insertion dan s la table validation
+                            $.ajax({
+                              method: 'POST' ,
+                              url: 'validate' ,
+                              data: {
+                                        num_emp : json_data[0]['num_emp'],
+                                        num_dmnd : json_data[0]['num_demande'], 
+                                    } ,
+                              success: function (msg){
+                                  //fermer l'animation waitMe
+                                  $("#Modal_show_notif_data .modal-body").waitMe('hide'); 
 
-              //alert('delegation is work ...');
+                                  // if (msg == "no_connexion") {
+                                  //     swal.fire({
+                                  //             icon : "error",
+                                  //             title : "No connexion !",
+                                  //             text : "vérifier votre connexion ..." ,
+                                  //         });
+                                  // } 
 
-              window.location.href = "{{route('multiPages' , $param = "administration")}}" ;
-            });
+                                  if (msg == "success") {
+                                      swal.fire({
+                                              icon : "success", 
+                                              title : "Valider" ,
+                                              text : "La demande a été valider avec succée ..." ,                                     
+                                            });
+                                  }
+
+                                  if (msg == "reject") {
+                                      swal.fire({
+                                              icon : "success", 
+                                              title : "Refuser" ,
+                                              text : "La demande a été refuser ..." ,                                     
+                                            });
+                                  }
+
+                                  if (msg == "exists_tr") {
+                                      swal.fire({
+                                              icon : "warning",
+                                              title : "Already validate !",
+                                              text : "La demande est deja validée ..." ,
+                                            });
+                                  }
+
+                                  if (msg == "exists_fl") {
+                                      swal.fire({
+                                              icon : "warning",
+                                              title : "Already reject !",
+                                              text : "La demande est deja refuser ..." ,
+                                            });
+                                  }
+
+                                
+                              },
+                              error: function (){
+                                  alert("Error Ajax !!!");
+                              }
+                            })//end ajax;
+
+                  
+                          });//end on click btn valider
+
+                          //Si le button refuser a été cliquer
+                          $("#btn_reject").click(function(){
+                            //lancer l'animation wait si le btn refuser a été cliquer
+                            $("#Modal_show_notif_data .modal-body").waitMe({
+                              effect : 'stretch',
+                              text : '',
+                              maxSize : '40',                 
+                              textPos : 'horizontal',
+                            });
+                            //insertion dan s la table validation
+                            $.ajax({
+                              method: 'POST' ,
+                              url: 'reject' ,
+                              data: {
+                                        num_emp: json_data[0]['num_emp'],
+                                        num_dmnd: json_data[0]['num_demande'], 
+                                    } ,
+                              success: function (msg){ 
+                                  //fermer l'animation waitMe
+                                  $("#Modal_show_notif_data .modal-body").waitMe('hide');
+
+                                  if (msg == "no_connexion") {
+                                      swal.fire({
+                                              icon : "error",
+                                              title : "No connexion !",
+                                              text : "vérifier votre connexion ..." ,
+                                          });
+                                  } 
+                                
+                                  if (msg == "exists_tr") {
+                                      swal.fire({
+                                              icon : "warning",
+                                              title : "Already validate !",
+                                              text : "La demande est deja validée ..." ,
+                                            });
+                                  }
+
+                                  if (msg == "exists_fl") {
+                                      swal.fire({
+                                              icon : "warning",
+                                              title : "Already reject !",
+                                              text : "La demande est deja refuser ..." ,
+                                            });
+                                  }
+
+                                  if (msg == "success") {
+                                      swal.fire({
+                                              icon : "success", 
+                                              title : "Refuser" ,
+                                              text : "La demande a été refuser ..." ,                                     
+                                            });
+                                  }
+                                  
+                              },
+                              error: function (){
+                                  alert("Error Ajax !!!");
+                              }
+                            })//end ajax;
+
+                  
+                          });//end on click btn valider
 
 
-            //si une notification "new account" a été cliquer 
-            $('.li_cont2').on('click' , '.notif_item' , function(){
-                  $("#Modal_notif_nv_account").modal('show');
-                  var new_user_id =  $(this).attr('id'); 
-                  $.ajax({
-                      method: 'GET' ,
-                      url: 'showNotifData' ,
-                      data: {new_user_id: new_user_id} ,
-                      success: function (user_account_data){                            
-                          //alert((user_account_data['name']));
-                          $(".it_name").text(user_account_data['nom_emp']+' '+user_account_data['prenom_emp']);
-                          $(".it_id").text(user_account_data['user_id']);
-                          $(".it_email").text(user_account_data['email']);
-                          $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z','').replace('T',' '));
-                          $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z','').replace('T',' '));
-                          //build path for image
-                          var img_path = `{{asset('')}}`;
-                              img_path += user_account_data['avatar_path'];
-                          $("#account_img").attr('src' , img_path);
                       },
                       error: function (){
                             alert("Error Ajax !!!");
                       }
-                  });
-                  
-            });//notif_item on click end
+                  })//end ajax
 
 
-            //si le button "valider" a été cliquer
-            $("#_btn_valider").click(function(){
+          });//end "notif" on click
 
-                  var new_user_id = $(".it_id").text() ;
+    });//end doc ready 
 
-                  $.ajax({
+
+    $(document).ready(function(){//*** NOTIFICATIONS CONCERNE LES NOUVEAUX COMPTES **//
+
+                //verifier si l'utilisateur est un "super admin" 
+                if ({{$arr_data['id_role']}} == 1 ) {
+                    //afficher dans le badge le nombre de notification non lue "without click in notif icon"
+                    $.ajax({
                           method: 'GET' ,
-                          url: 'accountActivation' ,
-                          data: {new_user_id: new_user_id} ,
-                          success: function (msg){                            
-                            swal.fire({
-                                        title : "Activer" ,
-                                        text : msg ,
-                                        icon : "success"                                       
-                                      });
-
-                                $("#Modal_notif_nv_account").modal('hide');
+                          url: 'showNotifBadge2' ,
+                          data: {} ,
+                          success: function (number_notif){                            
+                              if (number_notif > 0) {
+                                $("#account_notif_badge").show();
+                                $("#account_notif_badge").text(number_notif);
+                              }  
                           },
                           error: function (){
                                   alert("Error Ajax !!!");
                           }
-                  });
+                      });
+
+                      /* afficher dans le badge le nombre de notification non lue 
+                      "without click in notif icon" (Notifications de Validations des demandes) */
+                    
 
 
-            });//btn_valider event end
 
 
-            
-});
+
+
+                };//End if
+                
+                //si l'icon "new_account" a été cliquer 
+                $('.account_notif_btn').click(function(){
+                    if ({{$arr_data['id_role']}} == 1) {                             
+                        $.ajax({
+                                method: 'GET' ,
+                                url: 'markAsRead2' ,
+                                data: {} ,
+                                success: function (data){
+                                    //Cacher le badge                        
+                                    $("#account_notif_badge").hide();
+                                    //console.log(data);  
+                                    var new_arr = [];
+                                    for (let i = 0; i < data.length; i++) {
+                                      let objects = JSON.parse(data[i]['data']); 
+                                      new_arr.push(objects);
+                                    }; 
+                                    //console.log(new_arr);
+                                    $(".li_cont2").empty(); //vider la list 
+
+                                    $.each( new_arr ,function(key,value){
+
+                                            $(".li_cont2").prepend('<a class="dropdown-item notif_item" id="'+value.last_users_id+'"  data-toggle="modal" data-target="" data-whatever="@mdo"><div class="notification__icon-wrapper"><div class="notification__icon"><img style="background-color: white;" src="{{asset('images/img/profiles-icon.jpg')}}" /></div></div><div class="notification__content"><span class="notification__category">Nouveau Compte</span><p>Un nouveau compte a été crée par <span class="text-success text-semibold">'+value.email+'</span><br> Le: <i style="color:#000000">'+value.created_at.replace('.000','')+'</i></p></div></a>');
+                                    });
+
+                                    $(".li_cont2").append('<button id="view_all_ntf_btn" class="dropdown-item notification__all text-center" data-toggle="modal" data-target="" data-whatever="@mdo"> View all Notifications </button>');
+                                    
+                                },
+                                error: function (){
+                                    alert("Error Ajax !!!");
+                                }
+                        }); // end ajax
+                        
+                    }else{//utilisateur n'pas super admin
+                          Swal.fire({
+                                  title: 'warning !!',
+                                  text: "This for super admin , You are not super admin !!",
+                                  icon: 'warning',
+                                  showCancelButton: false,
+                                  confirmButtonColor: '#3085d6',
+                                  cancelButtonColor: '#d33',
+                                  
+                                });//end sweetalert
+                                
+                    }    
+                });//end event button 
+
+
+
+                //si le button view all "new accounts "a été cliquer 
+                $('.li_cont2').on('click' , '#view_all_ntf_btn' , function(){
+
+                  //alert('delegation is work ...');
+
+                  window.location.href = "{{route('multiPages' , $param = "administration")}}" ;
+                });
+
+
+                //si une notification "new account" a été cliquer 
+                $('.li_cont2').on('click' , '.notif_item' , function(){
+                      $("#Modal_notif_nv_account").modal('show');
+                      var new_user_id =  $(this).attr('id'); 
+                      $.ajax({
+                          method: 'GET' ,
+                          url: 'showNotifData' ,
+                          data: {new_user_id: new_user_id} ,
+                          success: function (user_account_data){                            
+                              //alert((user_account_data['name']));
+                              $("#inpt_id").val(user_account_data['user_id']);
+                              $(".it_pseudo").text(user_account_data['pseudo']);
+                              $(".it_name").text(user_account_data['nom_emp']);
+                              $(".it_prenom").text(user_account_data['prenom_emp']);
+                              $(".it_email").text(user_account_data['email']);
+                              $(".it_create_at").text(user_account_data['created_at'].replace('.000000Z','').replace('T',' ').replace('.000',' '));
+                              $(".it_update_at").text(user_account_data['updated_at'].replace('.000000Z','').replace('T',' ').replace('.000',' '));
+                              //build path for image
+                              var img_path = `{{asset('')}}`;
+                                  img_path += user_account_data['avatar_path'];
+                              $("#account_img").attr('src' , img_path);
+                          },
+                          error: function (){
+                                alert("Error Ajax !!!");
+                          }
+                      });
+                      
+                });//notif_item on click end
+
+
+                //si le button "valider" a été cliquer
+                $("#_btn_valider").click(function(){
+
+                      var new_user_id = $("#inpt_id").val() ;
+
+                      $.ajax({
+                              method: 'GET' ,
+                              url: 'accountActivation' ,
+                              data: {new_user_id: new_user_id} ,
+                              success: function (msg){                            
+                                swal.fire({
+                                            title : "Activer" ,
+                                            text : msg ,
+                                            icon : "success"                                       
+                                          });
+
+                                    $("#Modal_notif_nv_account").modal('hide');
+                              },
+                              error: function (){
+                                      alert("Error Ajax !!!");
+                              }
+                      });
+
+
+                });//btn_valider event end
+
+
+                
+    });
 </script>           
-
     
 @endsection
+
+
+
 
 
 

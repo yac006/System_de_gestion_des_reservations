@@ -93,6 +93,8 @@
     boSmallStatsDatasets.map(function (el, index) {
       var chartOptions = boSmallStatsOptions(Math.max.apply(Math, el.data) + 1);
       var ctx = document.getElementsByClassName('blog-overview-stats-small-' + (index + 1));
+	  
+	
       new Chart(ctx, {
         type: 'line',
         data: {

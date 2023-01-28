@@ -4,6 +4,12 @@ body{
 	padding-bottom:4.2rem;
 	background:#e1e1e1;
 }
+/* label margin left class */
+.label_mrg_left {
+	max-width: 27%;
+	margin-left: 45px;
+}
+
 a{
 	text-decoration:none !important;
  }

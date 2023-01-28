@@ -1,0 +1,45 @@
+#show_hstrq_dmnd_btn{
+	position: absolute;
+	left: 338px;
+	top: 5px;
+	opacity: 0;
+}
+#spn_num_dmnd{
+	font-weight: 600;
+}
+
+#spn_date{
+	font-weight: 600;
+	margin-left: 20px;
+}
+
+.list-group-item.active {
+  color: #fff;
+  background-color:#9191918f;
+  border-color: #9191918f ;
+}
+
+.career-form{
+	position: fixed;
+	width: 68.5%;
+}
+.new_model_lg{
+	max-width: 750px !important;
+	margin: 1.875rem auto !important;
+}
+
+.chauf_chexbox_cont{
+    position: relative;
+    top: 36px;
+    left: 10px;
+
+}
+
+.vehc_dmnd_form input{
+	background-color: #ffb21f6b;  /*move:#8380ee26 orange:#ffb21f6b jane:#ffcb0026*/
+}
+
+.vehc_dmnd_form select{
+	background-color: #ffb21f6b;  /*move:#8380ee26 orange:#ffb21f6b jane:#ffcb0026*/
+}
+

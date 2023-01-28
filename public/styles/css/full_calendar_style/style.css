@@ -4,7 +4,12 @@
 }
 
 /*---------------- Model ---------------*/
-.model_inputs{
+.cont_box{
+	padding-top: 10px;
+	margin-top: 19px;
+	margin-bottom: -14px;
+}
+/*.model_inputs{
     font-size: 13px;
     padding: 0.5375rem 0.75rem;
 }
@@ -15,21 +20,21 @@
 
 .modal-dialog{
     margin: 3rem auto;
-}
+} */
 
 .container_btn{
     width: 100%;
     height: auto;
-    /* border: dotted 0.5px aquamarine; */
+    border: dotted 0.5px aquamarine;
     box-sizing: border-box ;
     
 }
 
 #btn_save{
-    float: right ;
-    margin:  8.5px 17px ; 
-    padding: 6.5px 13px ;
-    font-size: 13px;
+	float: right;
+	margin: 8.5px 7px;
+	padding: 6.5px 16px;
+	font-size: 13px;
     border-radius: 0.4rem;
 }
 

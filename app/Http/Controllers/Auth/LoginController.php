@@ -58,9 +58,9 @@ class LoginController extends Controller
             return view('auth.login');
         }
 
-        $email_var = $results->email ; 
+        $user_id_var = $results->user_id ; 
         //dd($email_var);
-        $request->session()->put('email_var', $email_var);
+        $request->session()->put('user_id_var', $user_id_var);
 
         return redirect('storeInSession');
     }

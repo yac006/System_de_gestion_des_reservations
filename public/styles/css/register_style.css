@@ -1,6 +1,10 @@
 
 /* ---- Avatars images modal ---- */ 
-
+.avtr_cont{
+    overflow-y: scroll;
+    max-height: 379px;
+    padding-left: 7px;
+}
 
 .avtr_cont ul {
   position: relative;
@@ -190,4 +194,10 @@
 
 .avtr_cont button.send.selected:after {
   opacity: 1;
+}
+
+/* label margin left class */
+.label_mrg_left {
+	max-width: 27%;
+	margin-left: 45px;
 }

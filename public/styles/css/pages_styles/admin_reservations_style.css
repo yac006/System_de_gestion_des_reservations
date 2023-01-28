@@ -1,0 +1,72 @@
+
+._princp_cont{
+	width: 90%;
+	height: 400px;
+	/*border: dotted 1px;*/
+	margin: 0 auto;
+	/*background-color: #fff;*/
+}
+
+._princp_cont .row{
+	width: 90%;
+	height: 450;
+	justify-content: center ; 
+	margin: 30px auto;
+}
+
+._princp_cont .row .column{
+	/*border: dotted 0.2px;*/
+	height: 400px;
+	text-align: center;
+}
+
+/*******************  form_for_rsv_vehc and form_for_rsv_salles *********************/
+
+#salle_card_body{
+	position: relative;
+	top: -48px;
+	right: -20px;
+	opacity: 0 ;
+}
+
+#vehic_card_body{
+	position: relative;
+	top: -48px;
+	right: -20px;
+	opacity: 0 ;
+	padding: 1.975rem;
+}
+
+.vehc_form_cont{
+	width: 90%;
+	height: 400;
+	background-color: #fff;
+	margin: 0 auto;
+	padding:20px;
+}
+.salles_form_cont{
+	width: 90%;
+	height: 450;
+	background-color: #fff;
+	margin: 0 auto;
+	padding:20px;
+}
+.salles_form_cont .form .row{
+	margin-bottom: 15px;
+}
+
+.vehc_form_cont .form .row{
+	margin-bottom: 13px;
+}
+
+.salles_form_cont .btn_cont{
+	text-align : right;
+	padding-top: 10px;
+}
+.vehc_form_cont .btn_cont{
+	text-align : right;
+	padding-top: 0px;
+}
+.btn_cont button{
+	width: 100px;
+}

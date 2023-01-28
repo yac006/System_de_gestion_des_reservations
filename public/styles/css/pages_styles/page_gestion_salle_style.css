@@ -1,0 +1,13 @@
+
+#add_sal_btn{
+	position: absolute;
+    right: 355px;
+    top: 143px;
+	z-index: 30;
+}
+
+#salle_table button{
+	padding: 7px;
+    margin-left: 11px;
+    width: 80px;
+}

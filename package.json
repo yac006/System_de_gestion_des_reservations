@@ -23,6 +23,7 @@
         "webpack-cli": "^4.9.2"
     },
     "dependencies": {
+        "chart.js": "^3.8.2",
         "sweetalert2": "^11.4.8"
     }
 }

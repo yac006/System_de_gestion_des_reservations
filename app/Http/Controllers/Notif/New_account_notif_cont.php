@@ -41,23 +41,14 @@ class New_account_notif_cont extends Controller
     }
 
 
-
-    public function retrieve_all_notif()
-    {
-
-        // $all_notif_rows = Notification::where('notifiable_id' , $request->user_id)
-        // ->where('type' , 'App\Notifications\first_notif')->get();
-
-        // return response()->json($all_notif_rows);
-    }
-
+    
 
     public function display_notif_data(Request $request)
     {
         //recuperer les données de nouveau utilisateur
-        $new_user_data = DB::table('employes')->join('users','num_emp','=','users.user_id')
-                                                ->where('num_emp', $request->new_user_id)
-                                                ->get()->first();
+        $new_user_data = DB::select('select * from employes as e , users as u where e.user_id = u.user_id and e.user_id = ?' , array($request->new_user_id));
+        $new_user_data = $new_user_data[0];
+        //dd($new_user_data);
         return response()->json($new_user_data);
     }
 
@@ -65,8 +56,8 @@ class New_account_notif_cont extends Controller
 
     public function compte_activation(Request $request)
     {
-        DB::table('users')->where('user_id', $request->new_user_id)->update(['actif' => 1]);
+        DB::table('users')->where('user_id', $request->new_user_id)->update(['actif' => True]);
 
-        return response()->json("Le compte a été Activer avec succée ....");
+        return response()->json("Le compte est désormais actif....");
     }
 }

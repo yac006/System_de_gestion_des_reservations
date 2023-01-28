@@ -17,27 +17,15 @@ class check_repetition
      */
     public function handle(Request $request, Closure $next)
     {
-        //Récuperer le dernier enregistrement dan s la table planification
-        $last_row = Planification::all()->last();
-
-        $title = Planification::where('title' , $request->title)->get()->first();
-        
-        //verifier si "title" existe déja
-        if ($title !== NULL) { 
-
-                return response()->json("repetition_title");
-            
-        } else {
-            //Verifier si le "num_rsv" de la requete ajax égale au "num_rsv" de dérnier enregistrement 
-            if ($last_row['num_rsv'] == $request->num_rsv ){
-                
-                return response()->json("repetition_num_rsv");
-
-            }else {
-                return $next($request);
-            };
-        };
-        
+        //???????????
+        $num_dmnd = intval(str_replace('Demande N:', '', $request->title));
+        $results = Planification::where('num_demande' , $num_dmnd)->exists();
+        //???????????
+        if ($results == true) {
+            return response()->json("Existe");
+        }else {
+            return $next($request);
+        }
         
     }
 }

@@ -25,8 +25,19 @@
     <link rel="stylesheet" type="text/css" href="{{asset('styles/css/users_account.css')}}">
     <!-- iconic-font CSS-->
     <link href="{{asset('styles/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <!-- Full calendar Css -->
+    <link href='{{ asset('full_calendar_lib/main.css') }}' rel='stylesheet' /> 
+    <!--Full calendar Style file-->
+    <link rel="stylesheet" href="{{asset('styles/css/full_calendar_style/style.css')}}"> 
+    <!--Waite Me css-->
+    <link rel="stylesheet" href="{{asset('waitMe-gh-pages/waitMe.min.css')}}"> 
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables.net-dt/css/jquery.dataTables.min.css')}}">
+
+    
     <!-- Jquery 3.6.0 -->
-    <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script> 
+
 </head>
 <body>
 
@@ -42,10 +53,25 @@
     <!-- Sweetalert js -->
     <script src="{{asset('sweetalert2/sweetalert2.js')}}"></script>
     <!-- Github Buttons  --> 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>  
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script> -->
+    <!-- Full calendar Js -->
+    <script src='{{ asset('full_calendar_lib/main.js') }}'></script> 
+    <!-- app js file -->
+    <script src="{{ asset("js/app.js") }}"></script>
     <!-- JS File -->
     <script type="text/javascript" src="{{asset('scripts/js/users_account.js')}}"></script>
+    <!--Waite Me js-->
+    <script src="{{ asset("waitMe-gh-pages/waitMe.min.js") }}"></script>
     <!-- AJAX Script -->
     @yield('jquery_ajax_script')
+    <!-- ---- Full calendar Script ---- -->
+    <script src="{{ asset('full_calendar_lib/full_calendar_script.js')}}"></script>
+    @yield('full_calendar_script')
+    <!-- DataTables Js -->
+    <script src='{{ asset('datatables.net-dt/js/jquery.dataTables.min.js')}}' defer></script>
+    <!-- Historque  des demandes jquery script-->
+    @yield('DataTables_script_hstrq_dmnd')
+    <!-- contact modal jquery script -->
+    @yield('contact_modal_jquery_script')
 </body>
 </html>

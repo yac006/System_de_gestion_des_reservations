@@ -1,0 +1,15 @@
+
+.table_cont {
+  margin-top: 28px !important;
+}
+
+#validation_table {
+  background-color: white;
+  padding: 22px;
+}
+
+#validation_table button{
+	padding: 7px;
+    margin-left: 11px;
+    width: 80px;
+}

@@ -18,6 +18,8 @@ class CreateVehiculesTable extends Migration
             $table->string('marque');
             $table->integer('immat');
             $table->integer('num_parc');
+            $table->unsignedBigInteger('id_type');
+            $table->foreign('id_type')->references('id_type')->on('type_vehicules');
 
             $table->timestamps();
         });

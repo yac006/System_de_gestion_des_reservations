@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Notification as ModelsNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,18 +12,18 @@ class first_notif extends Notification
 {
     use Queueable;
 
-    private $user_name ;
-    private $titre ;
-    private $user_id ;
+    private $exp_user_id ;
+    private $exp_nom ;
+    private $exp_prenom;
     private $type_rsv ;
     private $user_avatar ;
 
 
-    public function __construct($user_name , $titre , $user_id , $type_rsv , $user_avatar)
+    public function __construct($exp_user_id , $exp_nom , $exp_prenom , $type_rsv , $user_avatar)
     {
-        $this->user_name = $user_name ;
-        $this->titre = $titre ;
-        $this->user_id = $user_id ;
+        $this->exp_user_id = $exp_user_id ;
+        $this->exp_nom = $exp_nom ;
+        $this->exp_prenom = $exp_prenom ;
         $this->type_rsv = $type_rsv ;
         $this->user_avatar = $user_avatar ;
     }
@@ -39,9 +40,9 @@ class first_notif extends Notification
     public function toDatabase(){
 
         return [
-            'user_name' => $this->user_name ,
-            'titre' => $this->titre ,
-            'user_id' => $this->user_id ,
+            'user_id' => $this->exp_user_id ,
+            'nom' => $this->exp_nom ,
+            'prenom' => $this->exp_prenom ,
             'type' => $this->type_rsv ,
             'avatar_path' => $this->user_avatar
         ];

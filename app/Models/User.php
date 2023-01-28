@@ -6,14 +6,24 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
+
 
 class User extends Authenticatable
 {
 
     use HasFactory, Notifiable;
 
+
     
     protected $primaryKey = 'user_id' ;
+    
+
+    public function fromDateTime($value)
+    {
+        return Carbon::parse(parent::fromDateTime($value))->format('Y-d-m H:i:s');
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_id' , 'pseudo', 'email', 'password', 'remember_token' , 'id_role' , 'avatar_path'  
+        'user_id' , 'pseudo', 'email', 'password', 'avatar_path' , 'actif' , 'id_role'  
     ];
 
     /**
@@ -40,6 +50,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
 
 

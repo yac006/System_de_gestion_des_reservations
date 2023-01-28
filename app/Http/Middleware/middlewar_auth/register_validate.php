@@ -30,15 +30,8 @@ class register_validate
 
             return response()->view('auth.register');
 
+            
         }else{
-            //secend container (Validation des champs)
-
-            // $request->validate([
-            //     'nom_emp' => ['required', 'string', 'max:255'],
-            //     'prenom_emp' => ['required', 'string', 'max:255'],
-            // ]);
-
-
             return $next($request);
         }
 

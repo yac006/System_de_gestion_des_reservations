@@ -227,11 +227,16 @@ body {
 
 .modal_dlg_rsv{
 	margin:5.55rem auto;
-	max-width: 713px !important;
+	max-width: 675px !important;
 }
 
 .salles_form_cont .row{
-	margin: 22px auto;
+	margin: 5px auto;
+	/*margin-bottom:10px;*/
+}
+
+.vehc_form_cont .row{
+	margin: 5px auto;
 	/*margin-bottom:10px;*/
 }
 
@@ -244,14 +249,79 @@ body {
     border-radius: 16px;
     padding-top: 24px;
 	display:inline;
-	
+}
+
+.style_col_rd_btn {
+    padding-left: 5px;
+    margin-top: 36px;
+    text-align: center;
 }
 
 
+/*------------------------ progress bar  style -------------------------*/
+.prog_bar_cont{	
+	width: 70%;
+	position: absolute;
+	top: 320px;
+	left: 110px;
+}
+
+.prog_bar_loader{
+	width: 0%;
+	height: 17px;
+	background-color: #fd7e14;
+	
+}
+
+#wait_title{
+	position: relative;
+	left: 240px;
+	top: 210px;
+}
+
+#spn_bdg{
+	position: relative;
+	top: -5px;
+	left: -2px;
+}
+.list_notif_container img{
+	border-radius: 50%;
+	width: 40px;
+	margin-right: 9px;
+}
+#_icon_notif{
+	color: #c3c7cc;
+	font-size: 1.7925rem;
+	margin-top: -6px;
+	margin-left: -39px;
+}
+
+#_bdg_nbr_user_ntf{
+  display:none;
+  position: relative;
+  bottom: 12px;
+  right: 8px;
+  padding-bottom: 3px;
+  padding-top: 1.8px;
+}
 
 
+.logo_cont img{
+    width: 42.5%;
+    position: relative;
+    left: 17px;
+}
 
+#notif_confirmation_modal{
+	margin-top: 81px;
+	height: 285px;	
+}
 
+#notif_confirmation_modal .modal-content{
+	height: 285px;	
+}
 
-
+#exampleModal_rsv{
+	top: -46px !important;
+}
 

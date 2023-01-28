@@ -24,7 +24,7 @@
                         @csrf
                         <div class="first_cont_fileds" ><!--Start first_cont_fileds-->    
                             <div class="row mb-3">
-                                <label for="pseudo" class="col-md-4 col-form-label text-md-end">{{ __('Pseudo') }}</label>
+                                <label for="pseudo" class="col-md-4 col-form-label text-md-end label_mrg_left">{{ __('Pseudo') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="pseudo" type="text" class="form-control @error('name') is-invalid @enderror" name="pseudo" value="{{ old('pseudo') }}" required autocomplete="name" autofocus>
@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end label_mrg_left">{{ __('Email Address') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end label_mrg_left">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end label_mrg_left">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="row mb-3" hidden>
-                                <label for="avatar_num" class="col-md-4 col-form-label text-md-end">Avatar path</label>
+                                <label for="avatar_num" class="col-md-4 col-form-label text-md-end label_mrg_left">Avatar path</label>
 
                                 <div class="col-md-6">
                                     <input id="avatar_path" type="text" class="form-control" name="avatar_path" >
@@ -95,7 +95,7 @@
 
                         <div class="secend_cont_fileds" hidden><!--Start secend_cont_fileds--> 
                             <div class="row mb-3">
-                                <label for="nom_emp" class="col-md-4 col-form-label text-md-end">Nom</label>
+                                <label for="nom_emp" class="col-md-4 col-form-label text-md-end label_mrg_left">Nom</label>
 
                                 <div class="col-md-6">
                                     <input id="nom_emp" type="text" class="form-control" name="nom_emp" >
@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="prenom_emp" class="col-md-4 col-form-label text-md-end">Prénom</label>
+                                <label for="prenom_emp" class="col-md-4 col-form-label text-md-end label_mrg_left">Prénom</label>
 
                                 <div class="col-md-6">
                                     <input id="prenom_emp" type="text" class="form-control" name="prenom_emp" >
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="poste" class="col-md-4 col-form-label text-md-end">Poste</label>
+                                <label for="poste" class="col-md-4 col-form-label text-md-end label_mrg_left">Poste</label>
 
                                 <div class="col-md-6">
                                     <input id="poste" type="text" class="form-control" name="poste" >
@@ -119,7 +119,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="tele" class="col-md-4 col-form-label text-md-end">Télé</label>
+                                <label for="tele" class="col-md-4 col-form-label text-md-end label_mrg_left">Télé</label>
 
                                 <div class="col-md-6">
                                     <input id="tele" type="text" class="form-control" name="tele" >
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="depart" class="col-md-4 col-form-label text-md-end">Départemment</label>
+                                <label for="depart" class="col-md-4 col-form-label text-md-end label_mrg_left">Départemment</label>
 
                                 <div class="col-md-6">
                                     <select id="depart" class="form-control" name="depart">
@@ -144,9 +144,9 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="type" class="col-md-4 col-form-label text-md-end">Type</label>
+                                <label for="type" class="col-md-4 col-form-label text-md-end label_mrg_left">Type</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6" style="padding-top: 8px;">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Interne">
                                         <label class="form-check-label" for="inlineRadio1">Interne</label>
@@ -163,7 +163,7 @@
                                     <button type="button" class="btn btn-primary" id="btn_precedent">
                                         {{ __('Précédent') }}
                                     </button>
-                                    <button type="submit" class="btn btn-outline-success" style="    margin-left: 5px;">
+                                    <button type="submit" class="btn btn-outline-danger" style="    margin-left: 5px;">
                                         {{ __('Enregistrer') }}
                                     </button>
                                 </div>
@@ -187,13 +187,18 @@
             <div class="modal-body avtr_cont"><!-- start body modal-->
                 
                     <ul class="avtr_ul">
-                    <li class="selection"><img src="{{asset('images/avatars/1.jpg')}}" /></li>
-                    <li><img src="{{asset('images/avatars/2.jpg')}}" /></li>
-                    <li><img src="{{asset('images/avatars/3.jpg')}}" /></li>
-                    <li><img src="{{asset('images/avatars/4.jpg')}}" /></li>
-                    <li><img src="{{asset('images/avatars/5.jpg')}}" /></li>
-                    <li><img src="{{asset('images/avatars/6.jpg')}}" /></li>
-            
+                        <li class="selection"><img src="{{asset('images/avatars/1.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/2.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/3.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/4.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/5.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/6.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/7.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/8.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/9.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/10.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/11.jpg')}}" /></li>
+                        <li><img src="{{asset('images/avatars/12.jpg')}}" /></li>
                     </ul>
 
             </div><!-- end body modal-->

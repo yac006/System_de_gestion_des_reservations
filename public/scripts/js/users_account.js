@@ -58,7 +58,9 @@ $(document).ready(function (){
 	
 	$("#btn_next").click(function(){
 		
-		var radio_btn_val = $('input[name="inlineRadioBtn"]:checked').val();
+		var radio_btn_val = $('input[name="radioBtnTypeDmnd"]:checked').val();
+
+        $("#btn_show_clndr").show();
 		
 		if( radio_btn_val == "Salles" ){
 			$(".salles_form_cont").show();
@@ -87,12 +89,32 @@ $(document).ready(function (){
         $(".modal_dlg_rsv").css("max-width" , "500px");
         $("#btn_envoyer").hide();
         $("#btn_next").show();
-		
-		
+
+        $("#btn_show_clndr").hide();
+	
 		
 	});//end btn click
 	
 	
+    //si le button "voir plannig" a été cliquer 
+    $("#btn_show_clndr").click(function(){
+        $("#show_pln_modal").modal('show');
+
+        $(".prog_bar_loader").animate({ width: "100%"}, 1000 , function(){
+
+            $('#calendar').removeAttr('hidden');
+            $(".prog_bar_cont").hide();
+            $("#wait_title").hide();
+
+
+        });
+
+
+
+    });
+
+
+
 	
 	
 });

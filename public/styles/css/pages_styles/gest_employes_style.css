@@ -1,0 +1,27 @@
+#gst_emp_action_fld button{
+	padding: 6px;
+	width: 72px;
+}
+
+
+#gs_emp_btn_update{
+	margin-left: 5px ;
+}
+#gs_emp_btn_delete{
+	margin-left: 5px ;
+}
+#gs_emp_btn_bloque{
+	margin-left: 5px ;
+}
+
+#GestEmpModal .modal-body input{
+	margin-top: 15px; 
+	background-color: #ffe73857;
+	height: 40px;
+}
+#input_slct_poste{
+	margin-top: 17px; 
+	width: 93%;
+    margin-left: 15px;
+	background-color: #f0f0f0;
+}

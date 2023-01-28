@@ -8,94 +8,62 @@ use Illuminate\Http\Request;
 class MultipagesController extends Controller
 {
     
-
+    //For Call
+    public function store_in_session($dashboard,$Planifications,$administration,$suivi_rsv,$contact,$Demandes
+                                    ,$gest_employes,$admin_rsv,$gest_sal,$gest_vehc)
+    {
+        session([   
+            'dashboard' => $dashboard ,
+            'Planifications' => $Planifications ,
+            'administration' => $administration ,
+            'suivi_rsv' => $suivi_rsv ,
+            'contact' => $contact ,
+            'Demandes' => $Demandes ,
+            'gest_employes' => $gest_employes ,
+            'admin_rsv' => $admin_rsv,
+            'gest_salles' => $gest_sal,
+            'gest_vehicules' => $gest_vehc
+        ]); 
+    }
 
 
     //Verifivation de type de lien cliquer 
     public function verification($param)
     {
         
-        if ($param == "pln_salles") {
-            $dashboard = false ;
-            $pln_salle = true ;
-            $administration = false ;
-            $suivi_rsv = false ;
-            $contact = false ;
-            session([   
-                'dashboard' => $dashboard ,
-                'pln_salle' => $pln_salle ,
-                'administration' => $administration ,
-                'suivi_rsv' => $suivi_rsv ,
-                'contact' => $contact
-            ]);
-            
-            return redirect('storeInSession'); 
+        if ($param == "accueil") {
+            $this->store_in_session(true,false,false,false,false,false,false,false,false,false);
     
-        }elseif($param == "accueil"){
-            $dashboard = true ;
-            $pln_salle = false ;
-            $administration = false ;
-            $suivi_rsv = false ;
-            $contact = false ;
-            session([   
-                'dashboard' => $dashboard ,
-                'pln_salle' => $pln_salle ,
-                'administration' => $administration ,
-                'suivi_rsv' => $suivi_rsv ,
-                'contact' => $contact
-            ]);
-
-            return redirect('storeInSession'); 
+        }elseif($param == "Planifications"){
+            $this->store_in_session(false,true,false,false,false,false,false,false,false,false);
 
         }elseif($param == "administration"){
-            $dashboard = false ;
-            $pln_salle = false ;
-            $administration = true ;
-            $suivi_rsv = false ;
-            $contact = false ;
-            session([   
-                        'dashboard' => $dashboard ,
-                        'pln_salle' => $pln_salle ,
-                        'administration' => $administration ,
-                        'suivi_rsv' => $suivi_rsv ,
-                        'contact' => $contact
-                    ]);
-
-            return redirect('storeInSession'); 
-
+            $this->store_in_session(false,false,true,false,false,false,false,false,false,false);
+            return redirect('getAllUsers');
+            
         }elseif($param == "suivi_rsv"){
-            $dashboard = false ;
-            $pln_salle = false ;
-            $administration = false ;
-            $suivi_rsv = true ;
-            $contact = false ;
-            session([   
-                        'dashboard' => $dashboard ,
-                        'pln_salle' => $pln_salle ,
-                        'administration' => $administration ,
-                        'suivi_rsv' => $suivi_rsv ,
-                        'contact' => $contact
-                    ]);
-
-            return redirect('storeInSession'); 
+            $this->store_in_session(false,false,false,true,false,false,false,false,false,false);
 
         }elseif($param == "contact"){
-            $dashboard = false ;
-            $pln_salle = false ;
-            $administration = false ;
-            $suivi_rsv = false ;
-            $contact = true ;
-            session([   
-                        'dashboard' => $dashboard ,
-                        'pln_salle' => $pln_salle ,
-                        'administration' => $administration ,
-                        'suivi_rsv' => $suivi_rsv ,
-                        'contact' => $contact
-                    ]);
-
-            return redirect('storeInSession'); 
+            $this->store_in_session(false,false,false,false,true,false,false,false,false,false);
+            
+        }elseif($param == "Demandes"){
+            $this->store_in_session(false,false,false,false,false,true,false,false,false,false);
+        }
+        elseif($param == "gst_employes"){
+            $this->store_in_session(false,false,false,false,false,false,true,false,false,false);
+        }
+        elseif($param == "réservation"){
+            $this->store_in_session(false,false,false,false,false,false,false,true,false,false);
+        }
+        elseif($param == "gst_salles"){
+            $this->store_in_session(false,false,false,false,false,false,false,false,true,false);
+        }
+        elseif($param == "gst_vehicules"){
+            $this->store_in_session(false,false,false,false,false,false,false,false,false,true);
         }
 
+        return redirect('storeInSession');
 
     }//end of function
 }
