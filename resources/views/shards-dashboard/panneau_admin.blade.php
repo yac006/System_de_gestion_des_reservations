@@ -312,7 +312,7 @@
             
             <footer class="main-footer d-flex p-2 px-3 bg-white border-top" style="height: 2.50rem; font-size:13px">
               <span class="copyright ml-auto my-auto mr-2">Copyright © 2022
-                <a href="#" rel="nofollow" style="color:orange">Ikken Yacine <span style="color:gray">&</span> Taggeub Ali</a>
+                <a href="#" rel="nofollow" style="color:orange">Ikken Yacine</a>
               </span>
             </footer>
           </main>
